@@ -15,7 +15,7 @@ const FormContainer = styled.div`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 30px;
-  button {
+  & > button {
     width: 100%;
     padding: 20px;
     font-size: 1.2rem;
@@ -41,13 +41,30 @@ const Logo = styled.div`
 const Form = styled.div``;
 
 const FormField = styled.div`
+  display: flex;
   margin-bottom: 10px;
-  input {
+  input, textarea {
     padding: 12px;
     border-radius: 5px;
     border: 1px solid gray;
     width: 100%;
     font-size: 1.2rem;
+  }
+  textarea {
+    resize: none;
+  }
+  button {
+    border: none;
+    margin-left: 10px;
+    width: 100px;
+    background-color: rgb(98, 86, 78);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity .3s;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;
 
