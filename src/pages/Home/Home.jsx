@@ -1,35 +1,38 @@
-import React from 'react';
-import Layout from '../component/Layout/Layout';
+import React, { useStatev } from 'react';
+import Layout from '../../component/Layout/Layout';
 import { BsPencilSquare } from 'react-icons/bs';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { MdTag } from 'react-icons/md';
-import './styles/home.css';
+import { Main, NavContainer, MainWrap, Header, TodoWrap, AddTodo, DropDown, TodoListContainer, TodoTitle, TodoDesc, TodoTag } from './styles.jsx';
 
 const Home = () => {
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
+
   return (
-    <div className='wrap'>
-      {/* ANCHOR : 01. nav */}
-      <nav>바보</nav>
+    <Main>
+      {/*  ANCHOR : 01. nav */}
+      <NavContainer>바보</NavContainer>
 
       {/* ANCHOR : 02. mainWRap */}
-      <div className='main_wrap'>
+      <MainWrap>
         {/* 02-1. Header */}
-        <header className='todo_header'>
+        <Header>
           <h1>어서오세요, 김도토리님</h1>
           <span>할 일이 30개 남았어요</span>
-        </header>
+        </Header>
 
         {/* SECTION : 02-2. wrapTodo */}
-        <section className='wrap_todo'>
-
-          <div className='add_todo'>
+        <TodoWrap>
+          <AddTodo>
             <BsPencilSquare />
             <span>할 일을 추가하세요</span>
-          </div>
+          </AddTodo>
 
           {/* ANCHOR : 02-2[1] : 드롭다운 */}
-          <select className='tag_dropdown' action='dropdown'>
+          <DropDown onClick={e => setDropdownVisibility(!dropdownVisibility)}>
+            {dropdownVisibility ? 'Close' : 'Open'}
             <option>
+            { props.visibility && props.children }
               <input type='checkbox' id='all' name='all' />
               <label for='all'>전체보기</label>
             </option>
@@ -45,28 +48,26 @@ const Home = () => {
               <input type='checkbox' id='tag_03' name='tag_03' />
               <label for='tag_03'>우리가좍</label>
             </option>
-          </select>
-          
-        </section>
+          </DropDown>
+        </TodoWrap>
 
         {/* ANCHOR : 02-3 : todoList */}
-        <div className='todo_list'>
-
-          <div class='todo_desc'>
+        <TodoListContainer>
+          <TodoDesc>
             <BsCheckCircleFill />
-            <div className='todo_title'>
+            <TodoTitle>
               <h3>밥먹기</h3>
               <span>소고기 궈먹어야지~</span>
-            </div>
-          </div>
+            </TodoTitle>
+          </TodoDesc>
 
-          <div className='todo_tag'>
+          <TodoTag>
             <MdTag />
             <span>상수리나무_디자인팀</span>
-          </div>
-        </div>
-      </div>
-    </div>
+          </TodoTag>
+        </TodoListContainer>
+      </MainWrap>
+    </Main>
   );
 };
 
