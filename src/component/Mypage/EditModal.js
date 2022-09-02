@@ -16,13 +16,16 @@ function EditModal({setIsOpen}) {
         onClick={(e) => e.stopPropagation()}
       >
         <ModalHeader>
-          <h1>내 정보 수정</h1>
-          <CancelIcon onClick={closeModal}>X</CancelIcon>
+          <ModalLable size={35}>내 정보 수정</ModalLable>
+          <DotoriIconX
+            src="https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png"
+            onClick={closeModal}
+          />
         </ModalHeader>
         <ModalInputs>
-          <h2>프로필 사진 변경</h2>
+          <ModalLable size={25}>프로필 사진 변경</ModalLable>
           <Button>찾아보기..</Button>
-          <h2>자기소개 수정</h2>
+          <ModalLable size={25}>자기소개 수정</ModalLable>
           <ModalText></ModalText>
         </ModalInputs>
         <Button>완료</Button>
@@ -68,6 +71,7 @@ const Button = styled.button`
   border-radius: 3px;
   border: none;
   background-color: #c0b3a9;
+  margin-bottom: 30px;
 `;
 
 const ModalText = styled.textarea`
@@ -78,6 +82,16 @@ const ModalInputs = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+`;
+
+const ModalLable = styled.div`
+  font-size: ${(props) => props.size}px;
+  margin-bottom: 20px;
+`;
+
+const DotoriIconX = styled.img`
+  width: 50px;
+  height: 70px;
 `;
 
 const CreateAnimation = {
