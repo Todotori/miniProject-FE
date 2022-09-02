@@ -4,7 +4,11 @@ import {Link} from "react-router-dom";
 import useInput from "../../hooks/useInput";
 
 const Register = () => {
-
+    const [email, setEmail, resetEmail] = useInput();
+    const [password, setPassword, resetPassword] = useInput();
+    const [passwordConfirmation, setPasswordConfirmation, resetPasswordConfirmation] = useInput();
+    const [username, setUsername, resetUsername] = useInput();
+    const [introduction, setIntroduction, resetIntroduction] = useInput();
     return <RegisterContainer>
         <FormContainer>
             <Logo>
@@ -12,20 +16,20 @@ const Register = () => {
             </Logo>
             <Form>
                 <FormField>
-                    <input type="email" placeholder={"이메일"} required/>
+                    <input type="email" placeholder={"이메일"} required value={email} onChange={setEmail}/>
                     <button>중복확인</button>
                 </FormField>
                 <FormField>
-                    <input type="password" placeholder={"비밀번호"} required/>
+                    <input type="password" placeholder={"비밀번호"} required value={password} onChange={setPassword}/>
                 </FormField>
                 <FormField>
-                    <input type="password" placeholder={"비밀번호 확인"} required/>
+                    <input type="password" placeholder={"비밀번호 확인"} required value={passwordConfirmation} onChange={setPasswordConfirmation}/>
                 </FormField>
                 <FormField>
-                    <input type="text" placeholder={"이름"} required/>
+                    <input type="text" placeholder={"이름"} required value={username} onChange={setUsername}/>
                 </FormField>
                 <FormField>
-                    <textarea placeholder={"자기소개"}/>
+                    <textarea placeholder={"자기소개"} value={introduction} onChange={setIntroduction}/>
                 </FormField>
             </Form>
             <LoginLink>
