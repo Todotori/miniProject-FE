@@ -7,6 +7,37 @@ import { Main, NavContainer, MainWrap, Header, TodoWrap, AddTodo, DropDown, Todo
 
 const Home = () => {
   // const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  const data = [
+    { id: 0, title: '우리가좍' },
+    { id: 1, title: '상수리나무' },
+    { id: 2, title: '프론트엔드' },
+  ];
+
+  // NOTE 체크된 아이템을 담을 배열
+  const [checkItems, setCheckItems] = useState([]);
+
+  // NOTE 체크박스 단일 선택
+  const handleSingleCheck = (checked, id) => {
+    if (checked) {
+      // WHAT 단일체크 선택 :  아이템 배열 +
+      setCheckItems(prev => [...prev, id]);
+    } else {
+      // WHAT 단일 체크 해제 : 체크텐 아이템 제외한 배열(filter)
+      setCheckItems(checkItems.filter(el => el !== id));
+    }
+  };
+
+  // NOTE 체크박스 전체 선택
+  const handleAllCheck = checked => {
+    if (checked) {
+      // WHAT 전체 선택 클릭 : 데이트의 모든 아이템(id)를 담은 배열로 checkItems상태 업뎃
+      const idArray = [];
+      data.forEach(el => idArray.push(el.id));
+      setCheckItems(idArray);
+    } else {
+      setCheckItems([]);
+    }
+  };
 
   return (
     <Main>
@@ -28,25 +59,34 @@ const Home = () => {
             <span>할 일을 추가하세요</span>
           </AddTodo>
 
-          {/* ANCHOR : 02-2[1] : 드롭다운 */}
           <DropDown>
-            <option>
-              <input type='checkbox' id='all' name='all' />
-              <label for='all'>전체보기</label>
-            </option>
-            <option>
-              <input type='checkbox' id='tag_01' name='tag_01' />
-              <label for='tag_01'>상수리나무_디자인팀</label>
-            </option>
-            <option>
-              <input type='checkbox' id='tag_02' name='tag_02' />
-              <label for='tag_02'>프론트엔드 스터디</label>
-            </option>
-            <option>
-              <input type='checkbox' id='tag_03' name='tag_03' />
-              <label for='tag_03'>우리가좍</label>
-            </option>
+            <input
+              type='checkbox'
+              name='select_all'
+              id='select_all'
+              onChange={e => handleAllCheck(e.target.checked)}
+              // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
+              checked={checkItems.length === data.length ? true : false}
+            />
+            <label for='select_all'>전체보기</label>
           </DropDown>
+
+          <tbody>
+            {data?.map((data, key) => (
+              <tr key={key}>
+                <td>
+                  <input
+                    type='checkbox'
+                    name={`select-${data.id}`}
+                    onChange={e => handleSingleCheck(e.target.checked, data.id)}
+                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
+                    checked={checkItems.includes(data.id) ? true : false}
+                  />
+                </td>
+                <td className='second-row'>{data.title}</td>
+              </tr>
+            ))}
+          </tbody>
         </TodoWrap>
 
         {/* ANCHOR : 02-3 : todoList */}
