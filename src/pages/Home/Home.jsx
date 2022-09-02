@@ -1,4 +1,4 @@
-import React, { useStatev } from 'react';
+import React, { useState } from 'react';
 import Layout from '../../component/Layout/Layout';
 import { BsPencilSquare } from 'react-icons/bs';
 import { BsCheckCircleFill } from 'react-icons/bs';
@@ -6,7 +6,7 @@ import { MdTag } from 'react-icons/md';
 import { Main, NavContainer, MainWrap, Header, TodoWrap, AddTodo, DropDown, TodoListContainer, TodoTitle, TodoDesc, TodoTag } from './styles.jsx';
 
 const Home = () => {
-  const [dropdownVisibility, setDropdownVisibility] = useState(false);
+  // const [dropdownVisibility, setDropdownVisibility] = useState(false);
 
   return (
     <Main>
@@ -29,10 +29,8 @@ const Home = () => {
           </AddTodo>
 
           {/* ANCHOR : 02-2[1] : 드롭다운 */}
-          <DropDown onClick={e => setDropdownVisibility(!dropdownVisibility)}>
-            {dropdownVisibility ? 'Close' : 'Open'}
+          <DropDown>
             <option>
-            { props.visibility && props.children }
               <input type='checkbox' id='all' name='all' />
               <label for='all'>전체보기</label>
             </option>
