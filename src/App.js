@@ -1,6 +1,6 @@
-import Router from "./Router";
-import {AnimatePresence} from "framer-motion";
-import Globalstyle from './styles/GlobalStyle';
+import Router from './Router';
+import { AnimatePresence } from 'framer-motion';
+import Globalstyle from './pages/styles/GlobalStyle.js';
 
 function App() {
   return (
