@@ -12,7 +12,7 @@ const Hashtag = () => {
 };
 
 const Container = styled.div`
-  width: 100px;
+  width: 100%;
   height: 70%;
   border: 1px solid #c0b3a9;
   border-radius: 15px;
@@ -25,7 +25,7 @@ const Container = styled.div`
 `;
 const HashtagName = styled.div`
   margin-left: 10px;
-  font-size: calc(0.1rem + 0.5vw);
+  font-size: calc(0.1rem + 0.4vw);
   overflow: hidden;
 `;
 

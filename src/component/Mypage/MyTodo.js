@@ -62,11 +62,13 @@ const TodoDetail = styled.div`
 `;
 
 const HashTagBox = styled.div`
-  width: 100%;
+  width: 80%;
   height: 30%;
   margin-left: 30px;
 
   display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 const CreateAnimation = {

@@ -47,9 +47,11 @@ const Title = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 30px;
+  column-gap: 0px;
+  row-gap: 40px;
 `;

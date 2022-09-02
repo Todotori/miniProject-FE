@@ -47,7 +47,7 @@ const Wrapper = styled.div`
 const MyInfo = styled.div`
   background-color: #c0b3a9;
   width: 50%;
-  height: 12rem;
+  height: 15rem;
   display: flex;
   padding: 15px;
   border-radius: 10px 0 0 10px;
@@ -85,7 +85,7 @@ const MyInfoUserComment = styled.div`
 
 const MyGroup = styled.div`
   width: 30%;
-  height: 12rem;
+  height: 15rem;
   padding: 15px;
   border-radius: 0px 10px 10px 0px;
   border: 1px solid #c0b3a9;
