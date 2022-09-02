@@ -25,6 +25,14 @@ const Mytodos = () => {
         <MyTodo />
         <MyTodo />
         <MyTodo />
+        <MyTodo />
+        <MyTodo />
+        <MyTodo />
+        <MyTodo />
+        <MyTodo />
+        <MyTodo />
+        <MyTodo />
+        <MyTodo />
       </Wrapper>
     </>
   );

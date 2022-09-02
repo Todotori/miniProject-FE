@@ -26,7 +26,12 @@ const UserInfo = () => {
             </MyInfoUserComment>
           </MyInfoWrapper>
         </MyInfo>
-        <MyGroup></MyGroup>
+        <MyGroups>
+          <GroupTitle>내가 속한 그룹</GroupTitle>
+          <MyGroup>(주)상수리나무_디자인팀</MyGroup>
+          <MyGroup>프론트엔드 코딩스터디</MyGroup>
+          <MyGroup>백엔드 코딩스터디</MyGroup>
+        </MyGroups>
       </Wrapper>
       <UnderLine />
       {isOpen && <EditModal setIsOpen={setIsOpen} />}
@@ -74,6 +79,7 @@ const MyInfoWrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   margin-left: 40px;
+  margin-bottom: 55px;
 `;
 
 const MyInfoUserName = styled.div`
@@ -83,10 +89,10 @@ const MyInfoUserComment = styled.div`
   font-size: calc(0.1rem + 1vw);
 `;
 
-const MyGroup = styled.div`
+const MyGroups = styled.div`
   width: 30%;
   height: 15rem;
-  padding: 15px;
+  padding: 30px;
   border-radius: 0px 10px 10px 0px;
   border: 1px solid #c0b3a9;
 `;
@@ -94,6 +100,15 @@ const MyGroup = styled.div`
 const UnderLine = styled.hr`
   width: 84%;
   margin: 5% auto 2% auto;
+`;
+
+const GroupTitle = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
+const MyGroup = styled.div`
+  margin-bottom: 10px;
 `;
 
 export default UserInfo;

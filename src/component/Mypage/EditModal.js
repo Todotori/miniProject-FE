@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CancelIcon from "@mui/icons-material/Cancel";
-
+import {motion} from "framer-motion";
 function EditModal({setIsOpen}) {
   const closeModal = () => {
     setIsOpen(false);
@@ -9,7 +9,12 @@ function EditModal({setIsOpen}) {
 
   return (
     <ModalBack onClick={closeModal}>
-      <ModalBox onClick={(e) => e.stopPropagation()}>
+      <ModalBox
+        variants={CreateAnimation}
+        initial="start"
+        animate="end"
+        onClick={(e) => e.stopPropagation()}
+      >
         <ModalHeader>
           <h1>내 정보 수정</h1>
           <CancelIcon onClick={closeModal}>X</CancelIcon>
@@ -38,20 +43,18 @@ const ModalBack = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 999;
 `;
 
-const ModalBox = styled.div`
+const ModalBox = styled(motion.div)`
   border: 1px solid lightgray;
   border-radius: 10px;
   background-color: white;
   width: 700px;
   height: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px 40px 30px 40px;
+  z-index: 999;
 `;
 
 const ModalHeader = styled.div`
@@ -76,3 +79,8 @@ const ModalInputs = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
 `;
+
+const CreateAnimation = {
+  start: {opacity: 0, scale: 0.5},
+  end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
+};
