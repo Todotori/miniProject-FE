@@ -2,6 +2,7 @@ import { RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink } fr
 import logo from "../../image/mainlogo.png";
 import {Link} from "react-router-dom";
 import useInput from "../../hooks/useInput";
+import { v4 as uuidV4 } from "uuid";
 
 const Register = () => {
     const [email, setEmail, resetEmail] = useInput();
@@ -9,6 +10,9 @@ const Register = () => {
     const [passwordConfirmation, setPasswordConfirmation, resetPasswordConfirmation] = useInput();
     const [username, setUsername, resetUsername] = useInput();
     const [introduction, setIntroduction, resetIntroduction] = useInput();
+    const register = () => {
+
+    };
     return <RegisterContainer>
         <FormContainer>
             <Logo>
@@ -37,7 +41,7 @@ const Register = () => {
                     <p>이미 도토리이신가요?</p>
                 </Link>
             </LoginLink>
-            <button>도토리되기</button>
+            <button onClick={register}>도토리되기</button>
         </FormContainer>
     </RegisterContainer>;
 }
