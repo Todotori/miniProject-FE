@@ -3,18 +3,9 @@ import styled from 'styled-components';
 const Main = styled.div`
   display: flex;
   width: 100%;
-  background-color: beige;
   margin: auto;
 `;
 
-/*****************************/
-/** 01. nav            ******/
-/*****************************/
-const NavContainer = styled.div`
-  width: 20%;
-  height: 100vh;
-  background-color: teal;
-`;
 
 /*****************************/
 /** 02. mainWrap *************/
@@ -102,4 +93,4 @@ const TodoTag = styled.div`
   font-size: 14px;
 `;
 
-export { Main, NavContainer, MainWrap, Header, TodoWrap, AddTodo, DropDown, TodoListContainer, TodoTitle, TodoDesc, TodoTag };
+export { Main, MainWrap, Header, TodoWrap, AddTodo, DropDown, TodoListContainer, TodoTitle, TodoDesc, TodoTag };
