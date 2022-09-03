@@ -1,0 +1,88 @@
+.navContainer {
+  display: flex;
+  width: auto;
+  padding: 30px;
+}
+
+/* input 중에 id가 trigger인 항목에 대한 css */
+input[id='trigger'] {
+  display: none;
+}
+
+/* label 중에 for가 trigger인 항목 */
+label[for='trigger'] {
+  /* border: 1px solid red; */
+  width: 30px;
+  height: 20px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+#trigger{
+  width: 30px;
+  height: 20px;
+}
+
+/* label 중에 for가 trigger인 항목 안의 span */
+label[for='trigger'] span {
+  display: block;
+  height: 2px;
+  background-color: #5a886a;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+/* label[for=trigger] > span의 n번째 요소 */
+label[for='trigger'] span:nth-child(1) {
+  top: 0;
+}
+
+label[for='trigger'] span:nth-child(2) {
+  top: 50%;
+}
+
+label[for='trigger'] span:nth-child(3) {
+  top: 100%;
+}
+
+/* check시 변하는 label[for=trigger] > span의 n번째 요소  */
+input[id='trigger']:checked + label span:nth-child(1) {
+  top: 50%;
+  transform: rotate(45deg);
+  background-color: #fff;
+}
+
+input[id='trigger']:checked + label span:nth-child(2) {
+  opacity: 0;
+}
+
+input[id='trigger']:checked + label span:nth-child(3) {
+  top: 50%;
+  transform: rotate(-45deg);
+  background-color: #fff;
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 20%;
+  height: 100vh;
+  background-color: #6d6158;
+  position: fixed;
+  top: 0;
+  left: 0;
+  left: -20%;
+  transition: 0.3s;
+}
+
+/* input[id=trigger]가 체크되었을 때 사이드바가 나오는 형제 인접자 */
+input[id='trigger']:checked ~ .sidebar {
+  left: 0;
+}
+
+/* check시 같이 밀려나가는 CSS 햄버거 메뉴 */
+input[id='trigger']:checked + label[for='trigger'] {
+  /* transition: 0.3s; */
+}
