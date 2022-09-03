@@ -4,7 +4,7 @@ import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import {motion} from "framer-motion";
 
-const MyTodo = () => {
+const MyTodo = ({todo}) => {
   return (
     <Container variants={CreateAnimation} initial="start" animate="end">
       <TodoInfoBox>
@@ -12,8 +12,8 @@ const MyTodo = () => {
           <CheckBoxIcon fontSize="large" />
         </TodoCheckBox>
         <TodoLetterBox>
-          <TodoTitle>제주에서 스카이다이빙 하기</TodoTitle>
-          <TodoDetail>오늘안에 꼭 하겠습니다.</TodoDetail>
+          <TodoTitle>{todo.title}</TodoTitle>
+          <TodoDetail>{todo.detail}</TodoDetail>
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
