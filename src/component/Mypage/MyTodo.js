@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {__updateIsDone} from "../../redux/modules/todos";
+import {__deleteTodo, __updateIsDone} from "../../redux/modules/todos";
 import {useDispatch} from "react-redux";
 
 const MyTodo = ({todo}) => {
@@ -11,9 +12,15 @@ const MyTodo = ({todo}) => {
   const onClickIsDone = () => {
     dispatch(__updateIsDone({id: todo.id, isDone: todo.isDone}));
   };
+  const onClickDelete = () => {
+    dispatch(__deleteTodo(todo.id));
+  };
 
   return (
     <Container variants={CreateAnimation} initial="start" animate="end">
+      <TodoDeleteBox>
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+      </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.isDone}>
           <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
@@ -34,6 +41,8 @@ const MyTodo = ({todo}) => {
 };
 
 const Container = styled(motion.div)`
+  position: relative;
+
   border: 2px solid #c0b3a9;
   border-radius: 15px;
 
@@ -60,6 +69,13 @@ const TodoCheckBox = styled.div`
   margin-bottom: 40px;
   color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
 `;
+const TodoDeleteBox = styled.div`
+  position: absolute;
+  right: 20px;
+  color: #6d6158;
+  z-index: 1;
+`;
+
 const TodoLetterBox = styled.div``;
 const TodoTitle = styled.div`
   font-size: calc(0.6rem + 1vw);
