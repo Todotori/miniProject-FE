@@ -15,7 +15,7 @@ const Mytodos = () => {
     dispatch(__getTodos());
   }, []);
 
-  const myTodoList = todos.filter((todo) => todo.writer === "Junsu");
+  const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
 
   return (
     <>
@@ -51,7 +51,7 @@ const MyTodosHeader = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: calc(1rem + 1vw);
+  font-size: calc(1.5rem + 1vw);
   margin-bottom: 30px;
 `;
 

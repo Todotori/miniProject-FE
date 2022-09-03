@@ -3,13 +3,20 @@ import styled from "styled-components";
 import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import {motion} from "framer-motion";
+import {__updateIsDone} from "../../redux/modules/todos";
+import {useDispatch} from "react-redux";
 
 const MyTodo = ({todo}) => {
+  const dispatch = useDispatch();
+  const onClickIsDone = () => {
+    dispatch(__updateIsDone({id: todo.id, isDone: todo.isDone}));
+  };
+
   return (
     <Container variants={CreateAnimation} initial="start" animate="end">
       <TodoInfoBox>
-        <TodoCheckBox>
-          <CheckBoxIcon fontSize="large" />
+        <TodoCheckBox isDone={todo.isDone}>
+          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>
@@ -51,10 +58,11 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
+  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
 `;
 const TodoLetterBox = styled.div``;
 const TodoTitle = styled.div`
-  font-size: calc(0.8rem + 1vw);
+  font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;
 `;
 const TodoDetail = styled.div`
