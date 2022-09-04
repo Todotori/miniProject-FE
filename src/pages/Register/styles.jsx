@@ -15,6 +15,7 @@ const FormContainer = styled.div`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 30px;
+
   & > button {
     width: 100%;
     padding: 20px;
@@ -25,6 +26,7 @@ const FormContainer = styled.div`
     color: white;
     cursor: pointer;
     transition: opacity .3s;
+
     &:hover {
       opacity: 0.8;
     }
@@ -43,6 +45,7 @@ const Form = styled.div``;
 const FormField = styled.div`
   display: flex;
   margin-bottom: 10px;
+
   input, textarea {
     padding: 12px;
     border-radius: 5px;
@@ -50,9 +53,11 @@ const FormField = styled.div`
     width: 100%;
     font-size: 1.2rem;
   }
+
   textarea {
     resize: none;
   }
+
   button {
     border: none;
     margin-left: 10px;
@@ -62,6 +67,7 @@ const FormField = styled.div`
     border-radius: 5px;
     cursor: pointer;
     transition: opacity .3s;
+
     &:hover {
       opacity: 0.8;
     }
@@ -73,4 +79,4 @@ const LoginLink = styled.div`
   text-align: center;
 `;
 
-export { RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink };
+export {RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink};
