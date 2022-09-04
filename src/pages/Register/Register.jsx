@@ -3,14 +3,25 @@ import logo from '../../image/mainlogo.png';
 import { Link } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import { v4 as uuidV4 } from 'uuid';
+import useModal from "../../hooks/useModal";
+import useEmailValidator from "../../hooks/useEmailValidator";
 
 const Register = () => {
   const [email, setEmail, resetEmail] = useInput();
+  const emailValidator = useEmailValidator();
   const [password, setPassword, resetPassword] = useInput();
   const [passwordConfirmation, setPasswordConfirmation, resetPasswordConfirmation] = useInput();
   const [username, setUsername, resetUsername] = useInput();
   const [introduction, setIntroduction, resetIntroduction] = useInput();
-  const register = () => {};
+  const [modal, setModal] = useModal();
+  const register = () => {
+    if (email.length === 0) {
+      setModal("이메일을 입력해주세요");
+    } else if (!emailValidator(email)) {
+      setModal("이메일 형식이 올바르지 않습니다.");
+    }
+
+  };
   return (
     <RegisterContainer>
       <FormContainer>
@@ -42,6 +53,7 @@ const Register = () => {
         </LoginLink>
         <button onClick={register}>도토리되기</button>
       </FormContainer>
+      {modal}
     </RegisterContainer>
   );
 };

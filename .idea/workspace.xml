@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Add] createUser Thunk.">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Login/styles.jsx" afterDir="false" />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Add] Modal 기능 추가.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
       <updated>1662092300819</updated>
       <workItem from="1662092303389" duration="3086000" />
       <workItem from="1662096255920" duration="7127000" />
-      <workItem from="1662327599575" duration="215000" />
+      <workItem from="1662327599575" duration="4470000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -88,7 +87,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662100103788</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="[Add] Login.jsx">
+      <created>1662327849403</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662327849403</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[Add] Modal 기능 추가.">
+      <created>1662333093617</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662333093617</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +125,8 @@
     <MESSAGE value="[Add] 중복확인 버튼." />
     <MESSAGE value="[Add] useInput() 연결." />
     <MESSAGE value="[Add] createUser Thunk." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Add] createUser Thunk." />
+    <MESSAGE value="[Add] Login.jsx" />
+    <MESSAGE value="[Add] Modal 기능 추가." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Add] Modal 기능 추가." />
   </component>
 </project>
