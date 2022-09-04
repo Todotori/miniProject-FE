@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsPencilSquare } from 'react-icons/bs';
 import Multiselect from 'multiselect-react-dropdown';
+import AddModal from './AddModal.jsx';
 
 const AddTodo = () => {
   const data = [
@@ -9,13 +10,18 @@ const AddTodo = () => {
     { id: 1, title: '상수리나무' },
     { id: 2, title: '프론트엔드' },
   ];
+  const [isOpen, setIsOpen] = React.useState(false);
+  const modalIsOpen = () => {
+    setIsOpen(true);
+  };
 
   return (
     <TodoWrap>
       <AddTitle>
-        <BsPencilSquare />
-        <span>할 일을 추가하세요</span>
+        <BsPencilSquare onClick={modalIsOpen} />
+        <button onClick={modalIsOpen}>할 일을 추가하세요</button>
       </AddTitle>
+      {isOpen && <AddModal setIsOpen={setIsOpen} />}
       <Multiselect
         displayValue='title'
         onKeyPressFn={function noRefCheck() {}}
@@ -55,3 +61,4 @@ const AddTitle = styled.div`
 `;
 
 export default AddTodo;
+

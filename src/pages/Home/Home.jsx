@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Main, MainWrap } from './styles.jsx';
 
 import Welcome from './Welcome';
-import NavContainer from './NavContainer';
+import NavContainer from './NavCon/NavContainer';
 import AddTodo from './AddTodo.jsx';
 import TodoContainer from './TodoContainer.jsx';
 
