@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import MyTodo from "./MyTodo";
 import Select, {SelectChangeEvent} from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
+import {__getTodos} from "../../redux/modules/todos";
 
 const Mytodos = () => {
+  const {todos, isLoading} = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(__getTodos());
+  }, []);
+
+  const myTodoList = todos.filter((todo) => todo.writer === "Junsu");
+
   return (
     <>
       <MyTodosHeader>
@@ -21,18 +31,9 @@ const Mytodos = () => {
         </FormControl>
       </MyTodosHeader>
       <Wrapper>
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
-        <MyTodo />
+        {myTodoList.map((todo, idx) => (
+          <MyTodo key={idx} todo={todo} />
+        ))}
       </Wrapper>
     </>
   );

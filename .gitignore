@@ -11,6 +11,9 @@
 # production
 /build
 
+# moking server
+db.json
+
 # misc
 .DS_Store
 .env.local
