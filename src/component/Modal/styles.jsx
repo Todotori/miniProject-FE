@@ -20,10 +20,11 @@ const ModalBox = styled.div`
   padding: 30px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
   p {
     text-align: center;
     font-size: 1.2rem;
   }
 `;
 
-export { ModalContainer, ModalBox };
+export {ModalContainer, ModalBox};
