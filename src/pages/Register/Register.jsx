@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import { v4 as uuidV4 } from 'uuid';
 import useModal from "../../hooks/useModal";
+import useEmailValidator from "../../hooks/useEmailValidator";
 
 const Register = () => {
   const [email, setEmail, resetEmail] = useInput();
+  const emailValidator = useEmailValidator();
   const [password, setPassword, resetPassword] = useInput();
   const [passwordConfirmation, setPasswordConfirmation, resetPasswordConfirmation] = useInput();
   const [username, setUsername, resetUsername] = useInput();
@@ -15,7 +17,9 @@ const Register = () => {
   const register = () => {
     if (email.length === 0) {
       setModal("이메일을 입력해주세요");
-    } else if () {}
+    } else if (!emailValidator(email)) {
+      setModal("이메일 형식이 올바르지 않습니다.");
+    }
 
   };
   return (
