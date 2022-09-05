@@ -5,8 +5,11 @@ import useInput from '../../hooks/useInput';
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {signinUserThunk} from "../../redux/modules/signinUserSlice";
 
 const Login = () => {
+    const dispatch = useDispatch();
     const [email, setEmail, resetEmail] = useInput();
     const emailValidator = useEmailValidator();
     const [password, setPassword, resetPassword] = useInput();
@@ -23,7 +26,7 @@ const Login = () => {
                 email,
                 password
             }
-            const loginResponse = await axios.post("/api/login", user);
+            const response = await dispatch(signinUserThunk(user));
             // TODO: LOGIN.
             resetEmail();
             resetPassword();
