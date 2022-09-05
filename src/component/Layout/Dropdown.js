@@ -29,12 +29,13 @@ const Dropdown = () => {
       },
     ],
   };
+  const onChange = (selectedList, selectedItem) => {
+    console.log(selectedList, selectedItem);
+  };
   return (
     <Multiselect
       displayValue='title'
-      onKeyPressFn={function noRefCheck() {}}
-      onRemove={function noRefCheck() {}}
-      onSelect={function noRefCheck() {}}
+      onSelect={onChange}
       options={items.categories}
       showCheckbox
       showArrow
@@ -42,8 +43,8 @@ const Dropdown = () => {
       style={{
         searchBox: {
           border: '1px solid teal',
-          'min-width': '200px',
-          'max-width': '350px',
+          minWidth: '200px',
+          maxWidth: '350px',
           height: 'auto',
         },
       }}

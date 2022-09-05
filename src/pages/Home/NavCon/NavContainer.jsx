@@ -1,9 +1,10 @@
 import React from 'react';
-import './NavContianer.css'
+import { Navigation } from 'react-minimal-side-navigation';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 
 const NavContianer = () => {
   return (
-    <div className="navContainer">
+    <div className='navContainer'>
       <input type='checkbox' id='trigger' />
       <label for='trigger'>
         <span></span>
@@ -16,4 +17,4 @@ const NavContianer = () => {
   );
 };
 
-export default NavContianer
+export default NavContianer;
