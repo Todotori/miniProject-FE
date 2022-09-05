@@ -4,9 +4,10 @@ import {Link} from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
-import axios from "axios";
 import {useDispatch} from "react-redux";
 import {createUserThunk} from "../../redux/modules/createUserSlice";
+import {checkEmailThunk} from "../../redux/modules/checkEmailSlice";
+import {checkUsernameThunk} from "../../redux/modules/checkUsernameSlice";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -29,8 +30,8 @@ const Register = () => {
         } else if (username.length === 0) {
             setModal("이름을 입력해주세요.")
         } else {
-            const emailCheckResponse = await axios.post("/api/emailck", email);
-            const usernameCheckResponse = await axios.post("/api/nickck", username);
+            const checkEmailResponse = await dispatch(checkEmailThunk(email));
+            const checkUsernameResponse = await dispatch(checkUsernameThunk(username));
             // TODO: CHECK REDUNDANCIES.
             const newUser = {
                 email,
@@ -57,7 +58,7 @@ const Register = () => {
         } else if (!emailValidator(email)) {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else {
-            const checkEmailResponse = await axios.post("/api/emailck", email);
+            const response = await dispatch(checkEmailThunk(email));
             // TODO: CHECK EMAIL.
         }
     }
@@ -65,7 +66,7 @@ const Register = () => {
         if (username.length === 0) {
             setModal("이름을 입력해주세요.");
         } else {
-            const checkUsernameResponse = await axios.post("/api/nickck", username);
+            const response = await dispatch(checkUsernameThunk(username));
             // TODO: CHECK USERNAME.
         }
     }
