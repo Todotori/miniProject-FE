@@ -44,12 +44,22 @@ const Register = () => {
         }
     };
     const checkEmailHandler = async () => {
-        const response = await axios.post("/api/emailck", email);
-        // TODO: CHECK EMAIL.
+        if (email.length === 0) {
+            setModal("이메일을 입력해주세요.");
+        } else if (!emailValidator(email)) {
+            setModal("이메일 형식이 올바르지 않습니다.");
+        } else {
+            const response = await axios.post("/api/emailck", email);
+            // TODO: CHECK EMAIL.
+        }
     }
     const checkUsernameHandler = async () => {
-        const response = await axios.post("/api/nickck", username);
-        // TODO: CHECK USERNAME.
+        if (username.length === 0) {
+            setModal("이름을 입력해주세요.");
+        } else {
+            const response = await axios.post("/api/nickck", username);
+            // TODO: CHECK USERNAME.
+        }
     }
     return (
         <RegisterContainer>
