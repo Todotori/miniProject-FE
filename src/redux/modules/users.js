@@ -9,7 +9,7 @@ const initialState = {
 
 const createUserThunk = createAsyncThunk("users/createUser", async (newUser, thunk) => {
     try {
-        await axios.post("/users", newUser);
+        await axios.post("/api/signup", newUser);
         return thunk.fulfillWithValue("Registration succeeded");
     } catch (error) {
         return thunk.rejectWithValue(error);
@@ -33,4 +33,5 @@ export const usersSlice = createSlice({
     }
 });
 
+export const {createUser} = usersSlice.actions;
 export default usersSlice.reducer;

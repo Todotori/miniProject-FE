@@ -2,11 +2,14 @@ import {RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink} from
 import logo from '../../image/mainlogo.png';
 import {Link} from 'react-router-dom';
 import useInput from '../../hooks/useInput';
-import {v4 as uuidV4} from 'uuid';
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+import {createUser} from "../../redux/modules/users";
 
 const Register = () => {
+    const dispatch = useDispatch();
     const [email, setEmail, resetEmail] = useInput();
     const emailValidator = useEmailValidator();
     const [password, setPassword, resetPassword] = useInput();
@@ -14,7 +17,7 @@ const Register = () => {
     const [username, setUsername, resetUsername] = useInput();
     const [introduction, setIntroduction, resetIntroduction] = useInput();
     const [modal, setModal] = useModal();
-    const register = () => {
+    const register = async () => {
         if (email.length === 0) {
             setModal("이메일을 입력해주세요.");
         } else if (!emailValidator(email)) {
@@ -26,10 +29,28 @@ const Register = () => {
         } else if (username.length === 0) {
             setModal("이름을 입력해주세요.")
         } else {
-            // TODO: CREATE USER.
+            const emailCheckResponse = await axios.post("/api/emailck", email);
+            const usernameCheckResponse = await axios.post("/api/nickck", username);
+            // TODO: CHECK REDUNDANCIES.
+            const newUser = {
+                email,
+                nickname: username,
+                password,
+                passwordConfirm: passwordConfirmation,
+                introduction
+            }
+            const response = await dispatch(createUser(newUser));
+            // TODO: REGISTRATION PROCESS.
         }
-
     };
+    const checkEmailHandler = async () => {
+        const response = await axios.post("/api/emailck", email);
+        // TODO: CHECK EMAIL.
+    }
+    const checkUsernameHandler = async () => {
+        const response = await axios.post("/api/nickck", username);
+        // TODO: CHECK USERNAME.
+    }
     return (
         <RegisterContainer>
             <FormContainer>
@@ -39,7 +60,7 @@ const Register = () => {
                 <Form>
                     <FormField>
                         <input type='email' placeholder={'이메일'} required value={email} onChange={setEmail}/>
-                        <button>중복확인</button>
+                        <button onClick={checkEmailHandler}>중복확인</button>
                     </FormField>
                     <FormField>
                         <input type='password' placeholder={'비밀번호'} required value={password} onChange={setPassword}/>
@@ -50,6 +71,7 @@ const Register = () => {
                     </FormField>
                     <FormField>
                         <input type='text' placeholder={'이름'} required value={username} onChange={setUsername}/>
+                        <button onClick={checkUsernameHandler}>중복확인</button>
                     </FormField>
                     <FormField>
                         <textarea placeholder={'자기소개'} value={introduction} onChange={setIntroduction}/>
