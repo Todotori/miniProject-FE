@@ -31,10 +31,9 @@ const MyTodo = ({todo}) => {
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
-        <Hashtag />
-        <Hashtag />
-        <Hashtag />
-        <Hashtag />
+        {todo.tags.map((tag) => {
+          return <Hashtag tagname={tag} />;
+        })}
       </HashTagBox>
     </Container>
   );
@@ -50,8 +49,8 @@ const Container = styled(motion.div)`
   flex-direction: column;
   justify-content: space-between;
 
-  width: 80%;
-  height: 200px;
+  width: 100%;
+  height: 170px;
 
   padding: 15px;
 `;

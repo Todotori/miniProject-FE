@@ -5,7 +5,7 @@ import MyTodo from "./MyTodo";
 import Dropdown from "../Layout/Dropdown";
 import {__getTodos} from "../../redux/modules/todos";
 
-const Mytodos = () => {
+const Mytodos = ({title}) => {
   const {todos, isLoading} = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const Mytodos = () => {
   return (
     <>
       <MyTodosHeader>
-        <Title>My ToDo List</Title>
+        <Title>{title}</Title>
         <Dropdown />
       </MyTodosHeader>
       <Wrapper>
@@ -32,8 +32,7 @@ const Mytodos = () => {
 export default Mytodos;
 
 const MyTodosHeader = styled.div`
-  width: 80%;
-
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -48,9 +47,12 @@ const Title = styled.div`
 const Wrapper = styled.div`
   width: 90%;
   margin: auto;
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   column-gap: 0px;
   row-gap: 40px;
+
+  padding-bottom: 30px;
 `;

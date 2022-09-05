@@ -3,11 +3,9 @@ import styled from "styled-components";
 import Welcome from "./Welcome";
 import NavContainer from "./NavCon/NavContainer";
 import AddTodo from "./AddTodo.jsx";
-import Mytodos from "../../component/Mypage/MyTodos";
+import MyTodos from "../../component/Mypage/MyTodos";
 
 const Home = () => {
-  const [isOpen, setMenu] = useState(false);
-
   // const [category, setCategory] = useState('all')
   // const catergories = ['All', ...new Set(items.map(item => item.company))];
 
@@ -25,7 +23,7 @@ const Home = () => {
         <AddTodo />
 
         {/* ANCHOR : 02-3 : todoList */}
-        <Mytodos />
+        <MyTodos title={"Todolist"} />
       </MainWrap>
     </Main>
   );
