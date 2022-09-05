@@ -41,8 +41,6 @@ const CustomSideBar = styled.div`
   flex-direction: column;
 
   transition: width 400ms ease-in-out 0s;
-  z-index: 999;
-  overflow: hidden;
 `;
 const Wrapper = styled(motion.div)`
   margin: 25% 30% 0px auto;
