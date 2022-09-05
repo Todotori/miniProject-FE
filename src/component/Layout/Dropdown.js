@@ -1,7 +1,19 @@
 import Multiselect from "multiselect-react-dropdown";
-
+import React from "react";
 const Dropdown = () => {
+  const [tagArray, setTagArray] = React.useState([
+    {
+      title: "전체보기",
+      value: "all",
+    },
+  ]);
   const items = {
+    initial: [
+      {
+        title: "전체보기",
+        value: "all",
+      },
+    ],
     categories: [
       {
         title: "전체보기",
@@ -29,16 +41,19 @@ const Dropdown = () => {
       },
     ],
   };
-  const onChange = (selectedList, selectedItem) => {
-    console.log(selectedList, selectedItem);
+  const onChange = (selectedList) => {
+    setTagArray(selectedList);
+    console.log(tagArray);
   };
   return (
     <Multiselect
       displayValue="title"
       onSelect={onChange}
+      onRemove={onChange}
       options={items.categories}
       showCheckbox
       showArrow
+      selectedValues={items.initial}
       placeholder=""
       style={{
         searchBox: {
