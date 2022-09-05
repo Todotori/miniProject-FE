@@ -11,10 +11,15 @@ import {__getTodos} from "../../redux/modules/todos";
 const Mytodos = () => {
   const {todos, isLoading} = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+  const [selectTag, setSelectTag] = React.useState("전체");
+
+  const onChange = (event) => {
+    setSelectTag(event.target.value);
+    console.log(selectTag);
+  };
   useEffect(() => {
     dispatch(__getTodos());
   }, []);
-
   const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
 
   return (
@@ -23,10 +28,13 @@ const Mytodos = () => {
         <Title>My ToDo List</Title>
         <FormControl sx={{m: 0, minWidth: 160}} size="small">
           <InputLabel>HashTag</InputLabel>
-          <Select value="" label="Age">
-            <MenuItem value={10}>아직</MenuItem>
-            <MenuItem value={20}>없다</MenuItem>
-            <MenuItem value={30}>요</MenuItem>
+          <Select value={selectTag} onChange={onChange} defaultValue={"전체"}>
+            <MenuItem value={"전체"}>전체</MenuItem>
+            <MenuItem value={"일상"}>일상</MenuItem>
+            <MenuItem value={"업무"}>업무</MenuItem>
+            <MenuItem value={"여가"}>여가</MenuItem>
+            <MenuItem value={"자기계발"}>자기계발</MenuItem>
+            <MenuItem value={"기타"}>기타</MenuItem>
           </Select>
         </FormControl>
       </MyTodosHeader>
