@@ -7,6 +7,7 @@ import useEmailValidator from "../../hooks/useEmailValidator";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {createUserThunk} from "../../redux/modules/createUserSlice";
+import {checkEmailThunk} from "../../redux/modules/checkEmailSlice";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const Register = () => {
         } else if (username.length === 0) {
             setModal("이름을 입력해주세요.")
         } else {
-            const emailCheckResponse = await axios.post("/api/emailck", email);
+            const checkEmailResponse = await dispatch(checkEmailThunk(email));
             const usernameCheckResponse = await axios.post("/api/nickck", username);
             // TODO: CHECK REDUNDANCIES.
             const newUser = {
@@ -57,7 +58,7 @@ const Register = () => {
         } else if (!emailValidator(email)) {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else {
-            const checkEmailResponse = await axios.post("/api/emailck", email);
+            const response = await dispatch(checkEmailThunk(email));
             // TODO: CHECK EMAIL.
         }
     }
