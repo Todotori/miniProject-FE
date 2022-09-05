@@ -6,7 +6,7 @@ import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {createUser} from "../../redux/modules/users";
+import {createUser} from "../../redux/modules/usersSlice";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -39,17 +39,25 @@ const Register = () => {
                 passwordConfirm: passwordConfirmation,
                 introduction
             }
-            const response = await dispatch(createUser(newUser));
+            const registrationResponse = await dispatch(createUser(newUser));
             // TODO: REGISTRATION PROCESS.
+            resetAll();
         }
     };
+    const resetAll = () => {
+        resetEmail();
+        resetPassword();
+        resetPasswordConfirmation();
+        resetUsername();
+        resetIntroduction();
+    }
     const checkEmailHandler = async () => {
         if (email.length === 0) {
             setModal("이메일을 입력해주세요.");
         } else if (!emailValidator(email)) {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else {
-            const response = await axios.post("/api/emailck", email);
+            const checkEmailResponse = await axios.post("/api/emailck", email);
             // TODO: CHECK EMAIL.
         }
     }
@@ -57,7 +65,7 @@ const Register = () => {
         if (username.length === 0) {
             setModal("이름을 입력해주세요.");
         } else {
-            const response = await axios.post("/api/nickck", username);
+            const checkUsernameResponse = await axios.post("/api/nickck", username);
             // TODO: CHECK USERNAME.
         }
     }
