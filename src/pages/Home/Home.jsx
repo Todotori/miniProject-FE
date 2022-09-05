@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-
-import { Main, MainWrap } from './styles.jsx';
+import styled from 'styled-components';
 
 import Welcome from './Welcome';
-import NavContainer from './NavContainer';
+import NavContainer from './NavCon/NavContainer';
 import AddTodo from './AddTodo.jsx';
 import TodoContainer from './TodoContainer.jsx';
 
+import items from '../../mock.json';
+
 const Home = () => {
-  // const [dropdownVisibility, setDropdownVisibility] = useState(false);
   const [isOpen, setMenu] = useState(false);
+
+  // const [category, setCategory] = useState('all')
+
+  // const catergories = ['All', ...new Set(items.map(item => item.company))];
 
   return (
     <Main>
@@ -31,5 +35,16 @@ const Home = () => {
     </Main>
   );
 };
+
+const Main = styled.div`
+  display: flex;
+  width: 100%;
+  margin: auto;
+`;
+
+const MainWrap = styled.div`
+  width: 600px;
+  margin: 150px auto 0 auto;
+`;
 
 export default Home;
