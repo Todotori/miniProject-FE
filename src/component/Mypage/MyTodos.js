@@ -15,6 +15,7 @@ const Mytodos = ({title}) => {
   }, []);
 
   const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
+
   const filtering = (arr) => {
     if (arr.includes("전체보기")) return todos;
     let filteredTodoList = todos.filter((todo) => {

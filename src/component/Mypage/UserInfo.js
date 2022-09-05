@@ -51,7 +51,7 @@ const Wrapper = styled.div`
 
 const MyInfo = styled.div`
   background-color: #c0b3a9;
-  width: 50%;
+  width: 40%;
   height: 15rem;
   display: flex;
   padding: 15px;
@@ -73,6 +73,7 @@ const MyInfoImage = styled.img`
   height: 8rem;
   border-radius: 50%;
   margin: auto 10px auto 10px;
+  object-fit: cover;
 `;
 const MyInfoWrapper = styled.div`
   display: flex;
@@ -90,7 +91,7 @@ const MyInfoUserComment = styled.div`
 `;
 
 const MyGroups = styled.div`
-  width: 30%;
+  width: 25%;
   height: 15rem;
   padding: 30px;
   border-radius: 0px 10px 10px 0px;
@@ -98,7 +99,7 @@ const MyGroups = styled.div`
 `;
 
 const UnderLine = styled.hr`
-  width: 84%;
+  width: 70%;
   margin: 5% auto 2% auto;
 `;
 

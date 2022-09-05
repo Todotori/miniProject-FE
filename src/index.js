@@ -7,10 +7,10 @@ import store from "./redux/config/configStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <>
-        <GlobalStyle/>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </>
+  <>
+    <GlobalStyle />
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </>
 );
