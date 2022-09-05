@@ -1,7 +1,14 @@
+import { NoEncryption } from '@material-ui/icons';
 import Multiselect from 'multiselect-react-dropdown';
 
 const Dropdown = () => {
   const items = {
+    initial: [
+      {
+        title: '전체보기',
+        value: 'al',
+      },
+    ],
     categories: [
       {
         title: '전체보기',
@@ -36,15 +43,15 @@ const Dropdown = () => {
     <Multiselect
       displayValue='title'
       onSelect={onChange}
+      selectedValues={items.initial}
       options={items.categories}
       showCheckbox
       showArrow
-      placeholder=''
+      placeholder={items.title}
       style={{
         searchBox: {
-          border: '1px solid teal',
-          minWidth: '200px',
           maxWidth: '350px',
+          minWidth: '200px',
           height: 'auto',
         },
       }}

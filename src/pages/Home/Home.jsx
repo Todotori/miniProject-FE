@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-
-import Welcome from './Welcome';
-import NavContainer from './NavCon/NavContainer';
-import AddTodo from './AddTodo.jsx';
-import TodoContainer from './TodoContainer.jsx';
-
-import items from '../../mock.json';
+import React, {useState} from "react";
+import styled from "styled-components";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import Welcome from "./Welcome";
+import NavContainer from "./NavCon/NavContainer";
+import AddTodo from "./AddTodo.jsx";
+import Mytodos from "../../component/Mypage/MyTodos";
 
 const Home = () => {
   const [isOpen, setMenu] = useState(false);
 
   // const [category, setCategory] = useState('all')
-
   // const catergories = ['All', ...new Set(items.map(item => item.company))];
 
   return (
@@ -29,8 +26,7 @@ const Home = () => {
         <AddTodo />
 
         {/* ANCHOR : 02-3 : todoList */}
-        <TodoContainer />
-        <TodoContainer />
+        <Mytodos />
       </MainWrap>
     </Main>
   );
