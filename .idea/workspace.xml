@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Add] NotFound.jsx">
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/configStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/config/configStore.js" afterDir="false" />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Update] Move configStore.js">
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,7 @@
       <updated>1662092300819</updated>
       <workItem from="1662092303389" duration="3086000" />
       <workItem from="1662096255920" duration="7127000" />
-      <workItem from="1662327599575" duration="16987000" />
+      <workItem from="1662327599575" duration="17122000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -188,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662347476045</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="[Update] Move configStore.js">
+      <created>1662347793999</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1662347793999</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +227,7 @@
     <MESSAGE value="[Add] 중복 확인 기능 추가." />
     <MESSAGE value="[Fix] Fix Minor issues." />
     <MESSAGE value="[Add] NotFound.jsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Add] NotFound.jsx" />
+    <MESSAGE value="[Update] Move configStore.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Update] Move configStore.js" />
   </component>
 </project>
