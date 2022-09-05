@@ -1,4 +1,3 @@
-import { NoEncryption } from '@material-ui/icons';
 import Multiselect from 'multiselect-react-dropdown';
 
 const Dropdown = () => {

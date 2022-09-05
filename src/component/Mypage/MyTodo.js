@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Hashtag from "./Hashtag";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+// import CheckBoxIcon from "@mui/icons-material/CheckBox";
+// import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
 import {__deleteTodo, __updateIsDone} from "../../redux/modules/todos";
 import {useDispatch} from "react-redux";
@@ -19,11 +19,11 @@ const MyTodo = ({todo}) => {
   return (
     <Container variants={CreateAnimation} initial="start" animate="end">
       <TodoDeleteBox>
-        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+        {/* <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" /> */}
       </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.isDone}>
-          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
+          {/* <CheckBoxIcon onClick={onClickIsDone} fontSize="large" /> */}
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>

@@ -18,7 +18,7 @@ const AddTodo = () => {
         <button onClick={modalIsOpen}>할 일을 추가하세요</button>
       </AddTitle>
       {isOpen && <AddModal setIsOpen={setIsOpen} />}
-      <Dropdown />
+      
     </TodoWrap>
   );
 };

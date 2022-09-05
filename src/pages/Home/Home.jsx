@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import Welcome from "./Welcome";
 import NavContainer from "./NavCon/NavContainer";
 import AddTodo from "./AddTodo.jsx";
