@@ -1,12 +1,11 @@
 import Multiselect from "multiselect-react-dropdown";
 import React from "react";
+import {useDispatch} from "react-redux";
+import {addTag, deleteTag} from "../../redux/modules/tagSlice";
+
 const Dropdown = () => {
-  const [tagArray, setTagArray] = React.useState([
-    {
-      title: "전체보기",
-      value: "all",
-    },
-  ]);
+  const dispatch = useDispatch();
+
   const items = {
     initial: [
       {
@@ -41,15 +40,17 @@ const Dropdown = () => {
       },
     ],
   };
-  const onChange = (selectedList) => {
-    setTagArray(selectedList);
-    console.log(tagArray);
+  const onSelect = (_, selectedItem) => {
+    dispatch(addTag(selectedItem.title));
+  };
+  const onRemove = (_, selectedItem) => {
+    dispatch(deleteTag(selectedItem.title));
   };
   return (
     <Multiselect
       displayValue="title"
-      onSelect={onChange}
-      onRemove={onChange}
+      onSelect={onSelect}
+      onRemove={onRemove}
       options={items.categories}
       showCheckbox
       showArrow
