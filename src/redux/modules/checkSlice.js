@@ -19,5 +19,7 @@ export const __getTodos = createAsyncThunk('todos/getTodos', async (payload, thu
 const checkSlice = createSlice({
   name: 'check',
   initialState,
-  reducers: {},
+  reducers: {
+    
+  },
 });
