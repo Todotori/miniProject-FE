@@ -1,12 +1,12 @@
-import users from "./modules/users";
+import users from "./modules/usersSlice";
 import todos from "./modules/todos";
 import {configureStore} from "@reduxjs/toolkit";
 
 const store = configureStore({
-  reducer: {
-    users,
-    todos,
-  },
+    reducer: {
+        users,
+        todos,
+    },
 });
 
 export default store;

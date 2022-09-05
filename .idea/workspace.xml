@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] Fix Minor issues.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useEmailValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useEmailValidator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/styles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/styles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/configStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/configStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/usersSlice.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2ECGl5DhgqOMkxeRPooPmAU7QDT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/jinwookkim/Desktop/Sparta/React/todotori",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="" />
+      <created>1662092300819</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662092300819</updated>
+      <workItem from="1662092303389" duration="3086000" />
+      <workItem from="1662096255920" duration="7127000" />
+      <workItem from="1662327599575" duration="10528000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initialization">
+      <created>1662092688718</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662092688718</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[Add] Register.jsx">
+      <created>1662098390142</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662098390142</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[Add] 중복확인 버튼.">
+      <created>1662099085264</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662099085264</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[Add] useInput() 연결.">
+      <created>1662099431822</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662099431822</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[Add] createUser Thunk.">
+      <created>1662100103788</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662100103788</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[Add] Login.jsx">
+      <created>1662327849403</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662327849403</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[Add] Modal 기능 추가.">
+      <created>1662333093617</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662333093617</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[Add] Email Validation.">
+      <created>1662333236222</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662333236222</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[Fix] Fix minor issues.">
+      <created>1662334112605</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662334112605</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[Add] 중복 확인 기능 추가.">
+      <created>1662340052952</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662340052952</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[Fix] Fix Minor issues.">
+      <created>1662340323187</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1662340323187</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Initialization" />
+    <MESSAGE value="[Add] Register.jsx" />
+    <MESSAGE value="[Add] 중복확인 버튼." />
+    <MESSAGE value="[Add] useInput() 연결." />
+    <MESSAGE value="[Add] createUser Thunk." />
+    <MESSAGE value="[Add] Login.jsx" />
+    <MESSAGE value="[Add] Modal 기능 추가." />
+    <MESSAGE value="[Add] Email Validation." />
+    <MESSAGE value="[Fix] Fix minor issues." />
+    <MESSAGE value="[Add] 중복 확인 기능 추가." />
+    <MESSAGE value="[Fix] Fix Minor issues." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] Fix Minor issues." />
+  </component>
+</project>

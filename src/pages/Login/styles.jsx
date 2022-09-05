@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RegisterContainer = styled.div`
+const LoginContainer = styled.div`
   background-color: rgb(184, 170, 159);
   width: 100vw;
   height: 100vh;
@@ -79,4 +79,4 @@ const LoginLink = styled.div`
   text-align: center;
 `;
 
-export {RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink};
+export {LoginContainer, FormContainer, Logo, Form, FormField, LoginLink};
