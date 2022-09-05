@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import {Mypage} from "./pages/Mypage";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import NotFound from "./pages/NotFound/NotFound";
 
 const Router = () => {
     return (
@@ -14,6 +15,7 @@ const Router = () => {
                 <Route path="/mypage/:id" element={<Mypage/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
     );
