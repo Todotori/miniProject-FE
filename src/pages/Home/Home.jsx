@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
+import React, {useState} from "react";
+import styled from "styled-components";
 
-import { Main, MainWrap } from './styles.jsx';
-
-import Welcome from './Welcome';
-import NavContainer from './NavContainer';
-import AddTodo from './AddTodo.jsx';
-import TodoContainer from './TodoContainer.jsx';
+import Welcome from "./Welcome";
+import AddTodo from "./AddTodo.jsx";
+import MyTodos from "../../component/Mypage/MyTodos";
 
 const Home = () => {
-  // const [dropdownVisibility, setDropdownVisibility] = useState(false);
-  const [isOpen, setMenu] = useState(false);
+  // const [category, setCategory] = useState('all')
+
+  // const catergories = ['All', ...new Set(items.map(item => item.company))];
 
   return (
     <Main>
-      {/*  ANCHOR : 01. nav */}
-      <NavContainer />
-
       {/* ANCHOR : 02. mainWRap */}
       <MainWrap>
         {/* 02-1. Header */}
@@ -25,11 +21,21 @@ const Home = () => {
         <AddTodo />
 
         {/* ANCHOR : 02-3 : todoList */}
-        <TodoContainer />
-        <TodoContainer />
+        <MyTodos title={"Todolist"} />
       </MainWrap>
     </Main>
   );
 };
+
+const Main = styled.div`
+  display: flex;
+  width: 100%;
+  margin: auto;
+`;
+
+const MainWrap = styled.div`
+  width: 600px;
+  margin: 150px auto 0 auto;
+`;
 
 export default Home;
