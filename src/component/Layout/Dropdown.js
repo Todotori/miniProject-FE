@@ -1,62 +1,73 @@
-import Multiselect from "multiselect-react-dropdown";
-import React from "react";
+import Multiselect from 'multiselect-react-dropdown';
+import React, { useState } from 'react';
+
 const Dropdown = () => {
   const [tagArray, setTagArray] = React.useState([
     {
-      title: "전체보기",
-      value: "all",
+      title: '전체보기',
+      value: 'all',
     },
   ]);
   const items = {
     initial: [
       {
-        title: "전체보기",
-        value: "all",
+        title: '전체보기',
+        value: 'all',
       },
     ],
     categories: [
       {
-        title: "일상",
-        value: "daily",
+        title: '전체보기',
+        value: 'all',
       },
       {
-        title: "업무",
-        value: "work",
+        title: '일상',
+        value: 'daily',
       },
       {
-        title: "여가",
-        value: "leisure",
+        title: '업무',
+        value: 'work',
       },
       {
-        title: "자기계발",
-        value: "development",
+        title: '여가',
+        value: 'leisure',
       },
       {
-        title: "기타",
-        value: "etc",
+        title: '자기계발',
+        value: 'development',
+      },
+      {
+        title: '기타',
+        value: 'etc',
       },
     ],
   };
-  const onChange = (selectedList) => {
+  const [category, setCategory] = useState('all');
+
+  const onChange = selectedList => {
     setTagArray(selectedList);
     console.log(tagArray);
   };
+
   return (
     <Multiselect
-      displayValue="title"
+      items={items}
+      category={category}
+      setCategory={setCategory}
+      displayValue='title'
       onSelect={onChange}
       onRemove={onChange}
       options={items.categories}
       showCheckbox
       showArrow
       selectedValues={items.initial}
-      placeholder=""
+      placeholder=''
       style={{
         searchBox: {
-          border: "1px solid teal",
-          maxWidth: "350px",
-          minWidth: "200px",
-          height: "auto",
+          border: '1px solid teal',
+          maxWidth: '350px',
+          minWidth: '200px',
+          height: 'auto',
         },
       }}
     />
