@@ -16,7 +16,7 @@ export const createUserThunk = createAsyncThunk("users/createUser", async (newUs
     }
 })
 
-export const createUserSlice = createSlice({
+const createUserSlice = createSlice({
     name: "createUser",
     initialState,
     reducers: {},

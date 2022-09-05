@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] Fix Minor issues.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/configStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/configStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/usersSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,7 @@
       <updated>1662092300819</updated>
       <workItem from="1662092303389" duration="3086000" />
       <workItem from="1662096255920" duration="7127000" />
-      <workItem from="1662327599575" duration="14398000" />
+      <workItem from="1662327599575" duration="15563000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -151,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662341266249</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="[Fix] Fix Minor issues.">
+      <created>1662345164467</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1662345164467</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
