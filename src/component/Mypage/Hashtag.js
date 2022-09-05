@@ -2,17 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
-const Hashtag = () => {
+const Hashtag = ({tagname}) => {
   return (
     <Container>
       <LocalOfferIcon />
-      <HashtagName>해시태그</HashtagName>
+      <HashtagName>{tagname}</HashtagName>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 120px;
   height: 30px;
   border: 1px solid #c0b3a9;
   border-radius: 15px;

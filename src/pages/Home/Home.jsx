@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, {useState} from "react";
+import styled from "styled-components";
 
-import Welcome from './Welcome';
-import NavContainer from './NavCon/NavContainer';
-import AddTodo from './AddTodo.jsx';
-import TodoContainer from './TodoContainer.jsx';
-
-import items from '../../mock.json';
+import Welcome from "./Welcome";
+import AddTodo from "./AddTodo.jsx";
+import MyTodos from "../../component/Mypage/MyTodos";
 
 const Home = () => {
-  const [isOpen, setMenu] = useState(false);
-
   // const [category, setCategory] = useState('all')
 
   // const catergories = ['All', ...new Set(items.map(item => item.company))];
 
   return (
     <Main>
-      {/*  ANCHOR : 01. nav */}
-      <NavContainer />
-
       {/* ANCHOR : 02. mainWRap */}
       <MainWrap>
         {/* 02-1. Header */}
@@ -29,8 +21,7 @@ const Home = () => {
         <AddTodo />
 
         {/* ANCHOR : 02-3 : todoList */}
-        <TodoContainer />
-        <TodoContainer />
+        <MyTodos title={"Todolist"} />
       </MainWrap>
     </Main>
   );

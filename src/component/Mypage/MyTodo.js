@@ -2,14 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
+import {__deleteTodo, __updateIsDone} from "../../redux/modules/todos";
+import {useDispatch} from "react-redux";
 
 const MyTodo = ({todo}) => {
+  const dispatch = useDispatch();
+  const onClickIsDone = () => {
+    dispatch(__updateIsDone({id: todo.id, isDone: todo.isDone}));
+  };
+  const onClickDelete = () => {
+    dispatch(__deleteTodo(todo.id));
+  };
+
   return (
     <Container variants={CreateAnimation} initial="start" animate="end">
+      <TodoDeleteBox>
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+      </TodoDeleteBox>
       <TodoInfoBox>
-        <TodoCheckBox>
-          <CheckBoxIcon fontSize="large" />
+        <TodoCheckBox isDone={todo.isDone}>
+          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>
@@ -17,16 +31,17 @@ const MyTodo = ({todo}) => {
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
-        <Hashtag />
-        <Hashtag />
-        <Hashtag />
-        <Hashtag />
+        {todo.tags.map((tag) => {
+          return <Hashtag key={tag} tagname={tag} />;
+        })}
       </HashTagBox>
     </Container>
   );
 };
 
 const Container = styled(motion.div)`
+  position: relative;
+
   border: 2px solid #c0b3a9;
   border-radius: 15px;
 
@@ -34,8 +49,8 @@ const Container = styled(motion.div)`
   flex-direction: column;
   justify-content: space-between;
 
-  width: 80%;
-  height: 200px;
+  width: 100%;
+  height: 170px;
 
   padding: 15px;
 `;
@@ -51,10 +66,18 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
+  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
 `;
+const TodoDeleteBox = styled.div`
+  position: absolute;
+  right: 20px;
+  color: #6d6158;
+  z-index: 1;
+`;
+
 const TodoLetterBox = styled.div``;
 const TodoTitle = styled.div`
-  font-size: calc(0.8rem + 1vw);
+  font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;
 `;
 const TodoDetail = styled.div`

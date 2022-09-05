@@ -9,13 +9,20 @@ export const Mypage = () => {
     <Layout>
       <WholeWrapper>
         <UserInfo />
-        <MyTodos />
+        <PageWrapper>
+          <MyTodos title={"My TODO List"} />
+        </PageWrapper>
       </WholeWrapper>
     </Layout>
   );
 };
 
 export default Mypage;
+
+const PageWrapper = styled.div`
+  width: 800px;
+  margin: 0px auto 0px auto;
+`;
 
 const WholeWrapper = styled.div`
   padding: 50px;
