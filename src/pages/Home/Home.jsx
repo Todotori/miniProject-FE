@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, {useState} from "react";
+import styled from "styled-components";
 
-import Welcome from './Welcome';
-import NavContainer from './NavCon/NavContainer';
-import AddTodo from './AddTodo.jsx';
-import TodoContainer from './TodoContainer.jsx';
-
-import items from '../../mock.json';
+import Welcome from "./Welcome";
+import NavContainer from "./NavCon/NavContainer";
+import AddTodo from "./AddTodo.jsx";
+import TodoContainer from "./TodoContainer.jsx";
 
 const Home = () => {
   const [isOpen, setMenu] = useState(false);
