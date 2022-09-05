@@ -6,7 +6,7 @@ import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {createUser} from "../../redux/modules/usersSlice";
+import {createUserThunk} from "../../redux/modules/createUserSlice";
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Register = () => {
                 passwordConfirm: passwordConfirmation,
                 introduction
             }
-            const registrationResponse = await dispatch(createUser(newUser));
+            const createUserResponse = await dispatch(createUserThunk(newUser));
             // TODO: REGISTRATION PROCESS.
             resetAll();
         }
