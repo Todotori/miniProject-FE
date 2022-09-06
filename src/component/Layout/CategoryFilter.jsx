@@ -44,6 +44,13 @@ const CategoryFilter = () => {
     checkedItemHandler(target.parentNode, target.value, target.checked);
   };
 
+  const checkedItemHandler = (box, id, isChecked) => {
+    if(isChecked){
+      checkedItems.add(id);
+      setCheckedItems(id)
+    }
+  }
+
   return (
     <>
       <div className='category-set'>ㅎㅎ</div>

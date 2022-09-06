@@ -1,5 +1,7 @@
 import Multiselect from 'multiselect-react-dropdown';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTag, deleteTag } from '../../redux/modules/checkSlice';
 
 const Dropdown = () => {
   const [tagArray, setTagArray] = React.useState([
@@ -42,21 +44,27 @@ const Dropdown = () => {
       },
     ],
   };
-  const [category, setCategory] = useState('all');
 
-  const onChange = selectedList => {
-    setTagArray(selectedList);
-    console.log(tagArray);
+  const dispatch = useDispatch();
+
+  // 상태조회
+  const Tag = useSelector(state => state.check);
+
+  const onSelect = (_, selectedItem) => {
+    dispatch(addTag(selectedItem.title));
   };
+
+  const onDelete = (_, selectedItem) => {
+    dispatch(deleteTag(selectedItem.title))
+  }
+
 
   return (
     <Multiselect
       items={items}
-      category={category}
-      setCategory={setCategory}
       displayValue='title'
-      onSelect={onChange}
-      onRemove={onChange}
+      onSelect={onSelect}
+      onRemove={onDelete}
       options={items.categories}
       showCheckbox
       showArrow

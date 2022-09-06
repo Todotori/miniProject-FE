@@ -1,25 +1,21 @@
-import api from '../../../db.json';
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { toUnitless } from '@mui/material/styles/cssUtils';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  todos: [],
-  error: null,
-  isLoading: false,
-};
-
-export const __getTodos = createAsyncThunk('todos/getTodos', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.get('/todo');
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
-  }
-});
+const initialState = [];
 
 const checkSlice = createSlice({
   name: 'check',
   initialState,
   reducers: {
-    
+    addTag: (state, action) => {
+      state.push(action.payload);
+    },
+    deleteTag: (state, action) => {
+      // console.log(action); // payload:항목
+      return state.filter(tag => tag !== action.payload);
+    },
   },
 });
+
+export const { addTag, deleteTag } = checkSlice.actions;
+export default checkSlice.reducer;
