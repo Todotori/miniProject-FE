@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Update] 회원가입과 로그인 처리 과정, 서버와 연결.">
-      <change afterPath="$PROJECT_DIR$/src/hooks/useToken.js" afterDir="false" />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Update] 이메일과 닉네임 중복확인 로직 구현?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/checkEmailSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/checkEmailSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/checkUsernameSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/checkUsernameSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +69,7 @@
       <workItem from="1662092303389" duration="3086000" />
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
-      <workItem from="1662414061903" duration="7590000" />
+      <workItem from="1662414061903" duration="8097000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -221,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662425850052</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="[Update] 이메일과 닉네임 중복확인 로직 구현?">
+      <created>1662428178340</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1662428178340</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +260,7 @@
     <MESSAGE value="[Update] Modify index.html" />
     <MESSAGE value="[Update] Update axios.create({baseURL: http://3.34.90.63})." />
     <MESSAGE value="[Update] 회원가입과 로그인 처리 과정, 서버와 연결." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Update] 회원가입과 로그인 처리 과정, 서버와 연결." />
+    <MESSAGE value="[Update] 이메일과 닉네임 중복확인 로직 구현?" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Update] 이메일과 닉네임 중복확인 로직 구현?" />
   </component>
 </project>
