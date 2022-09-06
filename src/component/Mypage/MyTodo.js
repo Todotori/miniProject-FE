@@ -70,12 +70,7 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-<<<<<<< HEAD
-  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
-  z-index: 1;
-=======
   color: ${(props) => (!props.done ? "#e84118" : "#4cd137")};
->>>>>>> ce6b5c76a7dd635ba066ac55b61231cebd99be2e
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;
