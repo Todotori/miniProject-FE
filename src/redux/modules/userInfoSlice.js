@@ -11,7 +11,7 @@ export const __getUserInfo = createAsyncThunk(
   "users/signinUser",
   async (user, thunk) => {
     try {
-      const response = await api.get("/api/member");
+      const response = await api.get("/member");
       const {data} = response;
       console.log(data);
       return thunk.fulfillWithValue(data);

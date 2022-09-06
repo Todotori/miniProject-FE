@@ -11,7 +11,7 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.get("/api/todo/all", payload);
+      const {data} = await api.get("todo/all", payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
