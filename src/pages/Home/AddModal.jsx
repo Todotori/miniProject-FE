@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { motion } from 'framer-motion';
@@ -7,27 +7,30 @@ import { __addTodo } from '../../redux/modules/todos';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckBoxCon from './CheckBoxCon';
 
-function AddModal({setIsOpen}) {
+function AddModal({ setIsOpen }) {
   const closeModal = () => {
     setIsOpen(false);
   };
   const dispatch = useDispatch();
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
-  const [tag, onChangeTag, tagReset] = useInput();
-  const tags = useSelector((state) => state.tags);
+  // const [tag, onChangeTag, tagReset] = useInput();
+
+  const [tag, setTag] = useState([]);
+
+  const onCheck = () => {
+
+  }
 
   const onSubmit = () => {
-    dispatch(__addTodo({title: title, content: comment, tag: tag}));
+    // dispatch(__addTodo({ title: title, content: comment, tag: tag }));
+    console.log(title, comment, tag);
     titleReset();
     commentReset();
-    tagReset();
+    // tagReset();
     closeModal();
+    setTag([]);
   };
-
-  useEffect(() => {
-    dispatch(__addTodo());
-  }, []);
 
   return (
     <ModalBack onClick={closeModal}>
@@ -40,12 +43,13 @@ function AddModal({setIsOpen}) {
           <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
           <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
         </ModalInputs>
-        
+
         {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
-        <CheckBoxCon tags={tags[1]} />
-        <CheckBoxCon tags={tags[2]} />
-        <CheckBoxCon tags={tags[3]} />
-        <CheckBoxCon tags={tags[4]} />
+        <CheckBoxCon tag={'여가'}></CheckBoxCon>
+        <CheckBoxCon tag={'일상'}></CheckBoxCon>
+        <CheckBoxCon tag={'취미'}></CheckBoxCon>
+        <CheckBoxCon tag={'자기계발'}></CheckBoxCon>
+        <CheckBoxCon tag={'기타'}></CheckBoxCon>
         <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
     </ModalBack>

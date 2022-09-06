@@ -8,7 +8,11 @@ const useToken = () => {
         return JSON.parse(jsonPayload);
     };
     return (token) => {
-        return parseJWT(token);
+        if (token) {
+            return parseJWT(token);
+        } else {
+            return null;
+        }
     };
 }
 
