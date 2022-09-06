@@ -63,7 +63,9 @@ const Register = () => {
                             break;
                     }
                 } else {
-                    sessionStorage.setItem("access_token", createUserResponse.payload);
+                    const {token, userID} = createUserResponse.payload;
+                    sessionStorage.setItem("access_token", token);
+                    sessionStorage.setItem("user_id", userID);
                     resetAll();
                     navigator("/");
                 }

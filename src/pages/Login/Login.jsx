@@ -43,8 +43,9 @@ const Login = () => {
                         break;
                 }
             } else {
-                const token = signinResponse.payload;
+                const {token, userID} = signinResponse.payload;
                 sessionStorage.setItem("access_token", token);
+                sessionStorage.setItem("user_id", userID);
                 navigator("/");
                 resetAll();
             }
