@@ -11,6 +11,7 @@ import {Link, useNavigate} from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
+import axios from "axios";
 import {useDispatch} from "react-redux";
 import {signinUserThunk} from "../../redux/modules/signinUserSlice";
 
@@ -48,8 +49,9 @@ const Login = () => {
             break;
         }
       } else {
-        const {nickname: username} = signinResponse.payload;
-        sessionStorage.setItem("current_user", username);
+        const {token, userID} = signinResponse.payload;
+        sessionStorage.setItem("access_token", token);
+        sessionStorage.setItem("user_id", userID);
         navigator("/");
         resetAll();
       }

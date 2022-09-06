@@ -4,15 +4,18 @@ import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {__deleteTodo, __updateIsDone} from "../../redux/modules/todos";
 import {useDispatch} from "react-redux";
+import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 
 const MyTodo = ({todo}) => {
   const dispatch = useDispatch();
+
   const onClickIsDone = () => {
-    dispatch(__updateIsDone({id: todo.id, isDone: todo.isDone}));
+    console.log(todo.id);
+    dispatch(__updateIsDone(todo.id));
   };
   const onClickDelete = () => {
+    console.log(todo.id);
     dispatch(__deleteTodo(todo.id));
   };
 
@@ -52,7 +55,7 @@ const Container = styled(motion.div)`
 
   width: 100%;
   height: 170px;
-
+  z-index: 1;
   padding: 15px;
 `;
 
@@ -67,8 +70,12 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
+<<<<<<< HEAD
   color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
   z-index: 1;
+=======
+  color: ${(props) => (!props.done ? "#e84118" : "#4cd137")};
+>>>>>>> ce6b5c76a7dd635ba066ac55b61231cebd99be2e
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;
@@ -76,9 +83,7 @@ const TodoDeleteBox = styled.div`
   color: #6d6158;
 `;
 
-const TodoLetterBox = styled.div`
-  z-index: -1;
-`;
+const TodoLetterBox = styled.div``;
 const TodoTitle = styled.div`
   font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;

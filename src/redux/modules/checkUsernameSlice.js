@@ -9,8 +9,8 @@ const initialState = {
 
 export const checkUsernameThunk = createAsyncThunk("users/checkUsername", async (username, thunk) => {
     try {
-        const response = await api.post("/api/nickck", username);
-        return thunk.fulfillWithValue(response);
+        const {data} = await api.post("/nickcheck", {nickname: username});
+        return thunk.fulfillWithValue(data);
     } catch (error) {
         return thunk.rejectWithValue(error);
     }

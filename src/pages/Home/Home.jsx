@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
-
 import Layout from "../../component/Layout/Layout";
 import Welcome from "./Welcome";
 import AddTodo from "./AddTodo.jsx";
@@ -8,8 +7,8 @@ import MyTodos from "../../component/Mypage/MyTodos";
 
 const Home = () => {
   // const [category, setCategory] = useState('all')
-  console.log(sessionStorage.getItem("current_user"));
-  // const catergories = ['All', ...new Set(items.map(item => item.company))];
+
+  // const categories = ['All', ...new Set(items.map(item => item.company))];
 
   return (
     <Layout>

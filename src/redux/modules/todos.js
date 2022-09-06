@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import api from "../../api";
 
 const initialState = {
@@ -11,7 +11,7 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.get("/api/todo/all", payload);
+      const {data} = await api.get("/todo/all", payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -23,7 +23,7 @@ export const __addTodo = createAsyncThunk(
   "todos/addTodo",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.post("/todo");
+      const {data} = await api.post("/todo", payload);
       console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -31,6 +31,8 @@ export const __addTodo = createAsyncThunk(
     }
   }
 );
+
+export const __modifyTodo = createAsyncThunk();
 
 export const __deleteTodo = createAsyncThunk(
   "todos/deleteTodo",
@@ -48,9 +50,7 @@ export const __updateIsDone = createAsyncThunk(
   "todos/updateIsDone",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.patch(`/todo/${payload.id}`, {
-        isDone: !payload.isDone,
-      });
+      const {data} = await api.patch(`/todo/${payload.id}/done`);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -78,11 +78,16 @@ export const todoSlice = createSlice({
     [__addTodo.fulfilled]: (state, action) => {
       state.todos.push(action.payload);
     },
+    [__addTodo.rejected]: (state, action) => {
+      return;
+    },
 
     [__updateIsDone.fulfilled]: (state, action) => {
       state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
           return (todo.isDone = action.payload.isDone);
+        } else {
+          return todo;
         }
       });
     },
@@ -90,10 +95,7 @@ export const todoSlice = createSlice({
       state.error = action.payload;
     },
     [__deleteTodo.fulfilled]: (state, action) => {
-      const newState = state.todos.filter(
-        (todo) => todo.id !== action.meta.arg
-      );
-      state.todos = newState;
+      state.todos = state.todos.filter((todo) => todo.id !== action.meta.arg);
       return state;
     },
   },
