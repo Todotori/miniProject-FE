@@ -11,8 +11,9 @@ export const signinUserThunk = createAsyncThunk("users/signinUser", async (user,
     try {
         const response = await api.post("/api/login", user);
         const {data} = response;
+        const token = response.headers["authorization"].split(" ")[1];
         if (data.success) {
-            return thunk.fulfillWithValue(response.headers["refresh-token"]);
+            return thunk.fulfillWithValue(token);
         } else {
             const {code} = data.error;
             return thunk.rejectWithValue(code);
