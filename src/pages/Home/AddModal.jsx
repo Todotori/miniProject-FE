@@ -1,19 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import CancelIcon from "@mui/icons-material/Cancel";
 import {motion} from "framer-motion";
 import useInput from "../../hooks/useInput";
+import {__addTodo} from "../../redux/modules/todos";
+import {useDispatch} from "react-redux";
 
 function AddModal({setIsOpen}) {
   const closeModal = () => {
     setIsOpen(false);
   };
+  const dispatch = useDispatch();
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
+  const [tag, onChangeTag, tagReset] = useInput();
 
   const onSubmit = () => {
+    dispatch(__addTodo({title: title, content: comment, tag: tag}));
     titleReset();
     commentReset();
+    tagReset();
     closeModal();
   };
   return (
@@ -36,6 +41,8 @@ function AddModal({setIsOpen}) {
           <ModalText onChange={onChangeTitle}></ModalText>
           <ModalLable size={25}>세부 내용</ModalLable>
           <ModalTextArea onChange={onChangeComment}></ModalTextArea>
+          <ModalLable size={25}>해시태그</ModalLable>
+          <ModalText onChange={onChangeTag}></ModalText>
         </ModalInputs>
         <Button onClick={onSubmit}>완료</Button>
       </ModalBox>
@@ -83,8 +90,9 @@ const Button = styled.button`
 
 const ModalTextArea = styled.textarea`
   width: 80%;
-  height: 200px;
+  height: 100px;
   padding: 10px;
+  margin-bottom: 20px;
 `;
 const ModalText = styled.input`
   width: 80%;

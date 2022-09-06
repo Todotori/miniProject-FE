@@ -27,13 +27,14 @@ const MyTodo = ({todo}) => {
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>
-          <TodoDetail>{todo.detail}</TodoDetail>
+          <TodoDetail>{todo.content}</TodoDetail>
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
-        {todo.tags.map((tag) => {
+        {/* //{todo.tag.map((tag) => {
           return <Hashtag key={tag} tagname={tag} />;
-        })}
+        })} */}
+        <Hashtag tagname={todo.tag} />
       </HashTagBox>
     </Container>
   );
