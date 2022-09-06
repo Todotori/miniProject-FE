@@ -59,7 +59,7 @@ const Register = () => {
                         break;
                 }
             } else {
-                sessionStorage.setItem("current_user", username);
+                sessionStorage.setItem("access_token", createUserResponse.payload);
                 resetAll();
                 navigator("/");
             }

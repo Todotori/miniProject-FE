@@ -9,9 +9,10 @@ const initialState = {
 
 export const signinUserThunk = createAsyncThunk("users/signinUser", async (user, thunk) => {
     try {
-        const {data} = await api.post("/api/login", user);
+        const response = await api.post("/api/login", user);
+        const {data} = response;
         if (data.success) {
-            return thunk.fulfillWithValue(data.data);
+            return thunk.fulfillWithValue(response.headers["refresh-token"]);
         } else {
             const {code} = data.error;
             return thunk.rejectWithValue(code);
