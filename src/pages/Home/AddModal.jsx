@@ -6,60 +6,62 @@ import {useDispatch} from 'react-redux';
 import CheckBoxCon from './CheckBoxCon';
 
 
-function AddModal({ setIsOpen }) {
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-  const dispatch = useDispatch();
-  const [title, onChangeTitle, titleReset] = useInput();
-  const [comment, onChangeComment, commentReset] = useInput();
-  const [tag, onChangeTag, tagReset] = useInput();
-  const [checked, setChecked] = useState([]);
+function AddModal({setIsOpen}) {
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+    const dispatch = useDispatch();
+    const [title, onChangeTitle, titleReset] = useInput();
+    const [comment, onChangeComment, commentReset] = useInput();
+    const [tag, onChangeTag, tagReset] = useInput();
+    const [checked, setChecked] = useState([]);
 
-  // 체크햇을때 나가게
-  const onCheck = (checked, tags) => {
-    if (checked) {
-      setChecked([...checked, tags]);
-      console.log(tags);
-    } else if (!checked) {
-      setChecked(checked.filter(el => el !== tags));
-    }
-  };
+    // 체크햇을때 나가게
+    const onCheck = (checked, tags) => {
+        if (checked) {
+            setChecked([...checked, tags]);
+            console.log(tags);
+        } else if (!checked) {
+            setChecked(checked.filter(el => el !== tags));
+        }
+    };
 
-  const onSubmit = () => {
-    // dispatch(__addTodo({ title: title, content: comment, tag: tag }));
-    console.log(title, comment, checked);
-    titleReset();
-    commentReset();
-    // tagReset();
-    setChecked([]);
-    closeModal();
-  };
+    const onSubmit = () => {
+        // dispatch(__addTodo({ title: title, content: comment, tag: tag }));
+        console.log(title, comment, checked);
+        titleReset();
+        commentReset();
+        // tagReset();
+        setChecked([]);
+        closeModal();
+    };
 
-  return (
-    <ModalBack onClick={closeModal}>
-      <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
-        <ModalHeader>
-          <ModalLable size={35}>추가추가하십샤</ModalLable>
-          <DotoriIconX src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png' onClick={closeModal} />
-        </ModalHeader>
-        <ModalInputs>
-          <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
-          <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
-        </ModalInputs>
+    return (
+        <ModalBack onClick={closeModal}>
+            <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
+                <ModalHeader>
+                    <ModalLabel size={35}>추가추가하십샤</ModalLabel>
+                    <DotoriIconX
+                        src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png'
+                        onClick={closeModal}/>
+                </ModalHeader>
+                <ModalInputs>
+                    <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
+                    <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
+                </ModalInputs>
 
-        {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
-        <CheckWrap>
-          <CheckBoxCon tags={'여가'} onChange={onCheck} />
-          <CheckBoxCon tags={'일상'} onChange={onCheck} />
-          <CheckBoxCon tags={'취미'} onChange={onCheck} />
-          <CheckBoxCon tags={'자기개발'} onChange={onCheck} />
-          <CheckBoxCon tags={'기타'} onChange={onCheck} />
-        </CheckWrap>
-        <Button onClick={onSubmit}>추가하기</Button>
-      </ModalBox>
-    </ModalBack>
-  );
+                {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
+                <CheckWrap>
+                    <CheckBoxCon tags={'여가'} onChange={onCheck}/>
+                    <CheckBoxCon tags={'일상'} onChange={onCheck}/>
+                    <CheckBoxCon tags={'취미'} onChange={onCheck}/>
+                    <CheckBoxCon tags={'자기개발'} onChange={onCheck}/>
+                    <CheckBoxCon tags={'기타'} onChange={onCheck}/>
+                </CheckWrap>
+                <Button onClick={onSubmit}>추가하기</Button>
+            </ModalBox>
+        </ModalBack>
+    );
 
 }
 
