@@ -33,35 +33,40 @@ const Register = () => {
         } else {
             const checkEmailResponse = await dispatch(checkEmailThunk(email));
             const checkUsernameResponse = await dispatch(checkUsernameThunk(username));
-            // TODO: CHECK REDUNDANCIES.
-            const newUser = {
-                email,
-                nickname: username,
-                password,
-                passwordConfirm: passwordConfirmation,
-                introduction
-            }
-            const createUserResponse = await dispatch(createUserThunk(newUser));
-            if (createUserResponse.error) {
-                const errorCode = createUserResponse.payload;
-                switch (errorCode) {
-                    case "DUPLICATED_EMAIL":
-                        setModal("이미 사용되고 있는 이메일입니다.");
-                        break;
-                    case "DUPLICATED_NICKNAME":
-                        setModal("이미 사용되고 있는 닉네임입니다.");
-                        break;
-                    case "PASSWORDS_NOT_MATCHED":
-                        setModal("비밀번호가 일치하지 않습니다.");
-                        break;
-                    default:
-                        setModal("예기치 못한 오류가 발생하였습니다.");
-                        break;
-                }
+            if (!checkEmailResponse.payload) {
+                setModal("이미 사용 중인 이메일입니다.");
+            } else if (!checkUsernameResponse.payload) {
+                setModal("이미 사용 중인 닉네임입니다.");
             } else {
-                sessionStorage.setItem("access_token", createUserResponse.payload);
-                resetAll();
-                navigator("/");
+                const newUser = {
+                    email,
+                    nickname: username,
+                    password,
+                    passwordConfirm: passwordConfirmation,
+                    introduction
+                }
+                const createUserResponse = await dispatch(createUserThunk(newUser));
+                if (createUserResponse.error) {
+                    const errorCode = createUserResponse.payload;
+                    switch (errorCode) {
+                        case "DUPLICATED_EMAIL":
+                            setModal("이미 사용되고 있는 이메일입니다.");
+                            break;
+                        case "DUPLICATED_NICKNAME":
+                            setModal("이미 사용되고 있는 닉네임입니다.");
+                            break;
+                        case "PASSWORDS_NOT_MATCHED":
+                            setModal("비밀번호가 일치하지 않습니다.");
+                            break;
+                        default:
+                            setModal("예기치 못한 오류가 발생하였습니다.");
+                            break;
+                    }
+                } else {
+                    sessionStorage.setItem("access_token", createUserResponse.payload);
+                    resetAll();
+                    navigator("/");
+                }
             }
         }
     };
@@ -78,16 +83,24 @@ const Register = () => {
         } else if (!emailValidator(email)) {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else {
-            const response = await dispatch(checkEmailThunk(email));
-            // TODO: CHECK EMAIL.
+            const {payload} = await dispatch(checkEmailThunk(email));
+            if (!payload) {
+                setModal("이미 사용 중인 이메일입니다.");
+            } else {
+                setModal("사용 가능한 이메일입니다.");
+            }
         }
     }
     const checkUsernameHandler = async () => {
         if (username.length === 0) {
             setModal("이름을 입력해주세요.");
         } else {
-            const response = await dispatch(checkUsernameThunk(username));
-            // TODO: CHECK USERNAME.
+            const {payload} = await dispatch(checkUsernameThunk(username));
+            if (!payload) {
+                setModal("이미 사용 중인 닉네임입니다.");
+            } else {
+                setModal("사용 가능한 닉네임입니다.");
+            }
         }
     }
     return (
