@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import api from "../../api";
 
 const initialState = {
@@ -90,10 +90,9 @@ export const todoSlice = createSlice({
             state.error = action.payload;
         },
         [__deleteTodo.fulfilled]: (state, action) => {
-            const newState = state.todos.filter(
+            state.todos = state.todos.filter(
                 (todo) => todo.id !== action.meta.arg
             );
-            state.todos = newState;
             return state;
         },
     },

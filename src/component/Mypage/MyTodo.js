@@ -8,36 +8,31 @@ import {__deleteTodo, __updateIsDone} from "../../redux/modules/todos";
 import {useDispatch} from "react-redux";
 
 const MyTodo = ({todo}) => {
-  const dispatch = useDispatch();
-  const onClickIsDone = () => {
-    dispatch(__updateIsDone({id: todo.id, isDone: todo.isDone}));
-  };
-  const onClickDelete = () => {
-    dispatch(__deleteTodo(todo.id));
-  };
+    const dispatch = useDispatch();
 
-  return (
-    <Container variants={CreateAnimation} initial="start" animate="end">
-      <TodoDeleteBox>
-        {/* <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" /> */}
-      </TodoDeleteBox>
-      <TodoInfoBox>
-        <TodoCheckBox isDone={todo.isDone}>
-          {/* <CheckBoxIcon onClick={onClickIsDone} fontSize="large" /> */}
-        </TodoCheckBox>
-        <TodoLetterBox>
-          <TodoTitle>{todo.title}</TodoTitle>
-          <TodoDetail>{todo.content}</TodoDetail>
-        </TodoLetterBox>
-      </TodoInfoBox>
-      <HashTagBox>
-        {/* //{todo.tag.map((tag) => {
+
+    return (
+        <Container variants={CreateAnimation} initial="start" animate="end">
+            <TodoDeleteBox>
+                {/* <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" /> */}
+            </TodoDeleteBox>
+            <TodoInfoBox>
+                <TodoCheckBox isDone={todo.isDone}>
+                    {/* <CheckBoxIcon onClick={onClickIsDone} fontSize="large" /> */}
+                </TodoCheckBox>
+                <TodoLetterBox>
+                    <TodoTitle>{todo.title}</TodoTitle>
+                    <TodoDetail>{todo.content}</TodoDetail>
+                </TodoLetterBox>
+            </TodoInfoBox>
+            <HashTagBox>
+                {/* //{todo.tag.map((tag) => {
           return <Hashtag key={tag} tagname={tag} />;
         })} */}
-        <Hashtag tagname={todo.tag} />
-      </HashTagBox>
-    </Container>
-  );
+                <Hashtag tagname={todo.tag}/>
+            </HashTagBox>
+        </Container>
+    );
 };
 
 const Container = styled(motion.div)`
@@ -101,8 +96,8 @@ const HashTagBox = styled.div`
 `;
 
 const CreateAnimation = {
-  start: {opacity: 0, y: 10},
-  end: {opacity: 1, y: 0, transition: {duration: 0.5}},
+    start: {opacity: 0, y: 10},
+    end: {opacity: 1, y: 0, transition: {duration: 0.5}},
 };
 
 export default MyTodo;
