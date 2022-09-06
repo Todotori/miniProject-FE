@@ -22,6 +22,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 5px;
+  z-index: -1;
 `;
 const HashtagName = styled.div`
   margin-left: 10px;
@@ -29,6 +30,7 @@ const HashtagName = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  z-index: -1;
 `;
 
 export default Hashtag;

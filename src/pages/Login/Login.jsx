@@ -1,10 +1,16 @@
-import {LoginContainer, FormContainer, Logo, Form, FormField, LoginLink} from './styles';
-import logo from '../../image/mainlogo.png';
-import {Link, useNavigate} from 'react-router-dom';
-import useInput from '../../hooks/useInput';
+import {
+  LoginContainer,
+  FormContainer,
+  Logo,
+  Form,
+  FormField,
+  LoginLink,
+} from "./styles";
+import logo from "../../image/mainlogo.png";
+import {Link, useNavigate} from "react-router-dom";
+import useInput from "../../hooks/useInput";
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
-import axios from "axios";
 import {useDispatch} from "react-redux";
 import {signinUserThunk} from "../../redux/modules/signinUserSlice";
 import useToken from "../../hooks/useToken";

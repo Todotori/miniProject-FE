@@ -8,19 +8,20 @@ import {__getTodos} from "../../redux/modules/todos";
 const Mytodos = ({title}) => {
   const {todos, isLoading} = useSelector((state) => state.todos);
   const tags = useSelector((state) => state.tags);
-  console.log(tags);
+  console.log(todos);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(__getTodos());
   }, []);
 
   const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
+
   const filtering = (arr) => {
     if (arr.includes("전체보기")) return todos;
     let filteredTodoList = todos.filter((todo) => {
       let isInclude = false;
-      for (let i = 0; i < todo.tags.length; i++) {
-        if (arr.includes(todo.tags[i])) {
+      for (let i = 0; i < todo.tag.length; i++) {
+        if (arr.includes(todo.tag[i])) {
           isInclude = true;
           break;
         }

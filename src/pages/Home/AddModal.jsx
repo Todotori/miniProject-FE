@@ -1,27 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { motion } from 'framer-motion';
+import useInput from './../../hooks/useInput';
+import { __addTodo } from '../../redux/modules/todos';
+import { useDispatch, useSelector } from 'react-redux';
+import CheckBoxCon from './CheckBoxCon';
 
 function AddModal({ setIsOpen }) {
   const closeModal = () => {
     setIsOpen(false);
+  };
+  const dispatch = useDispatch();
+  const [title, onChangeTitle, titleReset] = useInput();
+  const [comment, onChangeComment, commentReset] = useInput();
+  // const [tag, onChangeTag, tagReset] = useInput();
+
+  const [tag, setTag] = useState([]);
+
+  const onCheck = () => {
+
+  }
+
+  const onSubmit = () => {
+    // dispatch(__addTodo({ title: title, content: comment, tag: tag }));
+    console.log(title, comment, tag);
+    titleReset();
+    commentReset();
+    // tagReset();
+    closeModal();
+    setTag([]);
   };
 
   return (
     <ModalBack onClick={closeModal}>
       <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
         <ModalHeader>
-          <ModalLable size={35}>내 정보 수정</ModalLable>
+          <ModalLable size={35}>추가추가하십샤</ModalLable>
           <DotoriIconX src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png' onClick={closeModal} />
         </ModalHeader>
         <ModalInputs>
-          <ModalLable size={25}>프로필 사진 변경</ModalLable>
-          <Button>찾아보기..</Button>
-          <ModalLable size={25}>자기소개 수정</ModalLable>
-          <ModalText></ModalText>
+          <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
+          <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
         </ModalInputs>
-        <Button>완료</Button>
+
+        {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
+        <CheckBoxCon tag={'여가'}></CheckBoxCon>
+        <CheckBoxCon tag={'일상'}></CheckBoxCon>
+        <CheckBoxCon tag={'취미'}></CheckBoxCon>
+        <CheckBoxCon tag={'자기계발'}></CheckBoxCon>
+        <CheckBoxCon tag={'기타'}></CheckBoxCon>
+        <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
     </ModalBack>
   );
@@ -56,7 +85,21 @@ const ModalHeader = styled.div`
   justify-content: space-between;
 `;
 
+const ModalTitle = styled.input`
+  width: 30%;
+  height: 40px;
+  border: 0.5px solid #6d6158;
+  border-radius: 20px;
+  box-shadow: 0px 15px 25px -4px rgba(150, 150, 150, 0.24);
+  margin-bottom: 30px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #2f2f2f;
+`;
+
 const Button = styled.button`
+  cursor: pointer;
   width: 80px;
   height: 30px;
   border-radius: 3px;
@@ -68,10 +111,15 @@ const Button = styled.button`
 const ModalText = styled.textarea`
   width: 80%;
   height: 200px;
+  padding: 0.625rem;
+  border: 0.5px solid #c0b3a9;
+  border-radius: 7px;
+  box-shadow: 0px 15px 25px -4px rgba(150, 150, 150, 0.24);
 `;
 const ModalInputs = styled.div`
   display: flex;
   flex-direction: column;
+
   margin-bottom: 30px;
 `;
 
