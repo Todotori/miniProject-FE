@@ -1,15 +1,41 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
-const CheckBoxCon = ({ tags }) => {
+const CheckBoxCon = ({ tags, onCheck, onUnCheck }) => {
+  // 체크햇을때 나가게
+  const onChecked = e => {
+    if (e.target.checked === true) {
+      onCheck(e.target.name);
+    } else {
+      onUnCheck(e.target.name);
+    }
+    // if (checked) {
+    //   setChecked([...checked, item]);
+    // } else if (!checked) {
+    //   setChecked(checked.filter(el => el !== item));
+    // }
+  };
+
   return (
-    <div>
+    <CheckBox>
       <StyledLabel>
-        <StyledInput type='checkbox' name={tags} />
+        <StyledInput
+          type='checkbox'
+          name={tags}
+          // value={item.data}
+          onChange={onChecked}
+          // checked={onChecked.includes(tags.data) ? true : false}
+        />
         <StyledP>{tags}</StyledP>
       </StyledLabel>
-    </div>
+    </CheckBox>
   );
 };
+
+const CheckBox = styled.div`
+  display: flex;
+`;
 
 const StyledInput = styled.input`
   appearance: none;
@@ -24,7 +50,7 @@ const StyledInput = styled.input`
     background-size: 100% 100%;
     background-position: 50%;
     background-repeat: no-repeat;
-    background-color: limegreen;
+    background-color: #6d6158;
   }
 `;
 

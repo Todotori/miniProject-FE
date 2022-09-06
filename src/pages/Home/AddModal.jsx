@@ -1,39 +1,40 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import useInput from './../../hooks/useInput';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CheckBoxCon from './CheckBoxCon';
-
+import { __addTodo } from '../../redux/modules/todos';
 
 function AddModal({ setIsOpen }) {
+  const dispatch = useDispatch();
+
   const closeModal = () => {
     setIsOpen(false);
   };
-  const dispatch = useDispatch();
+
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
-  const [tag, onChangeTag, tagReset] = useInput();
-  const [checked, setChecked] = useState([]);
+  const [check, setCheck] = useState([]);
 
-  // 체크햇을때 나가게
-  const onCheck = (checked, tags) => {
-    if (checked) {
-      setChecked([...checked, tags]);
-      console.log(tags);
-    } else if (!checked) {
-      setChecked(checked.filter(el => el !== tags));
-    }
+  // onCheck -> 배열을 JOIN으로 문자열로 바꾼다...
+  const onCheck = selected => {
+    setCheck([...check, selected]);
+  };
+  const onUnCheck = selected => {
+    setCheck(check.filter(el => el !== selected));
+    // setCheck( (props) => props.filter((el)=>selected !== el ))
   };
 
+  // console.log(check)
+
   const onSubmit = () => {
-    // dispatch(__addTodo({ title: title, content: comment, tag: tag }));
-    console.log(title, comment, checked);
+    const arrayToString = check.join(',');
     titleReset();
     commentReset();
-    // tagReset();
-    setChecked([]);
     closeModal();
+    console.log(title, comment, check);
+    dispatch(__addTodo({ title: title, content: comment, tag: arrayToString }));
   };
 
   return (
@@ -50,17 +51,16 @@ function AddModal({ setIsOpen }) {
 
         {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
         <CheckWrap>
-          <CheckBoxCon tags={'여가'} onChange={onCheck} />
-          <CheckBoxCon tags={'일상'} onChange={onCheck} />
-          <CheckBoxCon tags={'취미'} onChange={onCheck} />
-          <CheckBoxCon tags={'자기개발'} onChange={onCheck} />
-          <CheckBoxCon tags={'기타'} onChange={onCheck} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'여가'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'일상'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'취미'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'자기개발'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'기타'} />
         </CheckWrap>
         <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
     </ModalBack>
   );
-
 }
 
 const ModalBack = styled.div`
@@ -137,7 +137,7 @@ const ModalInputs = styled.div`
   margin-bottom: 30px;
 `;
 
-const ModalLabel = styled.div`
+const ModalLable = styled.div`
   font-size: ${props => props.size}px;
   margin-bottom: 20px;
 `;
@@ -148,8 +148,8 @@ const DotoriIconX = styled.img`
 `;
 
 const CreateAnimation = {
-    start: {opacity: 0, scale: 0.5},
-    end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
+  start: { opacity: 0, scale: 0.5 },
+  end: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
 export default AddModal;
