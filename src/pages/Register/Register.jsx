@@ -1,6 +1,6 @@
 import {RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink} from './styles';
 import logo from '../../image/mainlogo.png';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
@@ -10,6 +10,7 @@ import {checkEmailThunk} from "../../redux/modules/checkEmailSlice";
 import {checkUsernameThunk} from "../../redux/modules/checkUsernameSlice";
 
 const Register = () => {
+    const navigator = useNavigate();
     const dispatch = useDispatch();
     const [email, setEmail, resetEmail] = useInput();
     const emailValidator = useEmailValidator();
@@ -41,8 +42,27 @@ const Register = () => {
                 introduction
             }
             const createUserResponse = await dispatch(createUserThunk(newUser));
-            // TODO: REGISTRATION PROCESS.
-            resetAll();
+            if (createUserResponse.error) {
+                const errorCode = createUserResponse.payload;
+                switch (errorCode) {
+                    case "DUPLICATED_EMAIL":
+                        setModal("이미 사용되고 있는 이메일입니다.");
+                        break;
+                    case "DUPLICATED_NICKNAME":
+                        setModal("이미 사용되고 있는 닉네임입니다.");
+                        break;
+                    case "PASSWORDS_NOT_MATCHED":
+                        setModal("비밀번호가 일치하지 않습니다.");
+                        break;
+                    default:
+                        setModal("예기치 못한 오류가 발생하였습니다.");
+                        break;
+                }
+            } else {
+                sessionStorage.setItem("current_user", username);
+                resetAll();
+                navigator("/");
+            }
         }
     };
     const resetAll = () => {
