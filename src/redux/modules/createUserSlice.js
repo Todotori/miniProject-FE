@@ -9,8 +9,13 @@ const initialState = {
 
 export const createUserThunk = createAsyncThunk("users/createUser", async (newUser, thunk) => {
     try {
-        const registrationResponse = await api.post("/api/signup", newUser);
-        return thunk.fulfillWithValue(registrationResponse);
+        const {data} = await api.post("/api/signup", newUser);
+        if (data.success) {
+            return thunk.fulfillWithValue(data.data);
+        } else {
+            const {code} = data.error;
+            return thunk.rejectWithValue(code);
+        }
     } catch (error) {
         return thunk.rejectWithValue(error);
     }
