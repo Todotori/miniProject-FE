@@ -1,13 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import CancelIcon from "@mui/icons-material/Cancel";
-import {motion} from "framer-motion";
-import useInput from "../../hooks/useInput";
+import React from 'react';
+import styled from 'styled-components';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { motion } from 'framer-motion';
+import { ModeOfTravelTwoTone } from '@mui/icons-material';
+import useInput from './../../hooks/useInput';
 
-function AddModal({setIsOpen}) {
+function AddModal({ setIsOpen }) {
   const closeModal = () => {
     setIsOpen(false);
   };
+
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
 
@@ -16,28 +18,19 @@ function AddModal({setIsOpen}) {
     commentReset();
     closeModal();
   };
+
   return (
     <ModalBack onClick={closeModal}>
-      <ModalBox
-        variants={CreateAnimation}
-        initial="start"
-        animate="end"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
         <ModalHeader>
-          <ModalLable size={35}>Todo 작성하기</ModalLable>
-          <DotoriIconX
-            src="https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png"
-            onClick={closeModal}
-          />
+          <ModalLable size={35}>추가추가하십샤</ModalLable>
+          <DotoriIconX src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png' onClick={closeModal} />
         </ModalHeader>
         <ModalInputs>
-          <ModalLable size={25}>제목</ModalLable>
-          <ModalText onChange={onChangeTitle}></ModalText>
-          <ModalLable size={25}>세부 내용</ModalLable>
-          <ModalTextArea onChange={onChangeComment}></ModalTextArea>
+          <ModalTitle onChange={onChangeTitle} placeholder="오늘 뭐하쇼?"></ModalTitle>
+          <ModalText onChange={onChangeComment} placeholder="상세내용을 입력하세여"></ModalText>
         </ModalInputs>
-        <Button onClick={onSubmit}>완료</Button>
+        <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
     </ModalBack>
   );
@@ -72,7 +65,21 @@ const ModalHeader = styled.div`
   justify-content: space-between;
 `;
 
+const ModalTitle = styled.input`
+  width: 30%;
+  height: 40px;
+  border: 0.5px solid #6d6158;
+  border-radius: 20px;
+  box-shadow: 0px 15px 25px -4px rgba(150, 150, 150, 0.24);
+  margin-bottom: 30px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #2F2F2F;
+`;
+
 const Button = styled.button`
+  cursor: pointer;
   width: 80px;
   height: 30px;
   border-radius: 3px;
@@ -81,24 +88,23 @@ const Button = styled.button`
   margin-bottom: 30px;
 `;
 
-const ModalTextArea = styled.textarea`
+const ModalText = styled.textarea`
   width: 80%;
   height: 200px;
-  padding: 10px;
-`;
-const ModalText = styled.input`
-  width: 80%;
-  height: 40px;
-  margin-bottom: 20px;
+  padding: .625rem;
+  border: 0.5px solid #c0b3a9;
+  border-radius: 7px;
+  box-shadow: 0px 15px 25px -4px rgba(150, 150, 150, 0.24);
 `;
 const ModalInputs = styled.div`
   display: flex;
   flex-direction: column;
+  
   margin-bottom: 30px;
 `;
 
 const ModalLable = styled.div`
-  font-size: ${(props) => props.size}px;
+  font-size: ${props => props.size}px;
   margin-bottom: 20px;
 `;
 
@@ -108,8 +114,8 @@ const DotoriIconX = styled.img`
 `;
 
 const CreateAnimation = {
-  start: {opacity: 0, scale: 0.5},
-  end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
+  start: { opacity: 0, scale: 0.5 },
+  end: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
 export default AddModal;

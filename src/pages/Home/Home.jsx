@@ -1,13 +1,9 @@
-import React, {useState} from "react";
-import styled from "styled-components";
-<<<<<<< HEAD
-=======
-
-import Layout from "../../component/Layout/Layout";
->>>>>>> 58abc27bea04b1df13e4f672865ce69ace6f32d3
-import Welcome from "./Welcome";
-import AddTodo from "./AddTodo.jsx";
-import MyTodos from "../../component/Mypage/MyTodos";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Layout from '../../component/Layout/Layout';
+import Welcome from './Welcome';
+import AddTodo from './AddTodo.jsx';
+import MyTodos from '../../component/Mypage/MyTodos';
 
 const Home = () => {
   // const [category, setCategory] = useState('all')
@@ -25,7 +21,7 @@ const Home = () => {
           <AddTodo />
 
           {/* ANCHOR : 02-3 : todoList */}
-          <MyTodos title={"Todolist"} />
+          <MyTodos title={'Todolist'} />
         </MainWrap>
       </Main>
     </Layout>
