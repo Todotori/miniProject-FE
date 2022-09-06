@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import api from "../../api";
 
 const initialState = {
@@ -11,7 +11,7 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.get("todo/all", payload);
+      const {data} = await api.get("/todo/all", payload);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -24,6 +24,7 @@ export const __addTodo = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const {data} = await api.post("/todo");
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -82,6 +83,8 @@ export const todoSlice = createSlice({
       state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
           return (todo.isDone = action.payload.isDone);
+        } else {
+          return todo;
         }
       });
     },
@@ -89,10 +92,7 @@ export const todoSlice = createSlice({
       state.error = action.payload;
     },
     [__deleteTodo.fulfilled]: (state, action) => {
-      const newState = state.todos.filter(
-        (todo) => todo.id !== action.meta.arg
-      );
-      state.todos = newState;
+      state.todos = state.todos.filter((todo) => todo.id !== action.meta.arg);
       return state;
     },
   },

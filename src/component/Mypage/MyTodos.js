@@ -13,11 +13,11 @@ const Mytodos = ({title}) => {
     dispatch(__getTodos());
   }, []);
 
-  const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
+  todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
 
   const filtering = (arr) => {
     if (arr.includes("전체보기")) return todos;
-    let filteredTodoList = todos.filter((todo) => {
+    return todos.filter((todo) => {
       let isInclude = false;
       for (let i = 0; i < todo.tag.length; i++) {
         if (arr.includes(todo.tag[i])) {
@@ -27,7 +27,6 @@ const Mytodos = ({title}) => {
       }
       return isInclude;
     });
-    return filteredTodoList;
   };
 
   const todoList = filtering(tags);

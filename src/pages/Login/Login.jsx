@@ -14,7 +14,6 @@ import useEmailValidator from "../../hooks/useEmailValidator";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {signinUserThunk} from "../../redux/modules/signinUserSlice";
-import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const navigator = useNavigate();

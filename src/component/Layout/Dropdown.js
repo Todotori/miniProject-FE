@@ -1,7 +1,7 @@
-import Multiselect from "multiselect-react-dropdown";
-import React from "react";
-import {useDispatch} from "react-redux";
-import {addTag, deleteTag} from "../../redux/modules/tagSlice";
+import Multiselect from 'multiselect-react-dropdown';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addTag, deleteTag } from '../../redux/modules/tagSlice';
 
 const Dropdown = () => {
   const dispatch = useDispatch();
@@ -9,34 +9,34 @@ const Dropdown = () => {
   const items = {
     initial: [
       {
-        title: "전체보기",
-        value: "all",
+        title: '전체보기',
+        value: 'all',
       },
     ],
     categories: [
       {
-        title: "전체보기",
-        value: "all",
+        title: '전체보기',
+        value: 'all',
       },
       {
-        title: "일상",
-        value: "daily",
+        title: '일상',
+        value: 'daily',
       },
       {
-        title: "업무",
-        value: "work",
+        title: '업무',
+        value: 'work',
       },
       {
-        title: "여가",
-        value: "leisure",
+        title: '여가',
+        value: 'leisure',
       },
       {
-        title: "자기계발",
-        value: "development",
+        title: '자기계발',
+        value: 'development',
       },
       {
-        title: "기타",
-        value: "etc",
+        title: '기타',
+        value: 'etc',
       },
     ],
   };
@@ -48,20 +48,20 @@ const Dropdown = () => {
   };
   return (
     <Multiselect
-      displayValue="title"
+      displayValue='title'
       onSelect={onSelect}
       onRemove={onRemove}
       options={items.categories}
       showCheckbox
       showArrow
       selectedValues={items.initial}
-      placeholder=""
+      placeholder=''
       style={{
         searchBox: {
-          border: "1px solid teal",
-          maxWidth: "350px",
-          minWidth: "200px",
-          height: "auto",
+          border: '1px solid teal',
+          maxWidth: '350px',
+          minWidth: '200px',
+          height: 'auto',
         },
       }}
     />

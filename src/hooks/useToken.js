@@ -6,7 +6,8 @@ const useToken = () => {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
         return JSON.parse(jsonPayload);
-    };
+    }
+
     return (token) => {
         if (token) {
             return parseJWT(token);
@@ -16,4 +17,3 @@ const useToken = () => {
     };
 }
 
-export default useToken;
