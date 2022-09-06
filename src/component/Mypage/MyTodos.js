@@ -6,47 +6,46 @@ import Dropdown from "../Layout/Dropdown";
 import {__getTodos} from "../../redux/modules/todos";
 
 const Mytodos = ({title}) => {
-  const {todos, isLoading} = useSelector((state) => state.todos);
-  const tags = useSelector((state) => state.tags);
-  console.log(todos);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(__getTodos());
-  }, []);
+    const {todos} = useSelector((state) => state.todos);
+    const tags = useSelector((state) => state.tags);
+    console.log(todos);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(__getTodos());
+    }, []);
 
-  const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
+    todos.filter((todo) => todo.author === "Junsu");  //나중에는 로그인user정보로 대체.
 
-  const filtering = (arr) => {
-    if (arr.includes("전체보기")) return todos;
-    let filteredTodoList = todos.filter((todo) => {
-      let isInclude = false;
-      for (let i = 0; i < todo.tag.length; i++) {
-        if (arr.includes(todo.tag[i])) {
-          isInclude = true;
-          break;
-        }
-      }
-      return isInclude;
-    });
-    return filteredTodoList;
-  };
+    const filtering = (arr) => {
+        if (arr.includes("전체보기")) return todos;
+        return todos.filter((todo) => {
+            let isInclude = false;
+            for (let i = 0; i < todo.tag.length; i++) {
+                if (arr.includes(todo.tag[i])) {
+                    isInclude = true;
+                    break;
+                }
+            }
+            return isInclude;
+        });
+    };
 
-  const todoList = filtering(tags);
-  return (
-    <>
-      <MyTodosHeader>
-        <Title>{title}</Title>
-        <Dropdown />
-      </MyTodosHeader>
-      <Wrapper>
+    const todoList = filtering(tags);
+    return (
         <>
-          {todoList.map((todo, idx) => (
-            <MyTodo key={idx} todo={todo} />
-          ))}
+            <MyTodosHeader>
+                <Title>{title}</Title>
+                <Dropdown/>
+            </MyTodosHeader>
+            <Wrapper>
+                <>
+                    {todoList.map((todo, idx) => (
+                        <MyTodo key={idx} todo={todo}/>
+                    ))}
+                </>
+            </Wrapper>
         </>
-      </Wrapper>
-    </>
-  );
+    );
 };
 
 export default Mytodos;
