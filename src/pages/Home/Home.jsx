@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import Welcome from "./Welcome";
-import NavContainer from "./NavCon/NavContainer";
 import AddTodo from "./AddTodo.jsx";
 import MyTodos from "../../component/Mypage/MyTodos";
 
@@ -11,9 +10,6 @@ const Home = () => {
 
   return (
     <Main>
-      {/*  ANCHOR : 01. nav */}
-      <NavContainer />
-
       {/* ANCHOR : 02. mainWRap */}
       <MainWrap>
         {/* 02-1. Header */}

@@ -1,15 +1,11 @@
-import Multiselect from 'multiselect-react-dropdown';
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTag, deleteTag } from '../../redux/modules/checkSlice';
+import Multiselect from "multiselect-react-dropdown";
+import React from "react";
+import {useDispatch} from "react-redux";
+import {addTag, deleteTag} from "../../redux/modules/tagSlice";
 
 const Dropdown = () => {
-  const [tagArray, setTagArray] = React.useState([
-    {
-      title: '전체보기',
-      value: 'all',
-    },
-  ]);
+  const dispatch = useDispatch();
+
   const items = {
     initial: [
       {
@@ -44,38 +40,28 @@ const Dropdown = () => {
       },
     ],
   };
-
-  const dispatch = useDispatch();
-
-  // 상태조회
-  const Tag = useSelector(state => state.check);
-
   const onSelect = (_, selectedItem) => {
     dispatch(addTag(selectedItem.title));
   };
-
-  const onDelete = (_, selectedItem) => {
-    dispatch(deleteTag(selectedItem.title))
-  }
-
-
+  const onRemove = (_, selectedItem) => {
+    dispatch(deleteTag(selectedItem.title));
+  };
   return (
     <Multiselect
-      items={items}
-      displayValue='title'
+      displayValue="title"
       onSelect={onSelect}
-      onRemove={onDelete}
+      onRemove={onRemove}
       options={items.categories}
       showCheckbox
       showArrow
       selectedValues={items.initial}
-      placeholder=''
+      placeholder=""
       style={{
         searchBox: {
-          border: '1px solid teal',
-          maxWidth: '350px',
-          minWidth: '200px',
-          height: 'auto',
+          border: "1px solid teal",
+          maxWidth: "350px",
+          minWidth: "200px",
+          height: "auto",
         },
       }}
     />

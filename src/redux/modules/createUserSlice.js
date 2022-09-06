@@ -1,23 +1,28 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "../../api";
 
 const initialState = {
-    users: [],
+    response: null,
     isLoading: false,
     error: null
 }
 
-const createUserThunk = createAsyncThunk("users/createUser", async (newUser, thunk) => {
+export const createUserThunk = createAsyncThunk("users/createUser", async (newUser, thunk) => {
     try {
-        await axios.post("/api/signup", newUser);
-        return thunk.fulfillWithValue("Registration succeeded");
+        const {data} = await api.post("/api/signup", newUser);
+        if (data.success) {
+            return thunk.fulfillWithValue(data.data);
+        } else {
+            const {code} = data.error;
+            return thunk.rejectWithValue(code);
+        }
     } catch (error) {
         return thunk.rejectWithValue(error);
     }
 })
 
-export const usersSlice = createSlice({
-    name: "users",
+const createUserSlice = createSlice({
+    name: "createUser",
     initialState,
     reducers: {},
     extraReducers: builder => {
@@ -25,7 +30,7 @@ export const usersSlice = createSlice({
             state.isLoading = true;
         }).addCase(createUserThunk.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.users.push(action.payload);
+            state.response = action.payload;
         }).addCase(createUserThunk.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
@@ -33,5 +38,4 @@ export const usersSlice = createSlice({
     }
 });
 
-export const {createUser} = usersSlice.actions;
-export default usersSlice.reducer;
+export default createUserSlice.reducer;

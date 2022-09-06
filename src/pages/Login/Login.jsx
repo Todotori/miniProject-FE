@@ -1,12 +1,16 @@
 import {LoginContainer, FormContainer, Logo, Form, FormField, LoginLink} from './styles';
 import logo from '../../image/mainlogo.png';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import axios from "axios";
+import {useDispatch} from "react-redux";
+import {signinUserThunk} from "../../redux/modules/signinUserSlice";
 
 const Login = () => {
+    const navigator = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail, resetEmail] = useInput();
     const emailValidator = useEmailValidator();
     const [password, setPassword, resetPassword] = useInput();
@@ -23,12 +27,32 @@ const Login = () => {
                 email,
                 password
             }
-            const loginResponse = await axios.post("/api/login", user);
-            // TODO: LOGIN.
-            resetEmail();
-            resetPassword();
+            const signinResponse = await dispatch(signinUserThunk(user));
+            if (signinResponse.error) {
+                const errorCode = signinResponse.payload;
+                switch (errorCode) {
+                    case "MEMBER_NOT_FOUND":
+                        setModal("회원 정보가 존재하지 않습니다.");
+                        break;
+                    case "INVALID_MEMBER":
+                        setModal("비밀번호가 틀립니다.");
+                        break;
+                    default:
+                        setModal("알 수 없는 오류가 발생하였습니다.");
+                        break;
+                }
+            } else {
+                const {nickname: username} = signinResponse.payload;
+                sessionStorage.setItem("current_user", username);
+                navigator("/");
+                resetAll();
+            }
         }
     };
+    const resetAll = () => {
+        resetEmail();
+        resetPassword();
+    }
     return (
         <LoginContainer>
             <FormContainer>

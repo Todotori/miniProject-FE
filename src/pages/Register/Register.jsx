@@ -1,14 +1,16 @@
 import {RegisterContainer, FormContainer, Logo, Form, FormField, LoginLink} from './styles';
 import logo from '../../image/mainlogo.png';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
-import axios from "axios";
 import {useDispatch} from "react-redux";
-import {createUser} from "../../redux/modules/usersSlice";
+import {createUserThunk} from "../../redux/modules/createUserSlice";
+import {checkEmailThunk} from "../../redux/modules/checkEmailSlice";
+import {checkUsernameThunk} from "../../redux/modules/checkUsernameSlice";
 
 const Register = () => {
+    const navigator = useNavigate();
     const dispatch = useDispatch();
     const [email, setEmail, resetEmail] = useInput();
     const emailValidator = useEmailValidator();
@@ -29,8 +31,8 @@ const Register = () => {
         } else if (username.length === 0) {
             setModal("이름을 입력해주세요.")
         } else {
-            const emailCheckResponse = await axios.post("/api/emailck", email);
-            const usernameCheckResponse = await axios.post("/api/nickck", username);
+            const checkEmailResponse = await dispatch(checkEmailThunk(email));
+            const checkUsernameResponse = await dispatch(checkUsernameThunk(username));
             // TODO: CHECK REDUNDANCIES.
             const newUser = {
                 email,
@@ -39,9 +41,28 @@ const Register = () => {
                 passwordConfirm: passwordConfirmation,
                 introduction
             }
-            const registrationResponse = await dispatch(createUser(newUser));
-            // TODO: REGISTRATION PROCESS.
-            resetAll();
+            const createUserResponse = await dispatch(createUserThunk(newUser));
+            if (createUserResponse.error) {
+                const errorCode = createUserResponse.payload;
+                switch (errorCode) {
+                    case "DUPLICATED_EMAIL":
+                        setModal("이미 사용되고 있는 이메일입니다.");
+                        break;
+                    case "DUPLICATED_NICKNAME":
+                        setModal("이미 사용되고 있는 닉네임입니다.");
+                        break;
+                    case "PASSWORDS_NOT_MATCHED":
+                        setModal("비밀번호가 일치하지 않습니다.");
+                        break;
+                    default:
+                        setModal("예기치 못한 오류가 발생하였습니다.");
+                        break;
+                }
+            } else {
+                sessionStorage.setItem("current_user", username);
+                resetAll();
+                navigator("/");
+            }
         }
     };
     const resetAll = () => {
@@ -57,7 +78,7 @@ const Register = () => {
         } else if (!emailValidator(email)) {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else {
-            const checkEmailResponse = await axios.post("/api/emailck", email);
+            const response = await dispatch(checkEmailThunk(email));
             // TODO: CHECK EMAIL.
         }
     }
@@ -65,7 +86,7 @@ const Register = () => {
         if (username.length === 0) {
             setModal("이름을 입력해주세요.");
         } else {
-            const checkUsernameResponse = await axios.post("/api/nickck", username);
+            const response = await dispatch(checkUsernameThunk(username));
             // TODO: CHECK USERNAME.
         }
     }

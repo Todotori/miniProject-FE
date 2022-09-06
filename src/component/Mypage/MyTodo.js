@@ -32,7 +32,7 @@ const MyTodo = ({todo}) => {
       </TodoInfoBox>
       <HashTagBox>
         {todo.tags.map((tag) => {
-          return <Hashtag tagname={tag} />;
+          return <Hashtag key={tag} tagname={tag} />;
         })}
       </HashTagBox>
     </Container>

@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
-import MyTodo from './MyTodo';
-import Dropdown from '../Layout/Dropdown';
-import { __getTodos } from '../../redux/modules/todos';
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import styled from "styled-components";
+import MyTodo from "./MyTodo";
+import Dropdown from "../Layout/Dropdown";
+import {__getTodos} from "../../redux/modules/todos";
 
-const Mytodos = ({ title }) => {
-  const { todos, isLoading } = useSelector(state => state.todos);
-  const tags = useSelector(state => state.check);
+const Mytodos = ({title}) => {
+  const {todos, isLoading} = useSelector((state) => state.todos);
+  const tags = useSelector((state) => state.tags);
+  console.log(tags);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(__getTodos());
   }, []);
 
-  console.log(tags);
-  // 태그를 필터링해서 걸러주기
-  const filtering = arr => {
-    if (arr.includes('전체보기')) return todos;
-    let filteredTodoList = todos.filter(todo => {
+  const myTodoList = todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
+  const filtering = (arr) => {
+    if (arr.includes("전체보기")) return todos;
+    let filteredTodoList = todos.filter((todo) => {
       let isInclude = false;
       for (let i = 0; i < todo.tags.length; i++) {
         if (arr.includes(todo.tags[i])) {
@@ -32,7 +31,6 @@ const Mytodos = ({ title }) => {
   };
 
   const todoList = filtering(tags);
-
   return (
     <>
       <MyTodosHeader>
@@ -40,9 +38,11 @@ const Mytodos = ({ title }) => {
         <Dropdown />
       </MyTodosHeader>
       <Wrapper>
-        {todoList.map((todo, idx) => (
-          <MyTodo key={idx} todo={todo} />
-        ))}
+        <>
+          {todoList.map((todo, idx) => (
+            <MyTodo key={idx} todo={todo} />
+          ))}
+        </>
       </Wrapper>
     </>
   );
