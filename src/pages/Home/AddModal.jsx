@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import CancelIcon from '@mui/icons-material/Cancel';
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import useInput from './../../hooks/useInput';
-import { __addTodo } from '../../redux/modules/todos';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import CheckBoxCon from './CheckBoxCon';
+
 
 function AddModal({ setIsOpen }) {
   const closeModal = () => {
@@ -61,6 +60,7 @@ function AddModal({ setIsOpen }) {
       </ModalBox>
     </ModalBack>
   );
+
 }
 
 const ModalBack = styled.div`
@@ -137,7 +137,7 @@ const ModalInputs = styled.div`
   margin-bottom: 30px;
 `;
 
-const ModalLable = styled.div`
+const ModalLabel = styled.div`
   font-size: ${props => props.size}px;
   margin-bottom: 20px;
 `;
@@ -148,8 +148,8 @@ const DotoriIconX = styled.img`
 `;
 
 const CreateAnimation = {
-  start: { opacity: 0, scale: 0.5 },
-  end: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+    start: {opacity: 0, scale: 0.5},
+    end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
 };
 
 export default AddModal;

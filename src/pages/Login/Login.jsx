@@ -1,10 +1,10 @@
 import {
-  LoginContainer,
-  FormContainer,
-  Logo,
-  Form,
-  FormField,
-  LoginLink,
+    LoginContainer,
+    FormContainer,
+    Logo,
+    Form,
+    FormField,
+    LoginLink,
 } from "./styles";
 import logo from "../../image/mainlogo.png";
 import {Link, useNavigate} from "react-router-dom";
@@ -13,7 +13,6 @@ import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import {useDispatch} from "react-redux";
 import {signinUserThunk} from "../../redux/modules/signinUserSlice";
-import useToken from "../../hooks/useToken";
 
 const Login = () => {
     const navigator = useNavigate();
