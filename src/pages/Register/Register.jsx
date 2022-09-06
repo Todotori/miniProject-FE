@@ -78,8 +78,12 @@ const Register = () => {
         } else if (!emailValidator(email)) {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else {
-            const response = await dispatch(checkEmailThunk(email));
-            // TODO: CHECK EMAIL.
+            const {payload} = await dispatch(checkEmailThunk(email));
+            if (!payload) {
+                setModal("이미 사용 중인 이메일입니다.");
+            } else {
+                setModal("사용 가능한 이메일입니다.");
+            }
         }
     }
     const checkUsernameHandler = async () => {
