@@ -42,8 +42,8 @@ const Login = () => {
                         break;
                 }
             } else {
-                const {nickname: username} = signinResponse.payload;
-                sessionStorage.setItem("current_user", username);
+                const token = signinResponse.payload;
+                sessionStorage.setItem("access_token", token);
                 navigator("/");
                 resetAll();
             }
