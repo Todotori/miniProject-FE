@@ -32,6 +32,8 @@ export const __addTodo = createAsyncThunk(
   }
 );
 
+export const __modifyTodo = createAsyncThunk();
+
 export const __deleteTodo = createAsyncThunk(
   "todos/deleteTodo",
   async (payload, thunkAPI) => {
@@ -75,6 +77,9 @@ export const todoSlice = createSlice({
 
     [__addTodo.fulfilled]: (state, action) => {
       state.todos.push(action.payload);
+    },
+    [__addTodo.rejected]: (state, action) => {
+      return;
     },
 
     [__updateIsDone.fulfilled]: (state, action) => {
