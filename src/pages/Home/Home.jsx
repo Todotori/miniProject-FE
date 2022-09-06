@@ -7,6 +7,7 @@ import MyTodos from '../../component/Mypage/MyTodos';
 
 const Home = () => {
   // const [category, setCategory] = useState('all')
+  console.log(sessionStorage.getItem("current_user"));
   // const catergories = ['All', ...new Set(items.map(item => item.company))];
 
   return (

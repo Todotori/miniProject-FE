@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import React from "react";
+import {useSelector} from "react-redux";
 import EditModal from "./EditModal";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 const UserInfo = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const users = useSelector((state) => state.signinUser);
+  console.log(users);
   const modalIsOpen = () => {
     setIsOpen(true);
   };

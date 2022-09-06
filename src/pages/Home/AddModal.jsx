@@ -7,17 +7,21 @@ import { __addTodo } from '../../redux/modules/todos';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckBoxCon from './CheckBoxCon';
 
-function AddModal({ setIsOpen }) {
+function AddModal({setIsOpen}) {
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   const dispatch = useDispatch();
-  const closeModal = () => { setIsOpen(false); };
-
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
+  const [tag, onChangeTag, tagReset] = useInput();
   const tags = useSelector((state) => state.tags);
 
   const onSubmit = () => {
+    dispatch(__addTodo({title: title, content: comment, tag: tag}));
     titleReset();
     commentReset();
+    tagReset();
     closeModal();
   };
 
@@ -35,6 +39,8 @@ function AddModal({ setIsOpen }) {
         <ModalInputs>
           <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
           <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
+          <ModalLable size={25}>해시태그</ModalLable>
+          <ModalText onChange={onChangeTag}></ModalText>
         </ModalInputs>
         
         {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
