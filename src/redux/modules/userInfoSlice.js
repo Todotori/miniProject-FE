@@ -8,13 +8,12 @@ const initialState = {
 };
 
 export const __getUserInfo = createAsyncThunk(
-  "users/signinUser",
+  "users/getUserInfo",
   async (user, thunk) => {
     try {
-      const response = await api.get("/member");
-      const {data} = response;
-      console.log(data);
-      return thunk.fulfillWithValue(data);
+      const response = await api.get(`/member/${user}`);
+      console.log(response);
+      // return thunk.fulfillWithValue(data);
     } catch (error) {
       return thunk.rejectWithValue(error);
     }
@@ -28,6 +27,9 @@ const userInfoSlice = createSlice({
   extraReducers: {
     [__getUserInfo.fulfilled]: (state, action) => {
       console.log(action);
+    },
+    [__getUserInfo.rejected]: (state, action) => {
+      console.log(state, action);
     },
   },
 });

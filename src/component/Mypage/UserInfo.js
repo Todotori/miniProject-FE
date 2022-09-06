@@ -3,7 +3,6 @@ import React from "react";
 import {useSelector} from "react-redux";
 import EditModal from "./EditModal";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import useToken from "../../hooks/useToken";
 import {useDispatch} from "react-redux";
 import {__getUserInfo} from "../../redux/modules/userInfoSlice";
 
@@ -15,7 +14,7 @@ const UserInfo = () => {
   };
 
   React.useEffect(() => {
-    dispatch(__getUserInfo());
+    dispatch(__getUserInfo(sessionStorage.getItem("user_id")));
   }, []);
 
   return (

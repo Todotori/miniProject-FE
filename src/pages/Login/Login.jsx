@@ -11,8 +11,10 @@ import {Link, useNavigate} from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
+import axios from "axios";
 import {useDispatch} from "react-redux";
 import {signinUserThunk} from "../../redux/modules/signinUserSlice";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const navigator = useNavigate();
@@ -21,7 +23,6 @@ const Login = () => {
   const emailValidator = useEmailValidator();
   const [password, setPassword, resetPassword] = useInput();
   const [modal, setModal] = useModal();
-
   const register = async () => {
     if (email.length === 0) {
       setModal("이메일을 입력해주세요.");
@@ -49,8 +50,9 @@ const Login = () => {
             break;
         }
       } else {
-        const token = signinResponse.payload;
+        const {token, userID} = signinResponse.payload;
         sessionStorage.setItem("access_token", token);
+        sessionStorage.setItem("user_id", userID);
         navigator("/");
         resetAll();
       }

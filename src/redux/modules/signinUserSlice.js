@@ -11,11 +11,12 @@ export const signinUserThunk = createAsyncThunk(
   "users/signinUser",
   async (user, thunk) => {
     try {
-      const response = await api.post("/api/login", user);
+      const response = await api.post("/login", user);
       const {data} = response;
+      const userID = data.data.id;
       const token = response.headers["authorization"].split(" ")[1];
       if (data.success) {
-        return thunk.fulfillWithValue(token);
+        return thunk.fulfillWithValue({token, userID});
       } else {
         const {code} = data.error;
         return thunk.rejectWithValue(code);
