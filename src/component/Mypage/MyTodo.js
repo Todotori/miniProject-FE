@@ -53,6 +53,7 @@ const Container = styled(motion.div)`
   height: 170px;
 
   padding: 15px;
+  z-index: -1;
 `;
 
 const TodoInfoBox = styled.div`
@@ -67,15 +68,18 @@ const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
   color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
+  z-index: -1;
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;
   right: 20px;
   color: #6d6158;
-  z-index: 1;
+  z-index: -1;
 `;
 
-const TodoLetterBox = styled.div``;
+const TodoLetterBox = styled.div`
+  z-index: -1;
+`;
 const TodoTitle = styled.div`
   font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;

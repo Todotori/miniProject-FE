@@ -18,6 +18,20 @@ export const __getTodos = createAsyncThunk(
     }
   }
 );
+
+export const __addTodo = createAsyncThunk(
+  "todos/addTodo",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.post("/todo");
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const __deleteTodo = createAsyncThunk(
   "todos/deleteTodo",
   async (payload, thunkAPI) => {
@@ -60,6 +74,11 @@ export const todoSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+
+    [__addTodo.fulfilled]: (state, action) => {
+      state.todos.push(action.payload);
+    },
+
     [__updateIsDone.fulfilled]: (state, action) => {
       state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
