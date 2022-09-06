@@ -4,24 +4,6 @@ import styled from 'styled-components';
 import {MdTag} from 'react-icons/md';
 import {BsCheckCircleFill} from 'react-icons/bs';
 
-const TodoContainer = () => {
-    return (
-        <TodoListContainer>
-            <TodoDesc>
-                <BsCheckCircleFill/>
-                <TodoTitle>
-                    <h3>밥먹기</h3>
-                    <span>소고기 궈먹어야지~</span>
-                </TodoTitle>
-            </TodoDesc>
-
-            <TodoTag>
-                <MdTag/>
-                <span>상수리나무_디자인팀</span>
-            </TodoTag>
-        </TodoListContainer>
-    );
-};
 
 const TodoListContainer = styled.div`
   display: flex;
@@ -35,6 +17,7 @@ const TodoListContainer = styled.div`
 const TodoTitle = styled.div`
   width: 100%;
   margin-left: 1.875rem;
+
   & > h3 {
     font-size: 24px;
     font-weight: 700;

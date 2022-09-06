@@ -4,11 +4,10 @@ import Hashtag from "./Hashtag";
 // import CheckBoxIcon from "@mui/icons-material/CheckBox";
 // import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {__deleteTodo, __updateIsDone} from "../../redux/modules/todos";
 import {useDispatch} from "react-redux";
 
 const MyTodo = ({todo}) => {
-    const dispatch = useDispatch();
+    useDispatch();
 
 
     return (
