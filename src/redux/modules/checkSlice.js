@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = [];
 
-const checkSlice = createSlice({
+createSlice({
     name: 'check',
     initialState,
     reducers: {
