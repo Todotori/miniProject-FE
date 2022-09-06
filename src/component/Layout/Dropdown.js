@@ -1,7 +1,7 @@
-import Multiselect from "multiselect-react-dropdown";
-import React from "react";
-import {useDispatch} from "react-redux";
-import {addTag, deleteTag} from "../../redux/modules/tagSlice";
+import Multiselect from 'multiselect-react-dropdown';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addTag, deleteTag } from '../../redux/modules/tagSlice';
 
 const Dropdown = () => {
   const dispatch = useDispatch();
@@ -48,20 +48,20 @@ const Dropdown = () => {
   };
   return (
     <Multiselect
-      displayValue="title"
+      displayValue='title'
       onSelect={onSelect}
       onRemove={onRemove}
       options={items.categories}
       showCheckbox
       showArrow
       selectedValues={items.initial}
-      placeholder=""
+      placeholder=''
       style={{
         searchBox: {
-          border: "1px solid teal",
-          maxWidth: "350px",
-          minWidth: "200px",
-          height: "auto",
+          border: '1px solid teal',
+          maxWidth: '350px',
+          minWidth: '200px',
+          height: 'auto',
         },
       }}
     />

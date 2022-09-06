@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { motion } from 'framer-motion';
-import { ModeOfTravelTwoTone } from '@mui/icons-material';
 import useInput from './../../hooks/useInput';
+import { __addTodo } from '../../redux/modules/todos';
+import { useDispatch, useSelector } from 'react-redux';
+import CheckBoxCon from './CheckBoxCon';
 
 function AddModal({ setIsOpen }) {
-  const closeModal = () => {
-    setIsOpen(false);
-  };
+  const dispatch = useDispatch();
+  const closeModal = () => { setIsOpen(false); };
 
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
+  const tags = useSelector((state) => state.tags);
 
   const onSubmit = () => {
     titleReset();
     commentReset();
     closeModal();
   };
+
+  useEffect(() => {
+    dispatch(__addTodo());
+  }, []);
 
   return (
     <ModalBack onClick={closeModal}>
@@ -27,9 +33,15 @@ function AddModal({ setIsOpen }) {
           <DotoriIconX src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png' onClick={closeModal} />
         </ModalHeader>
         <ModalInputs>
-          <ModalTitle onChange={onChangeTitle} placeholder="오늘 뭐하쇼?"></ModalTitle>
-          <ModalText onChange={onChangeComment} placeholder="상세내용을 입력하세여"></ModalText>
+          <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
+          <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
         </ModalInputs>
+        
+        {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
+        <CheckBoxCon tags={tags[1]} />
+        <CheckBoxCon tags={tags[2]} />
+        <CheckBoxCon tags={tags[3]} />
+        <CheckBoxCon tags={tags[4]} />
         <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
     </ModalBack>
@@ -75,7 +87,7 @@ const ModalTitle = styled.input`
   padding: 10px;
   font-weight: 500;
   font-size: 20px;
-  color: #2F2F2F;
+  color: #2f2f2f;
 `;
 
 const Button = styled.button`
@@ -91,7 +103,7 @@ const Button = styled.button`
 const ModalText = styled.textarea`
   width: 80%;
   height: 200px;
-  padding: .625rem;
+  padding: 0.625rem;
   border: 0.5px solid #c0b3a9;
   border-radius: 7px;
   box-shadow: 0px 15px 25px -4px rgba(150, 150, 150, 0.24);
@@ -99,7 +111,7 @@ const ModalText = styled.textarea`
 const ModalInputs = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   margin-bottom: 30px;
 `;
 
