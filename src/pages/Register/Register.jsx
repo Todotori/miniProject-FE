@@ -43,7 +43,7 @@ const Register = () => {
                     nickname: username,
                     password,
                     passwordConfirm: passwordConfirmation,
-                    introduction
+                    comment: introduction
                 }
                 const createUserResponse = await dispatch(createUserThunk(newUser));
                 if (createUserResponse.error) {
