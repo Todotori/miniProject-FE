@@ -83,6 +83,8 @@ export const todoSlice = createSlice({
             state.todos.map((todo) => {
                 if (todo.id === action.payload.id) {
                     return (todo.isDone = action.payload.isDone);
+                } else {
+                    return todo;
                 }
             });
         },
