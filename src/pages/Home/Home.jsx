@@ -1,32 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-import Layout from '../../component/Layout/Layout';
-import Welcome from './Welcome';
-import AddTodo from './AddTodo.jsx';
-import MyTodos from '../../component/Mypage/MyTodos';
+import React from "react";
+import styled from "styled-components";
+import Layout from "../../component/Layout/Layout";
+import Welcome from "./Welcome";
+import AddTodo from "./AddTodo.jsx";
+import MyTodos from "../../component/Mypage/MyTodos";
 
 const Home = () => {
-    // const [category, setCategory] = useState('all')
-    console.log(sessionStorage.getItem("current_user"));
-    // const categories = ['All', ...new Set(items.map(item => item.company))];
+  // const [category, setCategory] = useState('all')
 
-    return (
-        <Layout>
-            <Main>
-                {/* ANCHOR : 02. mainWRap */}
-                <MainWrap>
-                    {/* 02-1. Header */}
-                    <Welcome/>
+  // const categories = ['All', ...new Set(items.map(item => item.company))];
 
-                    {/* SECTION : 02-2. wrapTodo */}
-                    <AddTodo/>
+  return (
+    <Layout>
+      <Main>
+        {/* ANCHOR : 02. mainWRap */}
+        <MainWrap>
+          {/* 02-1. Header */}
+          <Welcome />
 
-                    {/* ANCHOR : 02-3 : todoList */}
-                    <MyTodos title={'Todolist'}/>
-                </MainWrap>
-            </Main>
-        </Layout>
-    );
+          {/* SECTION : 02-2. wrapTodo */}
+          <AddTodo />
+
+          {/* ANCHOR : 02-3 : todoList */}
+          <MyTodos title={"Todolist"} />
+        </MainWrap>
+      </Main>
+    </Layout>
+  );
 };
 
 const Main = styled.div`
