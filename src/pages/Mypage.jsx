@@ -6,6 +6,9 @@ import styled from "styled-components";
 import useToken from "../hooks/useToken";
 
 export const Mypage = () => {
+  const decodeToken = useToken();
+  console.log(decodeToken(sessionStorage.getItem("access_token")));
+
   return (
     <Layout>
       <WholeWrapper>

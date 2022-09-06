@@ -13,7 +13,6 @@ import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import {useDispatch} from "react-redux";
 import {signinUserThunk} from "../../redux/modules/signinUserSlice";
-import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const navigator = useNavigate();
@@ -22,9 +21,7 @@ const Login = () => {
   const emailValidator = useEmailValidator();
   const [password, setPassword, resetPassword] = useInput();
   const [modal, setModal] = useModal();
-  const decodeToken = useToken();
-  const {sub} = decodeToken(sessionStorage.getItem("access_token"));
-  console.log(sub);
+
   const register = async () => {
     if (email.length === 0) {
       setModal("이메일을 입력해주세요.");

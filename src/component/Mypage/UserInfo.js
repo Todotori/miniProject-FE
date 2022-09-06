@@ -3,14 +3,20 @@ import React from "react";
 import {useSelector} from "react-redux";
 import EditModal from "./EditModal";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import useToken from "../../hooks/useToken";
+import {useDispatch} from "react-redux";
+import {__getUserInfo} from "../../redux/modules/userInfoSlice";
 
 const UserInfo = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = React.useState(false);
-  const users = useSelector((state) => state.signinUser);
-  console.log(users);
   const modalIsOpen = () => {
     setIsOpen(true);
   };
+
+  React.useEffect(() => {
+    dispatch(__getUserInfo());
+  }, []);
 
   return (
     <>
@@ -23,7 +29,7 @@ const UserInfo = () => {
             </>
           </MyInfoProfile>
           <MyInfoWrapper>
-            <MyInfoUserName>도토리왕</MyInfoUserName>
+            <MyInfoUserName>도토리킹 님</MyInfoUserName>
             <MyInfoUserComment>
               안녕하세요 도토리의 왕 입니다.
             </MyInfoUserComment>

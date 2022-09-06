@@ -24,7 +24,6 @@ export const __addTodo = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const {data} = await api.post("/todo");
-      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

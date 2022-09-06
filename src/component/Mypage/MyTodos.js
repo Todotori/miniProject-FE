@@ -8,7 +8,6 @@ import {__getTodos} from "../../redux/modules/todos";
 const Mytodos = ({title}) => {
   const {todos, isLoading} = useSelector((state) => state.todos);
   const tags = useSelector((state) => state.tags);
-  console.log(todos);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(__getTodos());
