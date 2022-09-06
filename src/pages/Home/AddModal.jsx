@@ -14,22 +14,27 @@ function AddModal({ setIsOpen }) {
   const dispatch = useDispatch();
   const [title, onChangeTitle, titleReset] = useInput();
   const [comment, onChangeComment, commentReset] = useInput();
-  // const [tag, onChangeTag, tagReset] = useInput();
+  const [tag, onChangeTag, tagReset] = useInput();
+  const [checked, setChecked] = useState([]);
 
-  const [tag, setTag] = useState([]);
-
-  const onCheck = () => {
-
-  }
+  // 체크햇을때 나가게
+  const onCheck = (checked, tags) => {
+    if (checked) {
+      setChecked([...checked, tags]);
+      console.log(tags);
+    } else if (!checked) {
+      setChecked(checked.filter(el => el !== tags));
+    }
+  };
 
   const onSubmit = () => {
     // dispatch(__addTodo({ title: title, content: comment, tag: tag }));
-    console.log(title, comment, tag);
+    console.log(title, comment, checked);
     titleReset();
     commentReset();
     // tagReset();
+    setChecked([]);
     closeModal();
-    setTag([]);
   };
 
   return (
@@ -45,11 +50,13 @@ function AddModal({ setIsOpen }) {
         </ModalInputs>
 
         {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
-        <CheckBoxCon tag={'여가'}></CheckBoxCon>
-        <CheckBoxCon tag={'일상'}></CheckBoxCon>
-        <CheckBoxCon tag={'취미'}></CheckBoxCon>
-        <CheckBoxCon tag={'자기계발'}></CheckBoxCon>
-        <CheckBoxCon tag={'기타'}></CheckBoxCon>
+        <CheckWrap>
+          <CheckBoxCon tags={'여가'} onChange={onCheck} />
+          <CheckBoxCon tags={'일상'} onChange={onCheck} />
+          <CheckBoxCon tags={'취미'} onChange={onCheck} />
+          <CheckBoxCon tags={'자기개발'} onChange={onCheck} />
+          <CheckBoxCon tags={'기타'} onChange={onCheck} />
+        </CheckWrap>
         <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
     </ModalBack>
@@ -96,6 +103,13 @@ const ModalTitle = styled.input`
   font-weight: 500;
   font-size: 20px;
   color: #2f2f2f;
+`;
+
+const CheckWrap = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
