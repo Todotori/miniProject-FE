@@ -12,7 +12,7 @@ const Mytodos = ({title}) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(__getTodos());
-    }, []);
+    }, [dispatch]);
 
     todos.filter((todo) => todo.author === "Junsu");  //나중에는 로그인user정보로 대체.
 
