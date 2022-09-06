@@ -12,6 +12,9 @@ export const createUserThunk = createAsyncThunk("users/createUser", async (newUs
         const response = await api.post("/signup", newUser);
         const {data} = response;
         const userID = data.data.id;
+        if (!response.headers["authorization"]) {
+            return thunk.rejectWithValue("TOKEN_NOT_SENT");
+        }
         const token = response.headers["authorization"].split(" ")[1];
         if (data.success) {
             return thunk.fulfillWithValue({token, userID});

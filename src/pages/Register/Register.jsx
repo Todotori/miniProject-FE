@@ -58,6 +58,9 @@ const Register = () => {
                         case "PASSWORDS_NOT_MATCHED":
                             setModal("비밀번호가 일치하지 않습니다.");
                             break;
+                        case "TOKEN_NOT_SENT":
+                            setModal("서버 측으로부터 토큰을 발급받지 못하였습니다.")
+                            break;
                         default:
                             setModal("예기치 못한 오류가 발생하였습니다.");
                             break;
