@@ -10,7 +10,7 @@ export const Mypage = () => {
       <WholeWrapper>
         <UserInfo />
         <PageWrapper>
-          <MyTodos mine={true} title={"My TODO List"} />
+          <MyTodos mine={true} title={"나의 투두리스트"} />
         </PageWrapper>
       </WholeWrapper>
     </Layout>
