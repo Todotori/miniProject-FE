@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, {SelectChangeEvent} from "@mui/material/Select";
+import Select from "@mui/material/Select";
 
 const Mytodos = ({title, mine}) => {
   const {todos, isLoading} = useSelector((state) => state.todos);
@@ -25,14 +25,13 @@ const Mytodos = ({title, mine}) => {
     setStatus(e.target.value);
   };
 
-  todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
-  
   const filtering = (arr) => {
     if (arr.includes("전체보기")) return todos;
     return todos.filter((todo) => {
       let isInclude = false;
-      for (let i = 0; i < todo.tag.length; i++) {
-        if (arr.includes(todo.tag[i])) {
+      const tags = todo.tag.split(",");
+      for (let i = 0; i < tags.length; i++) {
+        if (arr.includes(tags[i])) {
           isInclude = true;
           break;
         }
