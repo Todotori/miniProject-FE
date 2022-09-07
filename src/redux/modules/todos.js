@@ -11,7 +11,19 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.get("/todo/all", payload);
+      const {data} = await api.get("/todo/all");
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const __getMyTodos = createAsyncThunk(
+  //로그인 상태에서만 가능.
+  "todos/getMyTodos",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.get("/todo/");
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -50,7 +62,11 @@ export const __updateIsDone = createAsyncThunk(
   "todos/updateIsDone",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.patch(`/todo/${payload.id}/done`);
+      const {data} = await api.put(`/todo/${payload}/done`, {
+        id: payload,
+        done: true,
+      });
+      console.log(data);
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -74,9 +90,12 @@ export const todoSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    [__getMyTodos.fulfilled]: (state, action) => {
+      state.todos = action.payload.data;
+    },
 
     [__addTodo.fulfilled]: (state, action) => {
-      state.todos.push(action.payload);
+      state.todos = [action.payload.data, ...state.todos];
     },
     [__addTodo.rejected]: (state, action) => {
       return;
@@ -84,8 +103,8 @@ export const todoSlice = createSlice({
 
     [__updateIsDone.fulfilled]: (state, action) => {
       state.todos.map((todo) => {
-        if (todo.id === action.payload.id) {
-          return (todo.isDone = action.payload.isDone);
+        if (todo.id === action.payload.data.id) {
+          return (todo.done = action.payload.data.done);
         } else {
           return todo;
         }
@@ -95,6 +114,9 @@ export const todoSlice = createSlice({
       state.error = action.payload;
     },
     [__deleteTodo.fulfilled]: (state, action) => {
+      if (!action.payload.success) {
+        return;
+      }
       state.todos = state.todos.filter((todo) => todo.id !== action.meta.arg);
       return state;
     },

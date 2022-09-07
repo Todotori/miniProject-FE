@@ -11,21 +11,18 @@ const MyTodo = ({todo}) => {
   const dispatch = useDispatch();
 
   const onClickIsDone = () => {
-    console.log(todo.id);
     dispatch(__updateIsDone(todo.id));
   };
   const onClickDelete = () => {
-    console.log(todo.id);
     dispatch(__deleteTodo(todo.id));
   };
-
   return (
     <Container variants={CreateAnimation} initial="start" animate="end">
       <TodoDeleteBox>
         <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
       </TodoDeleteBox>
       <TodoInfoBox>
-        <TodoCheckBox isDone={todo.isDone}>
+        <TodoCheckBox isDone={todo.done}>
           <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
         </TodoCheckBox>
         <TodoLetterBox>
@@ -70,12 +67,13 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-  color: ${(props) => (!props.done ? "#e84118" : "#4cd137")};
+  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;
   right: 20px;
   color: #6d6158;
+  z-index: 1;
 `;
 
 const TodoLetterBox = styled.div``;

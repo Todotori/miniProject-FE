@@ -3,7 +3,6 @@ import Layout from "../component/Layout/Layout";
 import MyTodos from "../component/Mypage/MyTodos";
 import UserInfo from "../component/Mypage/UserInfo";
 import styled from "styled-components";
-import useToken from "../hooks/useToken";
 
 export const Mypage = () => {
   return (
@@ -11,7 +10,7 @@ export const Mypage = () => {
       <WholeWrapper>
         <UserInfo />
         <PageWrapper>
-          <MyTodos title={"My TODO List"} />
+          <MyTodos mine={true} title={"My TODO List"} />
         </PageWrapper>
       </WholeWrapper>
     </Layout>

@@ -5,6 +5,11 @@ import {motion} from "framer-motion";
 
 const SideBar = ({spreadNav, isView}) => {
     const navigate = useNavigate();
+    const logOut = () => {
+        sessionStorage.removeItem("access_token");
+        sessionStorage.removeItem("user_id");
+        navigate("/login");
+    }
     return (
         <>
             <CustomSideBar spreadNav={spreadNav}>
@@ -20,7 +25,7 @@ const SideBar = ({spreadNav, isView}) => {
                             <Nav onClick={() => navigate("/")}>전체보기</Nav>
                             <Nav onClick={() => navigate("/mypage/123")}>내 프로필</Nav>
                         </Navigation>
-                        <Nav onClick={() => navigate("/login")}>로그아웃하기</Nav>
+                        <Nav onClick={logOut}>로그아웃하기</Nav>
                     </Wrapper>
                 ) : null}
             </CustomSideBar>

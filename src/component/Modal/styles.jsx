@@ -9,13 +9,13 @@ const ModalContainer = styled.div`
   height: 100vh;
   max-width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: ${(props) => props.visibility ? "flex" : "none"};
+  display: ${(props) => props.$visibility ? "flex" : "none"};
   justify-content: center;
   align-items: center;
 `;
 
 const ModalBox = styled.div`
-  width: 400px;
+  width: 450px;
   background-color: white;
   padding: 30px;
   border-radius: 10px;
