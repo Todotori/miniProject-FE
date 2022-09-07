@@ -1,12 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import React from "react";
+import styled from "styled-components";
+import {useSelector} from "react-redux";
+import useToken from "../../hooks/useToken";
+
 
 const Welcome = () => {
+  const count = useSelector((state) => state.todos.count);
+  const decode = useToken();
+  const nickname = decode(sessionStorage.getItem("access_token")).sub;
   return (
     <WelcomeMain>
-      <h1>어서오세요, 김도토리님</h1>
-      <span>할 일이 30개 남았어요</span>
+      <h1>어서오세요, {nickname}님</h1>
+      <span>할 일이 {count}개 남았어요</span>
     </WelcomeMain>
   );
 };

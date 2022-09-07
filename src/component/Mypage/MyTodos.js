@@ -3,15 +3,27 @@ import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import MyTodo from "./MyTodo";
 import Dropdown from "../Layout/Dropdown";
-import {__getTodos} from "../../redux/modules/todos";
+import {__getMyTodos, __getTodos} from "../../redux/modules/todos";
 
-const Mytodos = ({title}) => {
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, {SelectChangeEvent} from "@mui/material/Select";
+
+const Mytodos = ({title, mine}) => {
   const {todos, isLoading} = useSelector((state) => state.todos);
+  const [status, setStatus] = React.useState("WHOLE");
   const tags = useSelector((state) => state.tags);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(__getTodos());
-  }, []);
+    if (!mine) dispatch(__getTodos());
+    else dispatch(__getMyTodos(status));
+  }, [status]);
+
+  const handleChange = (e) => {
+    setStatus(e.target.value);
+  };
 
   todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
   
@@ -34,6 +46,23 @@ const Mytodos = ({title}) => {
     <>
       <MyTodosHeader>
         <Title>{title}</Title>
+        {mine ? (
+          <Box>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">STATUS</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                value={status}
+                label="STATUS"
+                onChange={handleChange}
+              >
+                <MenuItem value={"WHOLE"}>Whole</MenuItem>
+                <MenuItem value={"DONE"}>Done</MenuItem>
+                <MenuItem value={"TODO"}>TODO</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        ) : null}
         <Dropdown />
       </MyTodosHeader>
       <Wrapper>
