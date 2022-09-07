@@ -5,16 +5,16 @@ import UserInfo from "../component/Mypage/UserInfo";
 import styled from "styled-components";
 
 export const Mypage = () => {
-    return (
-        <Layout>
-            <WholeWrapper>
-                <UserInfo/>
-                <PageWrapper>
-                    <MyTodos title={"My TODO List"}/>
-                </PageWrapper>
-            </WholeWrapper>
-        </Layout>
-    );
+  return (
+    <Layout>
+      <WholeWrapper>
+        <UserInfo />
+        <PageWrapper>
+          <MyTodos mine={true} title={"My TODO List"} />
+        </PageWrapper>
+      </WholeWrapper>
+    </Layout>
+  );
 };
 
 export default Mypage;

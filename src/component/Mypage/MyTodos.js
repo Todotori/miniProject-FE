@@ -3,14 +3,15 @@ import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import MyTodo from "./MyTodo";
 import Dropdown from "../Layout/Dropdown";
-import {__getTodos} from "../../redux/modules/todos";
+import {__getMyTodos, __getTodos} from "../../redux/modules/todos";
 
-const Mytodos = ({title}) => {
+const Mytodos = ({title, mine}) => {
   const {todos, isLoading} = useSelector((state) => state.todos);
   const tags = useSelector((state) => state.tags);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(__getTodos());
+    if (!mine) dispatch(__getTodos());
+    else dispatch(__getMyTodos());
   }, []);
 
   todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
