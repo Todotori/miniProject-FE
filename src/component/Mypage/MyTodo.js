@@ -1,16 +1,23 @@
-import React from "react";
-import styled from "styled-components";
-import Hashtag from "./Hashtag";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-import {motion} from "framer-motion";
-import {useDispatch} from "react-redux";
-import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
-import useToken from "../../hooks/useToken";
+import React from 'react';
+import styled from 'styled-components';
+import Hashtag from './Hashtag';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { FiEdit3 } from 'react-icons/fi';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { __updateIsDone, __deleteTodo } from '../../redux/modules/todos';
+import useToken from '../../hooks/useToken';
+import EditModal from './EditModal';
 
-const MyTodo = ({todo}) => {
+const MyTodo = ({ todo }) => {
   const [isMine, setIsMine] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const modalIsOpen = () => {
+    setIsOpen(true);
+  };
   const dispatch = useDispatch();
+
   const onClickIsDone = () => {
     dispatch(__updateIsDone(todo.id));
   };
@@ -19,24 +26,31 @@ const MyTodo = ({todo}) => {
   };
 
   const decode = useToken();
-  const nickname = decode(sessionStorage.getItem("access_token")).sub;
+  const nickname = decode(sessionStorage.getItem('access_token')).sub;
+  const splitTag = todo.tag.split(',');
+  
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
   }, [todo]);
   const splitTag = todo.tag.split(",");
+  
   return (
-    <Container
-      variants={CreateAnimation}
-      initial="start"
-      animate="end"
-      $isMine={isMine}
-    >
+    <Container isMine={isMine} variants={CreateAnimation} initial='start' animate='end'>
+      {/* NOTE 수정버튼 */}
+      <TodoEditBox onClick={modalIsOpen}>
+        <FiEdit3 fontSize='large' />
+        {isOpen && <EditModal setIsOpen={setIsOpen} title={todo.title} content={todo.content} />}
+      </TodoEditBox>
+
+      {/* NOTE 삭제버튼 */}
       <TodoDeleteBox>
-        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize='large' />
       </TodoDeleteBox>
+
+      {/* WHAT 투두정보들 */}
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
-          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
+          <CheckBoxIcon onClick={onClickIsDone} fontSize='large' />
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>
@@ -44,11 +58,11 @@ const MyTodo = ({todo}) => {
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
-        {splitTag.map((tag) => {
+        {splitTag.map(tag => {
           return <Hashtag key={tag} tagname={tag} />;
         })}
       </HashTagBox>
-      <NickNameBox>{todo.member.nickname}</NickNameBox>
+      <NickNameBox>{`작성자 : ${todo.member.nickname}`}</NickNameBox>
     </Container>
   );
 };
@@ -62,7 +76,7 @@ const Container = styled(motion.div)`
   justify-content: space-between;
   width: 100%;
   height: 170px;
-  z-index: 1;
+  /* z-index: 1; */
   padding: 15px;
 `;
 
@@ -73,12 +87,14 @@ const TodoInfoBox = styled.div`
   width: 100%;
   height: 50%;
   position: relative;
+  z-index: 0;
 `;
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
+  color: ${props => (!props.isDone ? '#6d6158' : '#4cd137')};
 `;
+
 const TodoDeleteBox = styled.div`
   position: absolute;
   right: 20px;
@@ -86,7 +102,19 @@ const TodoDeleteBox = styled.div`
   z-index: 1;
 `;
 
+const TodoEditBox = styled.div`
+  position: absolute;
+  right: 60px;
+  color: red;
+  z-index: 100;
+  & > svg {
+    background-size: auto;
+    color: blue;
+  }
+`;
+
 const TodoLetterBox = styled.div``;
+
 const TodoTitle = styled.div`
   font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;
@@ -106,16 +134,15 @@ const HashTagBox = styled.div`
 `;
 
 const CreateAnimation = {
-  start: {opacity: 0, y: 10},
-  end: {opacity: 1, y: 0, transition: {duration: 0.5}},
+  start: { opacity: 0, y: 10 },
+  end: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const NickNameBox = styled.div`
   position: absolute;
-  bottom: 5px;
-  right: 20px;
-  font-size: 12px;
-
+  bottom: 10px;
+  right: 30px;
+  font-size: 13px;
   color: gray;
   text-align: left;
 `;
