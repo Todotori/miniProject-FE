@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] introduction -&gt; comment.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/CheckBoxCon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/CheckBoxCon.jsx" afterDir="false" />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Update] 로그아웃 기능 구현.">
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +69,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="4401000" />
+      <workItem from="1662453013763" duration="12158000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -338,7 +337,70 @@
       <option name="project" value="LOCAL" />
       <updated>1662456889865</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="[Fix] Fix minor issues.">
+      <created>1662464203094</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1662464203094</updated>
+    </task>
+    <task id="LOCAL-00040" summary="[Fix] 오탈자 수정.">
+      <created>1662501985335</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1662501985335</updated>
+    </task>
+    <task id="LOCAL-00041" summary="[Add] 토큰 오류 모달 추가.">
+      <created>1662511602886</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1662511602886</updated>
+    </task>
+    <task id="LOCAL-00042" summary="[Fix] Typo: signin -&gt; signIn.">
+      <created>1662515798503</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1662515798503</updated>
+    </task>
+    <task id="LOCAL-00043" summary="[Fix] Typo: signin -&gt; signIn.">
+      <created>1662515976018</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1662515976018</updated>
+    </task>
+    <task id="LOCAL-00044" summary="[Fix] Typo: signin -&gt; signIn.">
+      <created>1662516160514</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1662516160514</updated>
+    </task>
+    <task id="LOCAL-00045" summary="[Fix] visibility -&gt; $visibility (Transient Props).">
+      <created>1662516747474</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1662516747474</updated>
+    </task>
+    <task id="LOCAL-00046" summary="[Fix] Fix minor issues.">
+      <created>1662517229664</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1662517229664</updated>
+    </task>
+    <task id="LOCAL-00047" summary="[Update] 로그아웃 기능 구현.">
+      <created>1662531598132</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1662531598132</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,11 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Add] Modal 기능 추가." />
-    <MESSAGE value="[Add] Email Validation." />
-    <MESSAGE value="[Add] 중복 확인 기능 추가." />
-    <MESSAGE value="[Fix] Fix Minor issues." />
-    <MESSAGE value="[Add] NotFound.jsx" />
     <MESSAGE value="[Update] Move configStore.js" />
     <MESSAGE value="[Update] Modify index.html" />
     <MESSAGE value="[Update] Update axios.create({baseURL: http://3.34.90.63})." />
@@ -391,9 +448,14 @@
     <MESSAGE value="[Fix] 비밀번호 틀렸을 때 뻗어버리는 문제 수정." />
     <MESSAGE value="[Fix] Refactor." />
     <MESSAGE value="[Fix] 코드 깔끔하게 바꿈." />
-    <MESSAGE value="[Fix] Fix minor issues." />
     <MESSAGE value="[Fix] Fix typos." />
     <MESSAGE value="[Fix] introduction -&gt; comment." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fix] introduction -&gt; comment." />
+    <MESSAGE value="[Fix] 오탈자 수정." />
+    <MESSAGE value="[Add] 토큰 오류 모달 추가." />
+    <MESSAGE value="[Fix] Typo: signin -&gt; signIn." />
+    <MESSAGE value="[Fix] visibility -&gt; $visibility (Transient Props)." />
+    <MESSAGE value="[Fix] Fix minor issues." />
+    <MESSAGE value="[Update] 로그아웃 기능 구현." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Update] 로그아웃 기능 구현." />
   </component>
 </project>
