@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {MdTag} from 'react-icons/md';
-import {BsCheckCircleFill} from 'react-icons/bs';
-
 
 const TodoListContainer = styled.div`
   display: flex;
