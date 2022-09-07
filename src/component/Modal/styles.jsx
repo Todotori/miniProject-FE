@@ -15,7 +15,7 @@ const ModalContainer = styled.div`
 `;
 
 const ModalBox = styled.div`
-  width: 400px;
+  width: 450px;
   background-color: white;
   padding: 30px;
   border-radius: 10px;
