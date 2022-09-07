@@ -9,8 +9,9 @@ import { __updateIsDone, __deleteTodo } from '../../redux/modules/todos';
 
 const MyTodo = ({ todo }) => {
   const dispatch = useDispatch();
-  const tags = useSelector(state => state.tags);
-  console.log('🚀 ~ MyTodo ~ tags', tags)
+  // const tags = useSelector(state => state.tags);
+  const splitTag = todo.tag.split(',');
+  console.log('🚀 ~ MyTodo ~ splitTag', splitTag);
 
   const onClickIsDone = () => {
     dispatch(__updateIsDone(todo.id));
@@ -18,9 +19,9 @@ const MyTodo = ({ todo }) => {
   const onClickDelete = () => {
     dispatch(__deleteTodo(todo.id));
   };
-  
+
   const getTag = state => {};
-  
+
   return (
     <Container variants={CreateAnimation} initial='start' animate='end'>
       <TodoDeleteBox>
@@ -28,7 +29,7 @@ const MyTodo = ({ todo }) => {
       </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
-          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
+          <CheckBoxIcon onClick={onClickIsDone} fontSize='large' />
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>
@@ -36,10 +37,9 @@ const MyTodo = ({ todo }) => {
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
-        {/* //{todo.tag.map((tag) => {
+        {splitTag.map(tag => {
           return <Hashtag key={tag} tagname={tag} />;
-        })} */}
-        <Hashtag tagname={todo.tag} />
+        })}
       </HashTagBox>
     </Container>
   );
@@ -72,7 +72,7 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
+  color: ${props => (!props.isDone ? '#e84118' : '#4cd137')};
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;

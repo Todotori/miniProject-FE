@@ -27,14 +27,14 @@ function AddModal({ setIsOpen }) {
   };
 
   // console.log(check)
-
+  const tagSplit = check.join(',').split(',');
+  
   const onSubmit = () => {
-    // const arrayToString = check.join(',');
-    const tagSplit = (check.join(',')).split(',');
+    const arrayToString = check.join(',');
     titleReset();
     commentReset();
     closeModal();
-    dispatch(__addTodo({ title: title, content: comment, tag: tagSplit }));
+    dispatch(__addTodo({ title: title, content: comment, tag: arrayToString }));
   };
 
   return (
