@@ -4,7 +4,7 @@ import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 import useToken from "../../hooks/useToken";
 
@@ -29,7 +29,7 @@ const MyTodo = ({todo}) => {
       variants={CreateAnimation}
       initial="start"
       animate="end"
-      isMine={isMine}
+      $isMine={isMine}
     >
       <TodoDeleteBox>
         <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
@@ -55,7 +55,7 @@ const MyTodo = ({todo}) => {
 
 const Container = styled(motion.div)`
   position: relative;
-  border: 2px solid ${(props) => (props.isMine ? "#6D6158" : "#c0b3a9")};
+  border: 2px solid ${(props) => (props.$isMine ? "#6D6158" : "#c0b3a9")};
   border-radius: 15px;
   display: flex;
   flex-direction: column;
