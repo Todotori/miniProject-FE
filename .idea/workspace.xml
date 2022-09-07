@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Update] 로그아웃 기능 구현.">
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.jsx" afterDir="false" />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Reset] User 데이터베이스 초기화.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +70,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="12158000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initialization">
-      <created>1662092688718</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1662092688718</updated>
+      <workItem from="1662453013763" duration="20004000" />
     </task>
     <task id="LOCAL-00002" summary="[Add] Register.jsx">
       <created>1662098390142</created>
@@ -400,7 +394,28 @@
       <option name="project" value="LOCAL" />
       <updated>1662531598132</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="[Update] 로그인되어있지 않을 시 로그인 화면으로 넘어가게 수정.">
+      <created>1662531886004</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1662531886004</updated>
+    </task>
+    <task id="LOCAL-00049" summary="[Update] 비밀번호 Validator 추가.">
+      <created>1662549654218</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1662549654218</updated>
+    </task>
+    <task id="LOCAL-00050" summary="[Reset] User 데이터베이스 초기화.">
+      <created>1662550228815</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1662550228816</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,9 +446,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Update] Move configStore.js" />
-    <MESSAGE value="[Update] Modify index.html" />
-    <MESSAGE value="[Update] Update axios.create({baseURL: http://3.34.90.63})." />
     <MESSAGE value="[Update] 회원가입과 로그인 처리 과정, 서버와 연결." />
     <MESSAGE value="[Update] 이메일과 닉네임 중복확인 로직 구현?" />
     <MESSAGE value="[Fix] Register.jsx에도 토큰 받아오게 수정." />
@@ -456,6 +468,9 @@
     <MESSAGE value="[Fix] visibility -&gt; $visibility (Transient Props)." />
     <MESSAGE value="[Fix] Fix minor issues." />
     <MESSAGE value="[Update] 로그아웃 기능 구현." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Update] 로그아웃 기능 구현." />
+    <MESSAGE value="[Update] 로그인되어있지 않을 시 로그인 화면으로 넘어가게 수정." />
+    <MESSAGE value="[Update] 비밀번호 Validator 추가." />
+    <MESSAGE value="[Reset] User 데이터베이스 초기화." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Reset] User 데이터베이스 초기화." />
   </component>
 </project>

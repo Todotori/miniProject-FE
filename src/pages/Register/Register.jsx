@@ -8,12 +8,14 @@ import {useDispatch} from "react-redux";
 import {createUserThunk} from "../../redux/modules/createUserSlice";
 import {checkEmailThunk} from "../../redux/modules/checkEmailSlice";
 import {checkUsernameThunk} from "../../redux/modules/checkUsernameSlice";
+import usePasswordValidator from "../../hooks/usePasswordValidator";
 
 const Register = () => {
     const navigator = useNavigate();
     const dispatch = useDispatch();
     const [email, setEmail, resetEmail] = useInput();
     const emailValidator = useEmailValidator();
+    const passwordValidator = usePasswordValidator();
     const [password, setPassword, resetPassword] = useInput();
     const [passwordConfirmation, setPasswordConfirmation, resetPasswordConfirmation] = useInput();
     const [username, setUsername, resetUsername] = useInput();
@@ -26,6 +28,8 @@ const Register = () => {
             setModal("이메일 형식이 올바르지 않습니다.");
         } else if (password.length === 0) {
             setModal("비밀번호를 입력해주세요.")
+        } else if (!passwordValidator(password)) {
+            setModal("비밀번호는 적어도 한 자리의 영문자와 숫자를 포함한 5 ~ 15자리의 문자열이어야 합니다.");
         } else if (password !== passwordConfirmation) {
             setModal("비밀번호가 일치하지 않습니다.");
         } else if (username.length === 0) {
@@ -62,7 +66,8 @@ const Register = () => {
                             setModal("서버 측으로부터 토큰을 발급받지 못하였습니다.")
                             break;
                         default:
-                            setModal("예기치 못한 오류가 발생하였습니다.");
+                            const {password: passwordErrorMessage} = errorCode.response.data;
+                            setModal(passwordErrorMessage);
                             break;
                     }
                 } else {

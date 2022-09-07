@@ -16,7 +16,7 @@ const Home = () => {
         if (!token) {
             navigator("/login");
         }
-    }, []);
+    }, [navigator]);
     return (
         <Layout>
             <Main>
