@@ -11,7 +11,7 @@ const store = configureStore({
     reducer: {
         checkUsername,
         checkEmail,
-        signinUser: signInUser,
+        signInUser,
         createUser,
         todos,
         tags,
