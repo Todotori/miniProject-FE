@@ -32,7 +32,6 @@ const MyTodo = ({ todo }) => {
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
   }, [todo]);
-  const splitTag = todo.tag.split(",");
   
   return (
     <Container isMine={isMine} variants={CreateAnimation} initial='start' animate='end'>
