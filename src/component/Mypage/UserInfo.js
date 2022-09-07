@@ -12,9 +12,11 @@ const UserInfo = () => {
         setIsOpen(true);
     };
 
-    React.useEffect(() => {
-        dispatch(__getUserInfo(sessionStorage.getItem("user_id")));
-    }, []);
+
+  // React.useEffect(() => {
+  //   dispatch(__getUserInfo(sessionStorage.getItem("user_id")));
+  // }, []);
+
 
     return (
         <>
