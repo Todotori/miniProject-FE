@@ -11,11 +11,9 @@ const MyTodo = ({todo}) => {
   const dispatch = useDispatch();
 
   const onClickIsDone = () => {
-    console.log(todo.id);
     dispatch(__updateIsDone(todo.id));
   };
   const onClickDelete = () => {
-    console.log(todo.id);
     dispatch(__deleteTodo(todo.id));
   };
 
@@ -76,6 +74,7 @@ const TodoDeleteBox = styled.div`
   position: absolute;
   right: 20px;
   color: #6d6158;
+  z-index: 1;
 `;
 
 const TodoLetterBox = styled.div``;
