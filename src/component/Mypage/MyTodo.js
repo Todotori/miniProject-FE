@@ -27,13 +27,13 @@ const MyTodo = ({ todo }) => {
 
   const decode = useToken();
   const nickname = decode(sessionStorage.getItem('access_token')).sub;
-
   const splitTag = todo.tag.split(',');
-
+  
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
   }, [todo]);
-
+  const splitTag = todo.tag.split(",");
+  
   return (
     <Container isMine={isMine} variants={CreateAnimation} initial='start' animate='end'>
       {/* NOTE 수정버튼 */}
@@ -69,7 +69,7 @@ const MyTodo = ({ todo }) => {
 
 const Container = styled(motion.div)`
   position: relative;
-  border: 2px solid #c0b3a9;
+  border: 2px solid ${(props) => (props.$isMine ? "#6D6158" : "#c0b3a9")};
   border-radius: 15px;
   display: flex;
   flex-direction: column;

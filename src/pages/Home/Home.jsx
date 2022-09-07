@@ -7,33 +7,33 @@ import MyTodos from "../../component/Mypage/MyTodos";
 import {useNavigate} from "react-router-dom";
 
 const Home = () => {
-    // const [category, setCategory] = useState('all')
+  // const [category, setCategory] = useState('all')
 
-    // const categories = ['All', ...new Set(items.map(item => item.company))];
-    const navigator = useNavigate();
-    useEffect(() => {
-        const token = sessionStorage.getItem("access_token");
-        if (!token) {
-            navigator("/login");
-        }
-    }, [navigator]);
-    return (
-        <Layout>
-            <Main>
-                {/* ANCHOR : 02. mainWRap */}
-                <MainWrap>
-                    {/* 02-1. Header */}
-                    <Welcome/>
+  // const categories = ['All', ...new Set(items.map(item => item.company))];
+  const navigator = useNavigate();
+  useEffect(() => {
+    const token = sessionStorage.getItem("access_token");
+    if (!token) {
+      navigator("/login");
+    }
+  }, [navigator]);
+  return (
+    <Layout>
+      <Main>
+        {/* ANCHOR : 02. mainWRap */}
+        <MainWrap>
+          {/* 02-1. Header */}
+          <Welcome />
 
-                    {/* SECTION : 02-2. wrapTodo */}
-                    <AddTodo/>
+          {/* SECTION : 02-2. wrapTodo */}
+          <AddTodo />
 
-                    {/* ANCHOR : 02-3 : todoList */}
-                    <MyTodos title={"Todolist"}/>
-                </MainWrap>
-            </Main>
-        </Layout>
-    );
+          {/* ANCHOR : 02-3 : todoList */}
+          <MyTodos title={"모두의 투두 👀"} />
+        </MainWrap>
+      </Main>
+    </Layout>
+  );
 };
 
 const Main = styled.div`
