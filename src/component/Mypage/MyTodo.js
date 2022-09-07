@@ -32,7 +32,9 @@ const MyTodo = ({todo}) => {
       animate="end"
     >
       <TodoDeleteBox>
-        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+        {isMine ? (
+          <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+        ) : null}
       </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
