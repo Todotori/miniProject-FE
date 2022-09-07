@@ -52,6 +52,7 @@ function EditModal({setIsOpen}) {
         </ModalHeader>
         <ModalInputs>
           <ModalLabel size={25}>프로필 사진 변경</ModalLabel>
+          <ImageInputLabel for="profileImage">사진 파일 찾기</ImageInputLabel>
           <ImageInput
             type="file"
             accept="image/jpg, image/png, image/jpeg"
@@ -109,7 +110,25 @@ const Button = styled.button`
   margin-bottom: 30px;
 `;
 
-const ImageInput = styled.input``;
+const ImageInputLabel = styled.label`
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  border: none;
+  background-color: #c0b3a9;
+`;
+
+const ImageInput = styled.input`
+  width: 80%;
+  height: 30px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  border: none;
+  background-color: #c0b3a9;
+  display: none;
+`;
 
 const ModalText = styled.textarea`
   width: 80%;
