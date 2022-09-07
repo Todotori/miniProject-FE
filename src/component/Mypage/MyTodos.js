@@ -1,35 +1,35 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import styled from "styled-components";
-import MyTodo from "./MyTodo";
-import Dropdown from "../Layout/Dropdown";
-import {__getMyTodos, __getTodos} from "../../redux/modules/todos";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import MyTodo from './MyTodo';
+import Dropdown from '../Layout/Dropdown';
+import { __getMyTodos, __getTodos } from '../../redux/modules/todos';
 
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, {SelectChangeEvent} from "@mui/material/Select";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-const Mytodos = ({title, mine}) => {
-  const {todos, isLoading} = useSelector((state) => state.todos);
-  const [status, setStatus] = React.useState("WHOLE");
-  const tags = useSelector((state) => state.tags);
+const Mytodos = ({ title, mine }) => {
+  const { todos, isLoading } = useSelector(state => state.todos);
+  const [status, setStatus] = React.useState('WHOLE');
+  const tags = useSelector(state => state.tags);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!mine) dispatch(__getTodos());
     else dispatch(__getMyTodos(status));
   }, [status]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setStatus(e.target.value);
   };
 
-  todos.filter((todo) => todo.author === "Junsu"); //나중에는 로그인user정보로 대체.
-  
-  const filtering = (arr) => {
-    if (arr.includes("전체보기")) return todos;
-    return todos.filter((todo) => {
+  todos.filter(todo => todo.author === 'Junsu'); //나중에는 로그인user정보로 대체.
+
+  const filtering = arr => {
+    if (arr.includes('전체보기')) return todos;
+    return todos.filter(todo => {
       let isInclude = false;
       for (let i = 0; i < todo.tag.length; i++) {
         if (arr.includes(todo.tag[i])) {
@@ -49,16 +49,11 @@ const Mytodos = ({title, mine}) => {
         {mine ? (
           <Box>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">STATUS</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                value={status}
-                label="STATUS"
-                onChange={handleChange}
-              >
-                <MenuItem value={"WHOLE"}>Whole</MenuItem>
-                <MenuItem value={"DONE"}>Done</MenuItem>
-                <MenuItem value={"TODO"}>TODO</MenuItem>
+              <InputLabel id='demo-simple-select-label'>STATUS</InputLabel>
+              <Select labelId='demo-simple-select-label' value={status} label='STATUS' onChange={handleChange}>
+                <MenuItem value={'WHOLE'}>Whole</MenuItem>
+                <MenuItem value={'DONE'}>Done</MenuItem>
+                <MenuItem value={'TODO'}>TODO</MenuItem>
               </Select>
             </FormControl>
           </Box>
@@ -100,6 +95,5 @@ const Wrapper = styled.div`
   align-items: center;
   column-gap: 0px;
   row-gap: 40px;
-
   padding-bottom: 30px;
 `;

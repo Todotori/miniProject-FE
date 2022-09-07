@@ -2,15 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import Hashtag from './Hashtag';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { FiEdit3 } from 'react-icons/fi';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { __updateIsDone, __deleteTodo } from '../../redux/modules/todos';
 import useToken from '../../hooks/useToken';
+import EditModal from './EditModal';
 
 const MyTodo = ({ todo }) => {
   const [isMine, setIsMine] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const modalIsOpen = () => {
+    setIsOpen(true);
+  };
   const dispatch = useDispatch();
+
   const onClickIsDone = () => {
     dispatch(__updateIsDone(todo.id));
   };
@@ -29,9 +36,18 @@ const MyTodo = ({ todo }) => {
 
   return (
     <Container isMine={isMine} variants={CreateAnimation} initial='start' animate='end'>
+      {/* NOTE 수정버튼 */}
+      <TodoEditBox onClick={modalIsOpen}>
+        <FiEdit3 fontSize='large' />
+        {isOpen && <EditModal setIsOpen={setIsOpen} title={todo.title} content={todo.content} />}
+      </TodoEditBox>
+
+      {/* NOTE 삭제버튼 */}
       <TodoDeleteBox>
         <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize='large' />
       </TodoDeleteBox>
+
+      {/* WHAT 투두정보들 */}
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
           <CheckBoxIcon onClick={onClickIsDone} fontSize='large' />
@@ -53,17 +69,14 @@ const MyTodo = ({ todo }) => {
 
 const Container = styled(motion.div)`
   position: relative;
-
   border: 2px solid #c0b3a9;
   border-radius: 15px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   width: 100%;
   height: 170px;
-  z-index: 1;
+  /* z-index: 1; */
   padding: 15px;
 `;
 
@@ -74,12 +87,14 @@ const TodoInfoBox = styled.div`
   width: 100%;
   height: 50%;
   position: relative;
+  z-index: 0;
 `;
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-  color: ${props => (!props.isDone ? '#e84118' : '#4cd137')};
+  color: ${props => (!props.isDone ? '#6d6158' : '#4cd137')};
 `;
+
 const TodoDeleteBox = styled.div`
   position: absolute;
   right: 20px;
@@ -87,7 +102,19 @@ const TodoDeleteBox = styled.div`
   z-index: 1;
 `;
 
+const TodoEditBox = styled.div`
+  position: absolute;
+  right: 60px;
+  color: red;
+  z-index: 100;
+  & > svg {
+    background-size: auto;
+    color: blue;
+  }
+`;
+
 const TodoLetterBox = styled.div``;
+
 const TodoTitle = styled.div`
   font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;
@@ -100,7 +127,6 @@ const HashTagBox = styled.div`
   width: 80%;
   height: 30%;
   margin-left: 30px;
-
   display: flex;
   flex-direction: row;
   align-items: center;
