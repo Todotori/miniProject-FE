@@ -35,7 +35,7 @@ const MyTodo = ({todo}) => {
 
   return (
     <Container
-      isMine={isMine}
+      $isMine={isMine}
       variants={CreateAnimation}
       initial="start"
       animate="end"
