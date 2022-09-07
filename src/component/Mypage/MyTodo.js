@@ -1,14 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import Hashtag from "./Hashtag";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-import {motion} from "framer-motion";
-import {useDispatch} from "react-redux";
-import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
+import React from 'react';
+import styled from 'styled-components';
+import Hashtag from './Hashtag';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { __updateIsDone, __deleteTodo } from '../../redux/modules/todos';
 
-const MyTodo = ({todo}) => {
+const MyTodo = ({ todo }) => {
   const dispatch = useDispatch();
+  const tags = useSelector(state => state.tags);
+  console.log('🚀 ~ MyTodo ~ tags', tags)
 
   const onClickIsDone = () => {
     dispatch(__updateIsDone(todo.id));
@@ -16,10 +18,13 @@ const MyTodo = ({todo}) => {
   const onClickDelete = () => {
     dispatch(__deleteTodo(todo.id));
   };
+  
+  const getTag = state => {};
+  
   return (
-    <Container variants={CreateAnimation} initial="start" animate="end">
+    <Container variants={CreateAnimation} initial='start' animate='end'>
       <TodoDeleteBox>
-        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize='large' />
       </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
@@ -97,8 +102,8 @@ const HashTagBox = styled.div`
 `;
 
 const CreateAnimation = {
-  start: {opacity: 0, y: 10},
-  end: {opacity: 1, y: 0, transition: {duration: 0.5}},
+  start: { opacity: 0, y: 10 },
+  end: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 export default MyTodo;
