@@ -1,37 +1,46 @@
 import React from "react";
 import styled from "styled-components";
 import Hashtag from "./Hashtag";
-// import CheckBoxIcon from "@mui/icons-material/CheckBox";
-// import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
 import {useDispatch} from "react-redux";
+import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 
 const MyTodo = ({todo}) => {
-    useDispatch();
+  const dispatch = useDispatch();
 
+  const onClickIsDone = () => {
+    console.log(todo.id);
+    dispatch(__updateIsDone(todo.id));
+  };
+  const onClickDelete = () => {
+    console.log(todo.id);
+    dispatch(__deleteTodo(todo.id));
+  };
 
-    return (
-        <Container variants={CreateAnimation} initial="start" animate="end">
-            <TodoDeleteBox>
-                {/* <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" /> */}
-            </TodoDeleteBox>
-            <TodoInfoBox>
-                <TodoCheckBox isDone={todo.isDone}>
-                    {/* <CheckBoxIcon onClick={onClickIsDone} fontSize="large" /> */}
-                </TodoCheckBox>
-                <TodoLetterBox>
-                    <TodoTitle>{todo.title}</TodoTitle>
-                    <TodoDetail>{todo.content}</TodoDetail>
-                </TodoLetterBox>
-            </TodoInfoBox>
-            <HashTagBox>
-                {/* //{todo.tag.map((tag) => {
+  return (
+    <Container variants={CreateAnimation} initial="start" animate="end">
+      <TodoDeleteBox>
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+      </TodoDeleteBox>
+      <TodoInfoBox>
+        <TodoCheckBox isDone={todo.isDone}>
+          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
+        </TodoCheckBox>
+        <TodoLetterBox>
+          <TodoTitle>{todo.title}</TodoTitle>
+          <TodoDetail>{todo.content}</TodoDetail>
+        </TodoLetterBox>
+      </TodoInfoBox>
+      <HashTagBox>
+        {/* //{todo.tag.map((tag) => {
           return <Hashtag key={tag} tagname={tag} />;
         })} */}
-                <Hashtag tagname={todo.tag}/>
-            </HashTagBox>
-        </Container>
-    );
+        <Hashtag tagname={todo.tag} />
+      </HashTagBox>
+    </Container>
+  );
 };
 
 const Container = styled(motion.div)`
@@ -46,9 +55,8 @@ const Container = styled(motion.div)`
 
   width: 100%;
   height: 170px;
-
+  z-index: 1;
   padding: 15px;
-  z-index: -1;
 `;
 
 const TodoInfoBox = styled.div`
@@ -62,19 +70,15 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
-  z-index: -1;
+  color: ${(props) => (!props.done ? "#e84118" : "#4cd137")};
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;
   right: 20px;
   color: #6d6158;
-  z-index: -1;
 `;
 
-const TodoLetterBox = styled.div`
-  z-index: -1;
-`;
+const TodoLetterBox = styled.div``;
 const TodoTitle = styled.div`
   font-size: calc(0.6rem + 1vw);
   margin-bottom: 20px;
@@ -95,8 +99,8 @@ const HashTagBox = styled.div`
 `;
 
 const CreateAnimation = {
-    start: {opacity: 0, y: 10},
-    end: {opacity: 1, y: 0, transition: {duration: 0.5}},
+  start: {opacity: 0, y: 10},
+  end: {opacity: 1, y: 0, transition: {duration: 0.5}},
 };
 
 export default MyTodo;
