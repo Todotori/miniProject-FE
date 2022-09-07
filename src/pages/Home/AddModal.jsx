@@ -1,12 +1,12 @@
-import React, {useState} from "react";
-import styled from "styled-components";
-import {motion} from "framer-motion";
-import useInput from "./../../hooks/useInput";
-import {useDispatch} from "react-redux";
-import CheckBoxCon from "./CheckBoxCon";
-import {__addTodo} from "../../redux/modules/todos";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import useInput from './../../hooks/useInput';
+import { useDispatch } from 'react-redux';
+import CheckBoxCon from './CheckBoxCon';
+import { __addTodo } from '../../redux/modules/todos';
 
-function AddModal({setIsOpen}) {
+function AddModal({ setIsOpen }) {
   const dispatch = useDispatch();
 
   const closeModal = () => {
@@ -18,61 +18,44 @@ function AddModal({setIsOpen}) {
   const [check, setCheck] = useState([]);
 
   // onCheck -> 배열을 JOIN으로 문자열로 바꾼다...
-  const onCheck = (selected) => {
+  const onCheck = selected => {
     setCheck([...check, selected]);
   };
-  const onUnCheck = (selected) => {
-    setCheck(check.filter((el) => el !== selected));
+  const onUnCheck = selected => {
+    setCheck(check.filter(el => el !== selected));
     // setCheck( (props) => props.filter((el)=>selected !== el ))
   };
 
   // console.log(check)
-
+  const tagSplit = check.join(',').split(',');
+  
   const onSubmit = () => {
-    const arrayToString = check.join(",");
+    const arrayToString = check.join(',');
     titleReset();
     commentReset();
     closeModal();
-    dispatch(__addTodo({title: title, content: comment, tag: arrayToString}));
+    dispatch(__addTodo({ title: title, content: comment, tag: arrayToString }));
   };
 
   return (
     <ModalBack onClick={closeModal}>
-      <ModalBox
-        variants={CreateAnimation}
-        initial="start"
-        animate="end"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
         <ModalHeader>
           <ModalLable size={35}>추가추가하십샤</ModalLable>
-          <DotoriIconX
-            src="https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png"
-            onClick={closeModal}
-          />
+          <DotoriIconX src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png' onClick={closeModal} />
         </ModalHeader>
         <ModalInputs>
-          <ModalTitle
-            onChange={onChangeTitle}
-            placeholder="오늘 뭐하쇼?"
-          ></ModalTitle>
-          <ModalText
-            onChange={onChangeComment}
-            placeholder="상세내용을 입력하세여"
-          ></ModalText>
+          <ModalTitle onChange={onChangeTitle} placeholder='오늘 뭐하쇼?'></ModalTitle>
+          <ModalText onChange={onChangeComment} placeholder='상세내용을 입력하세여'></ModalText>
         </ModalInputs>
 
         {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
         <CheckWrap>
-          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={"여가"} />
-          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={"일상"} />
-          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={"취미"} />
-          <CheckBoxCon
-            onCheck={onCheck}
-            onUnCheck={onUnCheck}
-            tags={"자기개발"}
-          />
-          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={"기타"} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'여가'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'일상'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'취미'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'자기개발'} />
+          <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'기타'} />
         </CheckWrap>
         <Button onClick={onSubmit}>추가하기</Button>
       </ModalBox>
@@ -155,7 +138,7 @@ const ModalInputs = styled.div`
 `;
 
 const ModalLable = styled.div`
-  font-size: ${(props) => props.size}px;
+  font-size: ${props => props.size}px;
   margin-bottom: 20px;
 `;
 
@@ -165,8 +148,8 @@ const DotoriIconX = styled.img`
 `;
 
 const CreateAnimation = {
-  start: {opacity: 0, scale: 0.5},
-  end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
+  start: { opacity: 0, scale: 0.5 },
+  end: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
 export default AddModal;
