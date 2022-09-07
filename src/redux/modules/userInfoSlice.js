@@ -19,6 +19,23 @@ export const __getUserInfo = createAsyncThunk(
   }
 );
 
+export const __editUserInfo = createAsyncThunk(
+  "users/editUserInfo",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.put("/member", payload, {
+        headers: {
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const userInfoSlice = createSlice({
   name: "userInfo",
   initialState,
@@ -29,6 +46,14 @@ const userInfoSlice = createSlice({
     },
     [__getUserInfo.rejected]: (state, action) => {
       console.log(state, action);
+    },
+    [__editUserInfo.fulfilled]: (state, action) => {
+      state.data = {
+        ...state.data,
+        comment: action.payload.data.comment,
+        company: action.payload.data.company,
+        profileImage: action.payload.data.profileImage,
+      };
     },
   },
 });
