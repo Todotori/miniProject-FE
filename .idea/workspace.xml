@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 오탈자 수정.">
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Add] 토큰 오류 모달 추가.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/config/configStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/config/configStore.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +72,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="7777000" />
+      <workItem from="1662453013763" duration="9591000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -353,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662501985335</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="[Add] 토큰 오류 모달 추가.">
+      <created>1662511602886</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1662511602886</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,7 +392,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Add] Email Validation." />
     <MESSAGE value="[Add] 중복 확인 기능 추가." />
     <MESSAGE value="[Fix] Fix Minor issues." />
     <MESSAGE value="[Add] NotFound.jsx" />
@@ -409,6 +416,7 @@
     <MESSAGE value="[Fix] introduction -&gt; comment." />
     <MESSAGE value="[Fix] Fix minor issues." />
     <MESSAGE value="[Fix] 오탈자 수정." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fix] 오탈자 수정." />
+    <MESSAGE value="[Add] 토큰 오류 모달 추가." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Add] 토큰 오류 모달 추가." />
   </component>
 </project>
