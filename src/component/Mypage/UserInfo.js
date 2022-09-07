@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import {useSelector} from "react-redux";
-import EditModal from "./EditModal";
+import EditUserModal from "./EditUserModal";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import {useDispatch} from "react-redux";
 import {__getUserInfo} from "../../redux/modules/userInfoSlice";
@@ -42,7 +42,7 @@ const UserInfo = () => {
         </MyGroups>
       </Wrapper>
       <UnderLine />
-      {isOpen && <EditModal setIsOpen={setIsOpen} />}
+      {isOpen && <EditUserModal setIsOpen={setIsOpen} />}
     </>
   );
 };
