@@ -9,17 +9,22 @@ import useToken from "../../hooks/useToken";
 const SideBar = ({spreadNav, isView}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(__getTodosCount());
+  }, []);
   const count = useSelector((state) => state.todos.count);
   const decode = useToken();
-  const nickname = decode(sessionStorage.getItem("access_token")).sub;
+  let nickname;
+  if (sessionStorage.getItem("access_token")) {
+    nickname = decode(sessionStorage.getItem("access_token")).sub;
+  } else {
+    nickname = "Anonymous";
+  }
   const logOut = () => {
     sessionStorage.removeItem("access_token");
     sessionStorage.removeItem("user_id");
     navigate("/login");
   };
-  useEffect(() => {
-    dispatch(__getTodosCount());
-  }, [count]);
   return (
     <>
       <CustomSideBar spreadNav={spreadNav}>
