@@ -12,7 +12,7 @@ import useInput from "../../hooks/useInput";
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import {useDispatch} from "react-redux";
-import {signinUserThunk} from "../../redux/modules/signinUserSlice";
+import {signInUserThunk} from "../../redux/modules/signInUserSlice";
 
 const Login = () => {
     const navigator = useNavigate();
@@ -21,7 +21,7 @@ const Login = () => {
     const emailValidator = useEmailValidator();
     const [password, setPassword, resetPassword] = useInput();
     const [modal, setModal] = useModal();
-    const register = async () => {
+    const signIn = async () => {
         if (email.length === 0) {
             setModal("이메일을 입력해주세요.");
         } else if (!emailValidator(email)) {
@@ -33,9 +33,9 @@ const Login = () => {
                 email,
                 password,
             };
-            const signinResponse = await dispatch(signinUserThunk(user));
-            if (signinResponse.error) {
-                const errorCode = signinResponse.payload;
+            const signInResponse = await dispatch(signInUserThunk(user));
+            if (signInResponse.error) {
+                const errorCode = signInResponse.payload;
                 switch (errorCode) {
                     case "MEMBER_NOT_FOUND":
                         setModal("회원 정보가 존재하지 않습니다.");
@@ -51,7 +51,7 @@ const Login = () => {
                         break;
                 }
             } else {
-                const {token, userID} = signinResponse.payload;
+                const {token, userID} = signInResponse.payload;
                 sessionStorage.setItem("access_token", token);
                 sessionStorage.setItem("user_id", userID);
                 navigator("/");
@@ -94,7 +94,7 @@ const Login = () => {
                         <p>아이디가 아직 없으신가요?</p>
                     </Link>
                 </LoginLink>
-                <button onClick={register}>일하러 가기</button>
+                <button onClick={signIn}>일하러 가기</button>
             </FormContainer>
             {modal}
         </LoginContainer>

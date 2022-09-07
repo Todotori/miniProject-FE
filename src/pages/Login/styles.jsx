@@ -52,6 +52,7 @@ const FormField = styled.div`
     border: 1px solid gray;
     width: 100%;
     font-size: 1.2rem;
+    font-family: inherit;
   }
 
   textarea {
