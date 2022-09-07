@@ -9,7 +9,7 @@ const ModalContainer = styled.div`
   height: 100vh;
   max-width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: ${(props) => props.visibility ? "flex" : "none"};
+  display: ${(props) => props.$visibility ? "flex" : "none"};
   justify-content: center;
   align-items: center;
 `;
