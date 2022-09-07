@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] Fix minor issues.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Layout/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Layout/SideBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useLogout.js" beforeDir="false" />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Update] 로그아웃 기능 구현.">
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +69,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="11899000" />
+      <workItem from="1662453013763" duration="12158000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -395,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662517229664</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="[Update] 로그아웃 기능 구현.">
+      <created>1662531598132</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1662531598132</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +431,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Add] NotFound.jsx" />
     <MESSAGE value="[Update] Move configStore.js" />
     <MESSAGE value="[Update] Modify index.html" />
     <MESSAGE value="[Update] Update axios.create({baseURL: http://3.34.90.63})." />
@@ -451,6 +455,7 @@
     <MESSAGE value="[Fix] Typo: signin -&gt; signIn." />
     <MESSAGE value="[Fix] visibility -&gt; $visibility (Transient Props)." />
     <MESSAGE value="[Fix] Fix minor issues." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fix] Fix minor issues." />
+    <MESSAGE value="[Update] 로그아웃 기능 구현." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Update] 로그아웃 기능 구현." />
   </component>
 </project>
