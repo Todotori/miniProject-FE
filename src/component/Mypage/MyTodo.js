@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from "styled-components";
 import Hashtag from "./Hashtag";
@@ -10,7 +9,6 @@ import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 import useToken from "../../hooks/useToken";
 
 const MyTodo = ({todo}) => {
-
   const [isMine, setIsMine] = React.useState(false);
   const dispatch = useDispatch();
   const onClickIsDone = () => {
@@ -21,10 +19,11 @@ const MyTodo = ({todo}) => {
   };
 
   const decode = useToken();
+  const nickname = decode(sessionStorage.getItem("access_token")).sub;
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
   }, [todo]);
-
+  const splitTag = todo.tag.split(",");
   return (
     <Container
       variants={CreateAnimation}
@@ -32,7 +31,6 @@ const MyTodo = ({todo}) => {
       animate="end"
       isMine={isMine}
     >
-
       <TodoDeleteBox>
         <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
       </TodoDeleteBox>
