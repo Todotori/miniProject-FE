@@ -35,13 +35,14 @@ const HeaderWrapper = styled.div`
   top: 0;
   background-color: rgba(192, 188, 185, 0.8);
   height: 10%;
+  z-index: 10;
 `;
 
 const MenuButton = styled.div`
   position: absolute;
   left: 15px;
   top: 20px;
-  z-index: 1000;
+  z-index: 11;
 `;
 
 const Logo = styled.img`
