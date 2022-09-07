@@ -1,31 +1,40 @@
-import React from 'react';
-import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import React from "react";
+import styled from "styled-components";
+import {motion} from "framer-motion";
+import useInput from "../../hooks/useInput";
 
 function EditModal({setIsOpen}) {
-    const closeModal = () => {
-        setIsOpen(false);
-    };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
-    return (
-        <ModalBack onClick={closeModal}>
-            <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
-                <ModalHeader>
-                    <ModalLabel size={35}>내 정보 수정</ModalLabel>
-                    <DotoriIconX
-                        src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png'
-                        onClick={closeModal}/>
-                </ModalHeader>
-                <ModalInputs>
-                    <ModalLabel size={25}>프로필 사진 변경</ModalLabel>
-                    <Button>찾아보기..</Button>
-                    <ModalLabel size={25}>자기소개 수정</ModalLabel>
-                    <ModalText></ModalText>
-                </ModalInputs>
-                <Button>완료</Button>
-            </ModalBox>
-        </ModalBack>
-    );
+  const [content, onContentHandler, contentReset] = useInput();
+
+  return (
+    <ModalBack onClick={closeModal}>
+      <ModalBox
+        variants={CreateAnimation}
+        initial="start"
+        animate="end"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <ModalHeader>
+          <ModalLabel size={35}>내 정보 수정</ModalLabel>
+          <DotoriIconX
+            src="https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png"
+            onClick={closeModal}
+          />
+        </ModalHeader>
+        <ModalInputs>
+          <ModalLabel size={25}>프로필 사진 변경</ModalLabel>
+          <Button>찾아보기..</Button>
+          <ModalLabel size={25}>자기소개 수정</ModalLabel>
+          <ModalText onChange={onContentHandler} />
+        </ModalInputs>
+        <Button>완료</Button>
+      </ModalBox>
+    </ModalBack>
+  );
 }
 
 export default EditModal;
@@ -79,7 +88,7 @@ const ModalInputs = styled.div`
 `;
 
 const ModalLabel = styled.div`
-  font-size: ${props => props.size}px;
+  font-size: ${(props) => props.size}px;
   margin-bottom: 20px;
 `;
 
@@ -89,6 +98,6 @@ const DotoriIconX = styled.img`
 `;
 
 const CreateAnimation = {
-    start: {opacity: 0, scale: 0.5},
-    end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
+  start: {opacity: 0, scale: 0.5},
+  end: {opacity: 1, scale: 1, transition: {duration: 0.5}},
 };
