@@ -6,22 +6,29 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { __updateIsDone, __deleteTodo } from '../../redux/modules/todos';
+import useToken from '../../hooks/useToken';
 
 const MyTodo = ({ todo }) => {
+  const [isMine, setIsMine] = React.useState(false);
   const dispatch = useDispatch();
-  // const tags = useSelector(state => state.tags);
-  const splitTag = todo.tag.split(',');
-  console.log('🚀 ~ MyTodo ~ splitTag', splitTag);
-
   const onClickIsDone = () => {
     dispatch(__updateIsDone(todo.id));
   };
   const onClickDelete = () => {
     dispatch(__deleteTodo(todo.id));
   };
-  
+
+  const decode = useToken();
+  const nickname = decode(sessionStorage.getItem('access_token')).sub;
+
+  const splitTag = todo.tag.split(',');
+
+  React.useEffect(() => {
+    setIsMine(nickname === todo.member.nickname);
+  }, [todo]);
+
   return (
-    <Container variants={CreateAnimation} initial='start' animate='end'>
+    <Container isMine={isMine} variants={CreateAnimation} initial='start' animate='end'>
       <TodoDeleteBox>
         <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize='large' />
       </TodoDeleteBox>
@@ -39,6 +46,7 @@ const MyTodo = ({ todo }) => {
           return <Hashtag key={tag} tagname={tag} />;
         })}
       </HashTagBox>
+      <NickNameBox>{`작성자 : ${todo.member.nickname}`}</NickNameBox>
     </Container>
   );
 };
@@ -103,5 +111,14 @@ const CreateAnimation = {
   start: { opacity: 0, y: 10 },
   end: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
+
+const NickNameBox = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  font-size: 13px;
+  color: gray;
+  text-align: left;
+`;
 
 export default MyTodo;
