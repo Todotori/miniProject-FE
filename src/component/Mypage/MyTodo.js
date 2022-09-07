@@ -1,16 +1,14 @@
+import React from 'react';
+import styled from 'styled-components';
+import Hashtag from './Hashtag';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { __updateIsDone, __deleteTodo } from '../../redux/modules/todos';
+import useToken from '../../hooks/useToken';
 
-import React from "react";
-import styled from "styled-components";
-import Hashtag from "./Hashtag";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-import {motion} from "framer-motion";
-import {useDispatch, useSelector} from "react-redux";
-import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
-import useToken from "../../hooks/useToken";
-
-const MyTodo = ({todo}) => {
-
+const MyTodo = ({ todo }) => {
   const [isMine, setIsMine] = React.useState(false);
   const dispatch = useDispatch();
   const onClickIsDone = () => {
@@ -19,26 +17,22 @@ const MyTodo = ({todo}) => {
   const onClickDelete = () => {
     dispatch(__deleteTodo(todo.id));
   };
-
+  
+  const splitTag = todo.tag.split(",");
   const decode = useToken();
+  const nickname = decode(sessionStorage.getItem('access_token')).sub;
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
   }, [todo]);
 
   return (
-    <Container
-      variants={CreateAnimation}
-      initial="start"
-      animate="end"
-      isMine={isMine}
-    >
-
+    <Container variants={CreateAnimation} initial='start' animate='end' isMine={isMine}>
       <TodoDeleteBox>
-        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize='large' />
       </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
-          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
+          <CheckBoxIcon onClick={onClickIsDone} fontSize='large' />
         </TodoCheckBox>
         <TodoLetterBox>
           <TodoTitle>{todo.title}</TodoTitle>
@@ -46,7 +40,7 @@ const MyTodo = ({todo}) => {
         </TodoLetterBox>
       </TodoInfoBox>
       <HashTagBox>
-        {splitTag.map((tag) => {
+        {splitTag.map(tag => {
           return <Hashtag key={tag} tagname={tag} />;
         })}
       </HashTagBox>
@@ -57,7 +51,7 @@ const MyTodo = ({todo}) => {
 
 const Container = styled(motion.div)`
   position: relative;
-  border: 2px solid ${(props) => (props.isMine ? "#6D6158" : "#c0b3a9")};
+  border: 2px solid ${props => (props.isMine ? '#6D6158' : '#c0b3a9')};
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -79,7 +73,7 @@ const TodoInfoBox = styled.div`
 const TodoCheckBox = styled.div`
   margin-right: 30px;
   margin-bottom: 40px;
-  color: ${(props) => (!props.isDone ? "#e84118" : "#4cd137")};
+  color: ${props => (!props.isDone ? '#e84118' : '#4cd137')};
 `;
 const TodoDeleteBox = styled.div`
   position: absolute;
@@ -108,8 +102,8 @@ const HashTagBox = styled.div`
 `;
 
 const CreateAnimation = {
-  start: {opacity: 0, y: 10},
-  end: {opacity: 1, y: 0, transition: {duration: 0.5}},
+  start: { opacity: 0, y: 10 },
+  end: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const NickNameBox = styled.div`

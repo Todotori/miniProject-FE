@@ -28,7 +28,7 @@ function AddModal({ setIsOpen }) {
 
   // console.log(check)
   const tagSplit = check.join(',').split(',');
-  
+
   const onSubmit = () => {
     const arrayToString = check.join(',');
     titleReset();
