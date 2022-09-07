@@ -4,16 +4,13 @@ import Hashtag from "./Hashtag";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 import useToken from "../../hooks/useToken";
 
 const MyTodo = ({todo}) => {
+  const [isMine, setIsMine] = React.useState(false);
   const dispatch = useDispatch();
-  // const tags = useSelector(state => state.tags);
-  const splitTag = todo.tag.split(",");
-  console.log("🚀 ~ MyTodo ~ splitTag", splitTag);
-
   const onClickIsDone = () => {
     dispatch(__updateIsDone(todo.id));
   };
@@ -21,12 +18,24 @@ const MyTodo = ({todo}) => {
     dispatch(__deleteTodo(todo.id));
   };
 
+  const decode = useToken();
+  const nickname = decode(sessionStorage.getItem("access_token")).sub;
+
+  const splitTag = todo.tag.split(",");
+
+  React.useEffect(() => {
+    setIsMine(nickname === todo.member.nickname);
+  }, [todo]);
+
   return (
-    <Container variants={CreateAnimation} initial="start" animate="end">
+    <Container
+      variants={CreateAnimation}
+      initial="start"
+      animate="end"
+      isMine={isMine}
+    >
       <TodoDeleteBox>
-        {isMine ? (
-          <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
-        ) : null}
+        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
       </TodoDeleteBox>
       <TodoInfoBox>
         <TodoCheckBox isDone={todo.done}>
@@ -42,20 +51,18 @@ const MyTodo = ({todo}) => {
           return <Hashtag key={tag} tagname={tag} />;
         })}
       </HashTagBox>
+      <NickNameBox>{todo.member.nickname}</NickNameBox>
     </Container>
   );
 };
 
 const Container = styled(motion.div)`
   position: relative;
-
-  border: 2px solid #c0b3a9;
+  border: 2px solid ${(props) => (props.isMine ? "#6D6158" : "#c0b3a9")};
   border-radius: 15px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   width: 100%;
   height: 170px;
   z-index: 1;
@@ -95,7 +102,6 @@ const HashTagBox = styled.div`
   width: 80%;
   height: 30%;
   margin-left: 30px;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -106,5 +112,14 @@ const CreateAnimation = {
   start: {opacity: 0, y: 10},
   end: {opacity: 1, y: 0, transition: {duration: 0.5}},
 };
+
+const NickNameBox = styled.div`
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  font-size: 12px;
+  color: gray;
+  text-align: left;
+`;
 
 export default MyTodo;
