@@ -3,6 +3,7 @@ import api from "../../api";
 
 const initialState = {
   todos: [],
+  count: 0,
   error: null,
   isLoading: false,
 };
@@ -23,7 +24,33 @@ export const __getMyTodos = createAsyncThunk(
   "todos/getMyTodos",
   async (payload, thunkAPI) => {
     try {
-      const {data} = await api.get("/todo/");
+      let data;
+      switch (payload) {
+        case "WHOLE":
+          const WholeTodos = await api.get("/todo/");
+          data = WholeTodos.data;
+          break;
+        case "TODO":
+          const Todos = await api.get("/todo/undone");
+          data = Todos.data;
+          break;
+        case "DONE":
+          const Dones = await api.get("/todo/done");
+          data = Dones.data;
+          break;
+      }
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getTodosCount = createAsyncThunk(
+  "todos/getTodosCount",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.get("/todo/undone");
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -119,6 +146,10 @@ export const todoSlice = createSlice({
       }
       state.todos = state.todos.filter((todo) => todo.id !== action.meta.arg);
       return state;
+    },
+
+    [__getTodosCount.fulfilled]: (state, action) => {
+      state.count = action.payload.data.length;
     },
   },
 });
