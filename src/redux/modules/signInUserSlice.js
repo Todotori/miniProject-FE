@@ -31,7 +31,7 @@ export const signInUserThunk = createAsyncThunk(
     }
 );
 
-const signinUserSlice = createSlice({
+const signInUserSlice = createSlice({
     name: "signinUser",
     initialState,
     reducers: {},
@@ -51,4 +51,4 @@ const signinUserSlice = createSlice({
     },
 });
 
-export default signinUserSlice.reducer;
+export default signInUserSlice.reducer;

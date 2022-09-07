@@ -12,7 +12,7 @@ import useInput from "../../hooks/useInput";
 import useModal from "../../hooks/useModal";
 import useEmailValidator from "../../hooks/useEmailValidator";
 import {useDispatch} from "react-redux";
-import {signInUserThunk} from "../../redux/modules/signinUserSlice";
+import {signInUserThunk} from "../../redux/modules/signInUserSlice";
 
 const Login = () => {
     const navigator = useNavigate();
@@ -21,7 +21,7 @@ const Login = () => {
     const emailValidator = useEmailValidator();
     const [password, setPassword, resetPassword] = useInput();
     const [modal, setModal] = useModal();
-    const register = async () => {
+    const signIn = async () => {
         if (email.length === 0) {
             setModal("이메일을 입력해주세요.");
         } else if (!emailValidator(email)) {
@@ -94,7 +94,7 @@ const Login = () => {
                         <p>아이디가 아직 없으신가요?</p>
                     </Link>
                 </LoginLink>
-                <button onClick={register}>일하러 가기</button>
+                <button onClick={signIn}>일하러 가기</button>
             </FormContainer>
             {modal}
         </LoginContainer>

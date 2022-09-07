@@ -1,5 +1,5 @@
 import createUser from "../modules/createUserSlice";
-import signInUser from "../modules/signinUserSlice";
+import signInUser from "../modules/signInUserSlice";
 import checkEmail from "../modules/checkEmailSlice";
 import checkUsername from "../modules/checkUsernameSlice";
 import todos from "../modules/todos";
