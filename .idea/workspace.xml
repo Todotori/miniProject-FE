@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] Fix minor issues." />
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 오탈자 수정.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/signinUserSlice.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +71,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="5198000" />
+      <workItem from="1662453013763" duration="7777000" />
     </task>
     <task id="LOCAL-00001" summary="Initialization">
       <created>1662092688718</created>
@@ -342,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662464203094</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="[Fix] 오탈자 수정.">
+      <created>1662501985335</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1662501985335</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +384,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Add] Modal 기능 추가." />
     <MESSAGE value="[Add] Email Validation." />
     <MESSAGE value="[Add] 중복 확인 기능 추가." />
     <MESSAGE value="[Fix] Fix Minor issues." />
@@ -398,6 +408,7 @@
     <MESSAGE value="[Fix] Fix typos." />
     <MESSAGE value="[Fix] introduction -&gt; comment." />
     <MESSAGE value="[Fix] Fix minor issues." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fix] Fix minor issues." />
+    <MESSAGE value="[Fix] 오탈자 수정." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] 오탈자 수정." />
   </component>
 </project>
