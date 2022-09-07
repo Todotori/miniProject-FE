@@ -24,7 +24,7 @@ export const __addTodo = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const {data} = await api.post("/todo", payload);
-      console.log(data);
+      console.log('🚀 ~ data', data)
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -76,7 +76,7 @@ export const todoSlice = createSlice({
     },
 
     [__addTodo.fulfilled]: (state, action) => {
-      state.todos.push(action.payload);
+      state.todos.push(action.payload.data);
     },
     [__addTodo.rejected]: (state, action) => {
       return;
