@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import api from '../../api';
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import api from "../../api";
 
 const initialState = {
   todos: [],
@@ -8,31 +8,34 @@ const initialState = {
   isLoading: false,
 };
 
-export const __getTodos = createAsyncThunk('todos/getTodos', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.get('/todo/all');
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const __getTodos = createAsyncThunk(
+  "todos/getTodos",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.get("/todo/all");
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 export const __getMyTodos = createAsyncThunk(
   //로그인 상태에서만 가능.
-  'todos/getMyTodos',
+  "todos/getMyTodos",
   async (payload, thunkAPI) => {
     try {
       let data;
       switch (payload) {
-        case 'WHOLE':
-          const WholeTodos = await api.get('/todo/');
+        case "WHOLE":
+          const WholeTodos = await api.get("/todo/");
           data = WholeTodos.data;
           break;
-        case 'TODO':
-          const Todos = await api.get('/todo/undone');
+        case "TODO":
+          const Todos = await api.get("/todo/undone");
           data = Todos.data;
           break;
-        case 'DONE':
-          const Dones = await api.get('/todo/done');
+        case "DONE":
+          const Dones = await api.get("/todo/done");
           data = Dones.data;
           break;
       }
@@ -43,62 +46,77 @@ export const __getMyTodos = createAsyncThunk(
   }
 );
 
-export const __getTodosCount = createAsyncThunk('todos/getTodosCount', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.get('/todo/undone');
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const __getTodosCount = createAsyncThunk(
+  "todos/getTodosCount",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.get("/todo/undone");
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const __addTodo = createAsyncThunk('todos/addTodo', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.post('/todo', payload);
-    console.log('🚀 ~ data', data);
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const __addTodo = createAsyncThunk(
+  "todos/addTodo",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.post("/todo", payload);
+      console.log("🚀 ~ data", data);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const __editTodo = createAsyncThunk('todos/editTodo', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.put('/todo', payload);
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const __editTodo = createAsyncThunk(
+  "todos/editTodo",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.put("/todo", payload);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const __deleteTodo = createAsyncThunk('todos/deleteTodo', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.delete(`/todo/${payload}`);
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const __deleteTodo = createAsyncThunk(
+  "todos/deleteTodo",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.delete(`/todo/${payload}`);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const __updateIsDone = createAsyncThunk('todos/updateIsDone', async (payload, thunkAPI) => {
-  try {
-    const { data } = await api.put(`/todo/${payload}/done`, {
-      id: payload,
-      done: true,
-    });
-    console.log(data);
-    return thunkAPI.fulfillWithValue(data);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+export const __updateIsDone = createAsyncThunk(
+  "todos/updateIsDone",
+  async (payload, thunkAPI) => {
+    try {
+      const {data} = await api.put(`/todo/${payload}/done`, {
+        id: payload,
+        done: true,
+      });
+      console.log(data);
+      return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const todoSlice = createSlice({
-  name: 'todos',
+  name: "todos",
   initialState,
   reducers: {},
   extraReducers: {
-    [__getTodos.pending]: state => {
+    [__getTodos.pending]: (state) => {
       state.isLoading = true;
     },
     [__getTodos.fulfilled]: (state, action) => {
@@ -121,7 +139,7 @@ export const todoSlice = createSlice({
     },
 
     [__updateIsDone.fulfilled]: (state, action) => {
-      state.todos.map(todo => {
+      state.todos.map((todo) => {
         if (todo.id === action.payload.data.id) {
           return (todo.done = action.payload.data.done);
         } else {
@@ -136,7 +154,7 @@ export const todoSlice = createSlice({
       if (!action.payload.success) {
         return;
       }
-      state.todos = state.todos.filter(todo => todo.id !== action.meta.arg);
+      state.todos = state.todos.filter((todo) => todo.id !== action.meta.arg);
       return state;
     },
 

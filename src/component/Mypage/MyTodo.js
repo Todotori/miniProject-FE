@@ -5,7 +5,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import {FiEdit3} from "react-icons/fi";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 import useToken from "../../hooks/useToken";
 import EditModal from "./EditModal";
@@ -40,22 +40,30 @@ const MyTodo = ({todo}) => {
       initial="start"
       animate="end"
     >
-      {/* NOTE 수정버튼 */}
-      <TodoEditBox onClick={modalIsOpen}>
-        <FiEdit3 fontSize="large" />
-        {isOpen && (
-          <EditModal
-            setIsOpen={setIsOpen}
-            title={todo.title}
-            content={todo.content}
-          />
-        )}
-      </TodoEditBox>
+      {isMine && ( //현재 사용자에게만 보임
+        <>
+          {/* NOTE 수정버튼 */}
 
-      {/* NOTE 삭제버튼 */}
-      <TodoDeleteBox>
-        <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large" />
-      </TodoDeleteBox>
+          <TodoEditBox onClick={modalIsOpen}>
+            <FiEdit3 fontSize="large" />
+            {isOpen && (
+              <EditModal
+                setIsOpen={setIsOpen}
+                title={todo.title}
+                content={todo.content}
+              />
+            )}
+          </TodoEditBox>
+
+          {/* NOTE 삭제버튼 */}
+          <TodoDeleteBox>
+            <DeleteForeverRoundedIcon
+              onClick={onClickDelete}
+              fontSize="large"
+            />
+          </TodoDeleteBox>
+        </>
+      )}
 
       {/* WHAT 투두정보들 */}
       <TodoInfoBox>
