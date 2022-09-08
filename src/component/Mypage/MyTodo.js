@@ -5,85 +5,93 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import {FiEdit3} from "react-icons/fi";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import {motion} from "framer-motion";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 import useToken from "../../hooks/useToken";
 import EditModal from "./EditModal";
 import {useNavigate} from "react-router-dom";
 
 const MyTodo = ({todo}) => {
-    const navigator = useNavigate();
-    const [isMine, setIsMine] = React.useState(false);
-    const [isOpen, setIsOpen] = React.useState(false);
-    const modalIsOpen = () => {
-        setIsOpen(true);
-    };
-    const dispatch = useDispatch();
+  const navigator = useNavigate();
+  const [isMine, setIsMine] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const modalIsOpen = () => {
+    setIsOpen(true);
+  };
+  const dispatch = useDispatch();
 
-    const onClickIsDone = () => {
-        dispatch(__updateIsDone(todo.id));
-    };
-    const onClickDelete = () => {
-        dispatch(__deleteTodo(todo.id));
-    };
+  const onClickIsDone = () => {
+    dispatch(__updateIsDone(todo.id));
+  };
+  const onClickDelete = () => {
+    dispatch(__deleteTodo(todo.id));
+  };
 
-    const decode = useToken();
-    let nickname;
-    let splitTag;
-    if (!sessionStorage.getItem("access_token")) {
-        nickname = "Anonymous";
-        navigator("/login");
-    } else {
-        nickname = decode(sessionStorage.getItem("access_token")).sub;
-        splitTag = todo.tag.split(",");
-    }
+  const decode = useToken();
+  let nickname;
+  let splitTag;
+  if (!sessionStorage.getItem("access_token")) {
+    nickname = "Anonymous";
+    navigator("/login");
+  } else {
+    nickname = decode(sessionStorage.getItem("access_token")).sub;
+    splitTag = todo.tag.split(",");
+  }
 
-    React.useEffect(() => {
-        setIsMine(nickname === todo.member.nickname);
-    }, [todo]);
+  React.useEffect(() => {
+    setIsMine(nickname === todo.member.nickname);
+  }, [todo]);
 
-    return (
-        <Container
-            $isMine={isMine}
-            variants={CreateAnimation}
-            initial="start"
-            animate="end"
-        >
-            {/* NOTE 수정버튼 */}
-            <TodoEditBox onClick={modalIsOpen}>
-                <FiEdit3 fontSize="large"/>
-                {isOpen && (
-                    <EditModal
-                        setIsOpen={setIsOpen}
-                        title={todo.title}
-                        content={todo.content}
-                    />
-                )}
-            </TodoEditBox>
+  return (
+    <Container
+      $isMine={isMine}
+      variants={CreateAnimation}
+      initial="start"
+      animate="end"
+    >
+      {isMine && ( //현재 사용자에게만 보임
+        <>
+          {/* NOTE 수정버튼 */}
 
-            {/* NOTE 삭제버튼 */}
-            <TodoDeleteBox>
-                <DeleteForeverRoundedIcon onClick={onClickDelete} fontSize="large"/>
-            </TodoDeleteBox>
+          <TodoEditBox onClick={modalIsOpen}>
+            <FiEdit3 fontSize="large" />
+            {isOpen && (
+              <EditModal
+                setIsOpen={setIsOpen}
+                title={todo.title}
+                content={todo.content}
+              />
+            )}
+          </TodoEditBox>
 
-            {/* WHAT 투두정보들 */}
-            <TodoInfoBox>
-                <TodoCheckBox isDone={todo.done}>
-                    <CheckBoxIcon onClick={onClickIsDone} fontSize="large"/>
-                </TodoCheckBox>
-                <TodoLetterBox>
-                    <TodoTitle>{todo.title}</TodoTitle>
-                    <TodoDetail>{todo.content}</TodoDetail>
-                </TodoLetterBox>
-            </TodoInfoBox>
-            <HashTagBox>
-                {splitTag.map((tag) => {
-                    return <Hashtag key={tag} tagname={tag}/>;
-                })}
-            </HashTagBox>
-            <NickNameBox>{`작성자 : ${todo.member.nickname}`}</NickNameBox>
-        </Container>
-    );
+          {/* NOTE 삭제버튼 */}
+          <TodoDeleteBox>
+            <DeleteForeverRoundedIcon
+              onClick={onClickDelete}
+              fontSize="large"
+            />
+          </TodoDeleteBox>
+        </>
+      )}
+
+      {/* WHAT 투두정보들 */}
+      <TodoInfoBox>
+        <TodoCheckBox isDone={todo.done}>
+          <CheckBoxIcon onClick={onClickIsDone} fontSize="large" />
+        </TodoCheckBox>
+        <TodoLetterBox>
+          <TodoTitle>{todo.title}</TodoTitle>
+          <TodoDetail>{todo.content}</TodoDetail>
+        </TodoLetterBox>
+      </TodoInfoBox>
+      <HashTagBox>
+        {splitTag.map((tag) => {
+          return <Hashtag key={tag} tagname={tag} />;
+        })}
+      </HashTagBox>
+      <NickNameBox>{`작성자 : ${todo.member.nickname}`}</NickNameBox>
+    </Container>
+  );
 };
 
 const Container = styled(motion.div)`
@@ -154,8 +162,8 @@ const HashTagBox = styled.div`
 `;
 
 const CreateAnimation = {
-    start: {opacity: 0, y: 10},
-    end: {opacity: 1, y: 0, transition: {duration: 0.5}},
+  start: {opacity: 0, y: 10},
+  end: {opacity: 1, y: 0, transition: {duration: 0.5}},
 };
 
 const NickNameBox = styled.div`

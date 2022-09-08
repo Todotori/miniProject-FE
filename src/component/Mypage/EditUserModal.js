@@ -52,15 +52,20 @@ function EditModal({setIsOpen}) {
         </ModalHeader>
         <ModalInputs>
           <ModalLabel size={25}>프로필 사진 변경</ModalLabel>
-          <ImageInputLabel for="profileImage">사진 파일 찾기</ImageInputLabel>
-          <ImageInput
-            type="file"
-            accept="image/jpg, image/png, image/jpeg"
-            onChange={onSaveFile}
-            id="profileImage"
-          />
+          <ImageWrapper>
+            <ImageInputLabel htmlFor="profileImage">
+              사진 파일 찾기
+            </ImageInputLabel>
+            <ImageInput
+              type="file"
+              accept="image/jpg, image/png, image/jpeg"
+              onChange={onSaveFile}
+              id="profileImage"
+            />
+            <>{image && <PreviewImage src={URL.createObjectURL(image)} />}</>
+          </ImageWrapper>
           <ModalLabel size={25}>자기소개 수정</ModalLabel>
-          <ModalText onChange={onContentHandler} />
+          <ModalText onChange={onContentHandler} maxLength={50} />
           <ModalLabel size={25}>내가 속한 그룹</ModalLabel>
           <ModalTextInput onChange={onGroupHandler} />
         </ModalInputs>
@@ -128,6 +133,25 @@ const ImageInput = styled.input`
   border: none;
   background-color: #c0b3a9;
   display: none;
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+`;
+
+const PreviewImage = styled.img`
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin: auto 10px auto 10px;
+  object-fit: cover;
+
+  right: 150px;
+  bottom: 20px;
 `;
 
 const ModalText = styled.textarea`

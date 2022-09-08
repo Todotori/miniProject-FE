@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom";
 import {__getTodosCount} from "../../redux/modules/todos";
 import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
-import useToken from "../../hooks/useToken";
 import {__getUserInfo} from "../../redux/modules/userInfoSlice";
 
 const SideBar = ({spreadNav, isView}) => {
@@ -39,9 +38,11 @@ const SideBar = ({spreadNav, isView}) => {
             </MessageBox>
             <Navigation>
               <Nav onClick={() => navigate("/")}>전체보기</Nav>
-              <Nav onClick={() => navigate("/mypage/123")}>내 프로필</Nav>
+              <Nav onClick={() => navigate(`/mypage/${userInfo.nickname}`)}>
+                내 프로필
+              </Nav>
+              <Nav onClick={logOut}>로그아웃하기</Nav>
             </Navigation>
-            <Nav onClick={logOut}>로그아웃하기</Nav>
           </Wrapper>
         ) : null}
       </CustomSideBar>
@@ -108,4 +109,6 @@ const Navigation = styled.div`
 const Nav = styled.div`
   margin-bottom: 20px;
   width: 100px;
+
+  cursor: pointer;
 `;

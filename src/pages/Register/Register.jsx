@@ -1,10 +1,10 @@
 import {
-    RegisterContainer,
-    FormContainer,
-    Logo,
-    Form,
-    FormField,
-    LoginLink,
+  RegisterContainer,
+  FormContainer,
+  Logo,
+  Form,
+  FormField,
+  LoginLink,
 } from "./styles";
 import logo from "../../image/mainlogo.png";
 import {Link, useNavigate} from "react-router-dom";
@@ -19,186 +19,186 @@ import usePasswordValidator from "../../hooks/usePasswordValidator";
 import useUsernameValidator from "../../hooks/useUsernameValidator";
 
 const Register = () => {
-    const navigator = useNavigate();
-    const dispatch = useDispatch();
-    const [email, setEmail, resetEmail] = useInput();
-    const emailValidator = useEmailValidator();
-    const passwordValidator = usePasswordValidator();
-    const usernameValidator = useUsernameValidator();
-    const [password, setPassword, resetPassword] = useInput();
-    const [
-        passwordConfirmation,
-        setPasswordConfirmation,
-        resetPasswordConfirmation,
-    ] = useInput();
-    const [username, setUsername, resetUsername] = useInput();
-    const [introduction, setIntroduction, resetIntroduction] = useInput();
-    const [modal, setModal] = useModal();
-    const register = async () => {
-        if (email.length === 0) {
-            setModal("이메일을 입력해주세요.");
-        } else if (!emailValidator(email)) {
-            setModal("이메일 형식이 올바르지 않습니다.");
-        } else if (password.length === 0) {
-            setModal("비밀번호를 입력해주세요.");
-        } else if (!passwordValidator(password)) {
-            setModal(
-                "비밀번호는 적어도 한 자리의 영문자와 숫자를 포함한 5 ~ 15 자리의 문자열이어야 합니다."
-            );
-        } else if (password !== passwordConfirmation) {
-            setModal("비밀번호가 일치하지 않습니다.");
-        } else if (username.length === 0) {
-            setModal("이름을 입력해주세요.");
-        } else if (!usernameValidator(username)) {
-            setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
+  const navigator = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail, resetEmail] = useInput();
+  const emailValidator = useEmailValidator();
+  const passwordValidator = usePasswordValidator();
+  const usernameValidator = useUsernameValidator();
+  const [password, setPassword, resetPassword] = useInput();
+  const [
+    passwordConfirmation,
+    setPasswordConfirmation,
+    resetPasswordConfirmation,
+  ] = useInput();
+  const [username, setUsername, resetUsername] = useInput();
+  const [introduction, setIntroduction, resetIntroduction] = useInput();
+  const [modal, setModal] = useModal();
+  const register = async () => {
+    if (email.length === 0) {
+      setModal("이메일을 입력해주세요.");
+    } else if (!emailValidator(email)) {
+      setModal("이메일 형식이 올바르지 않습니다.");
+    } else if (password.length === 0) {
+      setModal("비밀번호를 입력해주세요.");
+    } else if (!passwordValidator(password)) {
+      setModal(
+        "비밀번호는 적어도 한 자리의 영문자와 숫자를 포함한 5 ~ 15 자리의 문자열이어야 합니다."
+      );
+    } else if (password !== passwordConfirmation) {
+      setModal("비밀번호가 일치하지 않습니다.");
+    } else if (username.length === 0) {
+      setModal("이름을 입력해주세요.");
+    } else if (!usernameValidator(username)) {
+      setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
+    } else {
+      const checkEmailResponse = await dispatch(checkEmailThunk(email));
+      const checkUsernameResponse = await dispatch(
+        checkUsernameThunk(username)
+      );
+      if (!checkEmailResponse.payload) {
+        setModal("이미 사용 중인 이메일입니다.");
+      } else if (!checkUsernameResponse.payload) {
+        setModal("이미 사용 중인 닉네임입니다.");
+      } else {
+        const newUser = {
+          email,
+          nickname: username,
+          password,
+          passwordConfirm: passwordConfirmation,
+          comment: introduction,
+        };
+        const createUserResponse = await dispatch(createUserThunk(newUser));
+        if (createUserResponse.error) {
+          const errorCode = createUserResponse.payload;
+          switch (errorCode) {
+            case "DUPLICATED_EMAIL":
+              setModal("이미 사용되고 있는 이메일입니다.");
+              break;
+            case "DUPLICATED_NICKNAME":
+              setModal("이미 사용되고 있는 닉네임입니다.");
+              break;
+            case "PASSWORDS_NOT_MATCHED":
+              setModal("비밀번호가 일치하지 않습니다.");
+              break;
+            case "TOKEN_NOT_SENT":
+              setModal("서버 측으로부터 토큰을 발급받지 못하였습니다.");
+              break;
+            case "INVALID_USERNAME":
+              setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
+              break;
+            default:
+              setModal("알 수 없는 오류가 발생하였습니다.");
+              break;
+          }
         } else {
-            const checkEmailResponse = await dispatch(checkEmailThunk(email));
-            const checkUsernameResponse = await dispatch(
-                checkUsernameThunk(username)
-            );
-            if (!checkEmailResponse.payload) {
-                setModal("이미 사용 중인 이메일입니다.");
-            } else if (!checkUsernameResponse.payload) {
-                setModal("이미 사용 중인 닉네임입니다.");
-            } else {
-                const newUser = {
-                    email,
-                    nickname: username,
-                    password,
-                    passwordConfirm: passwordConfirmation,
-                    comment: introduction,
-                };
-                const createUserResponse = await dispatch(createUserThunk(newUser));
-                if (createUserResponse.error) {
-                    const errorCode = createUserResponse.payload;
-                    switch (errorCode) {
-                        case "DUPLICATED_EMAIL":
-                            setModal("이미 사용되고 있는 이메일입니다.");
-                            break;
-                        case "DUPLICATED_NICKNAME":
-                            setModal("이미 사용되고 있는 닉네임입니다.");
-                            break;
-                        case "PASSWORDS_NOT_MATCHED":
-                            setModal("비밀번호가 일치하지 않습니다.");
-                            break;
-                        case "TOKEN_NOT_SENT":
-                            setModal("서버 측으로부터 토큰을 발급받지 못하였습니다.");
-                            break;
-                        case "INVALID_USERNAME":
-                            setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
-                            break;
-                        default:
-                            setModal("알 수 없는 오류가 발생하였습니다.");
-                            break;
-                    }
-                } else {
-                    const {token, userID} = createUserResponse.payload;
-                    sessionStorage.setItem("access_token", token);
-                    sessionStorage.setItem("user_id", userID);
-                    resetAll();
-                    navigator("/");
-                }
-            }
+          const {token, userID} = createUserResponse.payload;
+          sessionStorage.setItem("access_token", token);
+          sessionStorage.setItem("user_id", userID);
+          resetAll();
+          navigator("/");
         }
-    };
-    const resetAll = () => {
-        resetEmail();
-        resetPassword();
-        resetPasswordConfirmation();
-        resetUsername();
-        resetIntroduction();
-    };
-    const checkEmailHandler = async () => {
-        if (email.length === 0) {
-            setModal("이메일을 입력해주세요.");
-        } else if (!emailValidator(email)) {
-            setModal("이메일 형식이 올바르지 않습니다.");
-        } else {
-            const {payload} = await dispatch(checkEmailThunk(email));
-            if (!payload) {
-                setModal("이미 사용 중인 이메일입니다.");
-            } else {
-                setModal("사용 가능한 이메일입니다.");
-            }
-        }
-    };
-    const checkUsernameHandler = async () => {
-        if (username.length === 0) {
-            setModal("닉네임을 입력해주세요.");
-        } else if (!usernameValidator(username)) {
-            setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
-        } else {
-            const {payload} = await dispatch(checkUsernameThunk(username));
-            if (!payload) {
-                setModal("이미 사용 중인 닉네임입니다.");
-            } else {
-                setModal("사용 가능한 닉네임입니다.");
-            }
-        }
-    };
-    return (
-        <RegisterContainer>
-            <FormContainer>
-                <Logo>
-                    <img src={logo} alt="Logo"/>
-                </Logo>
-                <Form>
-                    <FormField>
-                        <input
-                            type="email"
-                            placeholder={"이메일"}
-                            required
-                            value={email}
-                            onChange={setEmail}
-                        />
-                        <button onClick={checkEmailHandler}>중복확인</button>
-                    </FormField>
-                    <FormField>
-                        <input
-                            type="password"
-                            placeholder={"비밀번호"}
-                            required
-                            value={password}
-                            onChange={setPassword}
-                        />
-                    </FormField>
-                    <FormField>
-                        <input
-                            type="password"
-                            placeholder={"비밀번호 확인"}
-                            required
-                            value={passwordConfirmation}
-                            onChange={setPasswordConfirmation}
-                        />
-                    </FormField>
-                    <FormField>
-                        <input
-                            type="text"
-                            placeholder={"이름"}
-                            required
-                            value={username}
-                            onChange={setUsername}
-                        />
-                        <button onClick={checkUsernameHandler}>중복확인</button>
-                    </FormField>
-                    <FormField>
-            <textarea
-                placeholder={"자기소개"}
-                value={introduction}
-                onChange={setIntroduction}
+      }
+    }
+  };
+  const resetAll = () => {
+    resetEmail();
+    resetPassword();
+    resetPasswordConfirmation();
+    resetUsername();
+    resetIntroduction();
+  };
+  const checkEmailHandler = async () => {
+    if (email.length === 0) {
+      setModal("이메일을 입력해주세요.");
+    } else if (!emailValidator(email)) {
+      setModal("이메일 형식이 올바르지 않습니다.");
+    } else {
+      const {payload} = await dispatch(checkEmailThunk(email));
+      if (!payload) {
+        setModal("이미 사용 중인 이메일입니다.");
+      } else {
+        setModal("사용 가능한 이메일입니다.");
+      }
+    }
+  };
+  const checkUsernameHandler = async () => {
+    if (username.length === 0) {
+      setModal("닉네임을 입력해주세요.");
+    } else if (!usernameValidator(username)) {
+      setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
+    } else {
+      const {payload} = await dispatch(checkUsernameThunk(username));
+      if (!payload) {
+        setModal("이미 사용 중인 닉네임입니다.");
+      } else {
+        setModal("사용 가능한 닉네임입니다.");
+      }
+    }
+  };
+  return (
+    <RegisterContainer>
+      <FormContainer>
+        <Logo>
+          <img src={logo} alt="Logo" />
+        </Logo>
+        <Form>
+          <FormField>
+            <input
+              type="email"
+              placeholder={"이메일"}
+              required
+              value={email}
+              onChange={setEmail}
             />
-                    </FormField>
-                </Form>
-                <LoginLink>
-                    <Link to={"/login"}>
-                        <p>이미 도토리이신가요?</p>
-                    </Link>
-                </LoginLink>
-                <button onClick={register}>도토리되기</button>
-            </FormContainer>
-            {modal}
-        </RegisterContainer>
-    );
+            <button onClick={checkEmailHandler}>중복확인</button>
+          </FormField>
+          <FormField>
+            <input
+              type="password"
+              placeholder={"비밀번호"}
+              required
+              value={password}
+              onChange={setPassword}
+            />
+          </FormField>
+          <FormField>
+            <input
+              type="password"
+              placeholder={"비밀번호 확인"}
+              required
+              value={passwordConfirmation}
+              onChange={setPasswordConfirmation}
+            />
+          </FormField>
+          <FormField>
+            <input
+              type="text"
+              placeholder={"이름"}
+              required
+              value={username}
+              onChange={setUsername}
+            />
+            <button onClick={checkUsernameHandler}>중복확인</button>
+          </FormField>
+          <FormField>
+            <textarea
+              placeholder={"자기소개"}
+              value={introduction}
+              onChange={setIntroduction}
+            />
+          </FormField>
+        </Form>
+        <LoginLink>
+          <Link to={"/login"}>
+            <p>이미 도토리이신가요?</p>
+          </Link>
+        </LoginLink>
+        <button onClick={register}>도토리되기</button>
+      </FormContainer>
+      {modal}
+    </RegisterContainer>
+  );
 };
 
 export default Register;
