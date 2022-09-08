@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 사이드바 에러 해결.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Layout/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Layout/SideBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +74,7 @@
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
       <workItem from="1662453013763" duration="34010000" />
+      <workItem from="1662629132032" duration="8000" />
     </task>
     <task id="LOCAL-00009" summary="[Fix] Fix minor issues.">
       <created>1662334112605</created>
