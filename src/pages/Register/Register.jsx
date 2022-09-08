@@ -65,7 +65,6 @@ const Register = () => {
           comment: introduction,
         };
         const createUserResponse = await dispatch(createUserThunk(newUser));
-        console.log(newUser);
         if (createUserResponse.error) {
           const errorCode = createUserResponse.payload;
           switch (errorCode) {
