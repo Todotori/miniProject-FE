@@ -32,11 +32,7 @@ const MyTodo = ({todo}) => {
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
   }, [todo]);
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> adc2a4f55fd481e596ac32ed7a30ac1c904eb09d
   return (
     <Container
       $isMine={isMine}
