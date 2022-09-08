@@ -170,7 +170,7 @@ const NickNameBox = styled.div`
   position: absolute;
   bottom: 10px;
   right: 30px;
-  font-size: 13px;
+  font-size: 10px;
   color: gray;
   text-align: left;
 `;

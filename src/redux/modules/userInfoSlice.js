@@ -43,7 +43,7 @@ const userInfoSlice = createSlice({
   reducers: {},
   extraReducers: {
     [__getUserInfo.pending]: (state, action) => {
-      return (state = initialState);
+      state = initialState;
     },
     [__getUserInfo.fulfilled]: (state, action) => {
       return (state = action.payload);
