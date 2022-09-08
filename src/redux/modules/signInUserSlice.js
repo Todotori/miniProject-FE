@@ -12,6 +12,7 @@ export const signInUserThunk = createAsyncThunk(
     async (user, thunk) => {
         try {
             const response = await api.post("/login", user);
+            console.dir(response);
             const {data} = response;
             if (data.success) {
                 if (!response.headers["authorization"]) {
@@ -31,20 +32,24 @@ export const signInUserThunk = createAsyncThunk(
 );
 
 const signInUserSlice = createSlice({
-    name: "signinUser",
+    name: "signInUser",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(signInUserThunk.pending, (state) => {
                 state.isLoading = true;
+                state.response = null;
+                state.error = null;
             })
             .addCase(signInUserThunk.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.response = action.payload;
+                state.error = null;
             })
             .addCase(signInUserThunk.rejected, (state, action) => {
                 state.isLoading = false;
+                state.response = null;
                 state.error = action.payload;
             });
     },

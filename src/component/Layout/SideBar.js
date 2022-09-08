@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom";
 import {__getTodosCount} from "../../redux/modules/todos";
 import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
-import useToken from "../../hooks/useToken";
 import {__getUserInfo} from "../../redux/modules/userInfoSlice";
 
 const SideBar = ({spreadNav, isView}) => {
@@ -14,6 +13,7 @@ const SideBar = ({spreadNav, isView}) => {
     dispatch(__getTodosCount());
     dispatch(__getUserInfo());
   }, []);
+  const {isLoading, error} = useSelector((state) => state.signInUser);
   const count = useSelector((state) => state.todos.count);
   const userInfo = useSelector((state) => state.userInfo).data;
   let nickname;
@@ -27,26 +27,36 @@ const SideBar = ({spreadNav, isView}) => {
     sessionStorage.removeItem("user_id");
     navigate("/login");
   };
-  return (
-    <>
-      <CustomSideBar spreadNav={spreadNav}>
-        {spreadNav && isView ? (
-          <Wrapper variants={CreateAnimate} initial="start" animate="end">
-            <ProfileImage src={userInfo.profileImage} />
-            <MessageBox>
-              <WelcomeMessage>안녕하세요, {nickname}님!</WelcomeMessage>
-              <CountToDoMessage>할 일이 {count}개 남았습니다!</CountToDoMessage>
-            </MessageBox>
-            <Navigation>
-              <Nav onClick={() => navigate("/")}>전체보기</Nav>
-              <Nav onClick={() => navigate("/mypage/123")}>내 프로필</Nav>
-            </Navigation>
-            <Nav onClick={logOut}>로그아웃하기</Nav>
-          </Wrapper>
-        ) : null}
-      </CustomSideBar>
-    </>
-  );
+  if (isLoading) {
+    return <div>Loading...</div>;
+  } else if (error) {
+    return <div>{error}</div>;
+  } else {
+    return (
+      <>
+        <CustomSideBar spreadNav={spreadNav}>
+          {spreadNav && isView ? (
+            <Wrapper variants={CreateAnimate} initial="start" animate="end">
+              <ProfileImage src={userInfo.profileImage} />
+              <MessageBox>
+                <WelcomeMessage>안녕하세요, {nickname}님!</WelcomeMessage>
+                <CountToDoMessage>
+                  할 일이 {count}개 남았습니다!
+                </CountToDoMessage>
+              </MessageBox>
+              <Navigation>
+                <Nav onClick={() => navigate("/")}>전체보기</Nav>
+                <Nav onClick={() => navigate(`/mypage/${userInfo.nickname}`)}>
+                  내 프로필
+                </Nav>
+                <Nav onClick={logOut}>로그아웃하기</Nav>
+              </Navigation>
+            </Wrapper>
+          ) : null}
+        </CustomSideBar>
+      </>
+    );
+  }
 };
 
 export default SideBar;
@@ -108,4 +118,6 @@ const Navigation = styled.div`
 const Nav = styled.div`
   margin-bottom: 20px;
   width: 100px;
+
+  cursor: pointer;
 `;

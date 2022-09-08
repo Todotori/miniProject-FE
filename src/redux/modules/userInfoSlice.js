@@ -12,6 +12,7 @@ export const __getUserInfo = createAsyncThunk(
   async (user, thunk) => {
     try {
       const response = await api.get(`/member`);
+      console.log(response);
       return thunk.fulfillWithValue(response.data);
     } catch (error) {
       return thunk.rejectWithValue(error);
@@ -41,11 +42,14 @@ const userInfoSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [__getUserInfo.pending]: (state, action) => {
+      return (state = initialState);
+    },
     [__getUserInfo.fulfilled]: (state, action) => {
       return (state = action.payload);
     },
     [__getUserInfo.rejected]: (state, action) => {
-      console.log(state, action);
+      // console.log(state, action);
     },
     [__editUserInfo.fulfilled]: (state, action) => {
       state.data = {

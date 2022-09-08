@@ -38,7 +38,9 @@ const UserInfo = () => {
         </MyInfo>
         <MyGroups>
           <GroupTitle>내가 속한 그룹</GroupTitle>
-          <MyGroup>{user.company}</MyGroup>
+          {user.company.split(",").map((el) => (
+            <MyGroup key={el}>{el}</MyGroup>
+          ))}
         </MyGroups>
       </Wrapper>
       <UnderLine />

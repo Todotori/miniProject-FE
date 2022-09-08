@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Reset] User 데이터베이스 초기화.">
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Layout/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Layout/SideBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/builtin-modules/index.d.ts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,56 +73,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="20004000" />
-    </task>
-    <task id="LOCAL-00002" summary="[Add] Register.jsx">
-      <created>1662098390142</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1662098390142</updated>
-    </task>
-    <task id="LOCAL-00003" summary="[Add] 중복확인 버튼.">
-      <created>1662099085264</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1662099085264</updated>
-    </task>
-    <task id="LOCAL-00004" summary="[Add] useInput() 연결.">
-      <created>1662099431822</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1662099431822</updated>
-    </task>
-    <task id="LOCAL-00005" summary="[Add] createUser Thunk.">
-      <created>1662100103788</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1662100103788</updated>
-    </task>
-    <task id="LOCAL-00006" summary="[Add] Login.jsx">
-      <created>1662327849403</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1662327849403</updated>
-    </task>
-    <task id="LOCAL-00007" summary="[Add] Modal 기능 추가.">
-      <created>1662333093617</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1662333093617</updated>
-    </task>
-    <task id="LOCAL-00008" summary="[Add] Email Validation.">
-      <created>1662333236222</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1662333236222</updated>
+      <workItem from="1662453013763" duration="34010000" />
     </task>
     <task id="LOCAL-00009" summary="[Fix] Fix minor issues.">
       <created>1662334112605</created>
@@ -415,7 +369,56 @@
       <option name="project" value="LOCAL" />
       <updated>1662550228816</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="[Delete] 콘솔로그 삭제.">
+      <created>1662550714790</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1662550714790</updated>
+    </task>
+    <task id="LOCAL-00052" summary="[Temp] 임시 수정.">
+      <created>1662599077774</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1662599077775</updated>
+    </task>
+    <task id="LOCAL-00053" summary="[Delete] 콘솔로그 삭제.">
+      <created>1662601753939</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1662601753939</updated>
+    </task>
+    <task id="LOCAL-00054" summary="[Fix] Refactor.">
+      <created>1662605505312</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1662605505312</updated>
+    </task>
+    <task id="LOCAL-00055" summary="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
+      <created>1662611795421</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1662611795421</updated>
+    </task>
+    <task id="LOCAL-00056" summary="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
+      <created>1662612645293</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1662612645293</updated>
+    </task>
+    <task id="LOCAL-00057" summary="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
+      <created>1662614930665</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1662614930665</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,6 +441,11 @@
                   </entry>
                 </map>
               </option>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="156" />
+                </map>
+              </option>
             </State>
           </value>
         </entry>
@@ -446,9 +454,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Update] 회원가입과 로그인 처리 과정, 서버와 연결." />
-    <MESSAGE value="[Update] 이메일과 닉네임 중복확인 로직 구현?" />
-    <MESSAGE value="[Fix] Register.jsx에도 토큰 받아오게 수정." />
     <MESSAGE value="[Add] useToken.js" />
     <MESSAGE value="[Fix] Typo: Authorization -&gt; authorization." />
     <MESSAGE value="[Fix] useToken.js에서 토큰이 없을 때 에러가 나는 문제 해결." />
@@ -458,7 +463,6 @@
     <MESSAGE value="[Add] useLogout.js" />
     <MESSAGE value="[Add] 토큰 발급받지 못한 경우 에러 메시지 출력." />
     <MESSAGE value="[Fix] 비밀번호 틀렸을 때 뻗어버리는 문제 수정." />
-    <MESSAGE value="[Fix] Refactor." />
     <MESSAGE value="[Fix] 코드 깔끔하게 바꿈." />
     <MESSAGE value="[Fix] Fix typos." />
     <MESSAGE value="[Fix] introduction -&gt; comment." />
@@ -471,6 +475,10 @@
     <MESSAGE value="[Update] 로그인되어있지 않을 시 로그인 화면으로 넘어가게 수정." />
     <MESSAGE value="[Update] 비밀번호 Validator 추가." />
     <MESSAGE value="[Reset] User 데이터베이스 초기화." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Reset] User 데이터베이스 초기화." />
+    <MESSAGE value="[Temp] 임시 수정." />
+    <MESSAGE value="[Delete] 콘솔로그 삭제." />
+    <MESSAGE value="[Fix] Refactor." />
+    <MESSAGE value="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?" />
   </component>
 </project>

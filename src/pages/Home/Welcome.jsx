@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import {useSelector} from "react-redux";
 import useToken from "../../hooks/useToken";
 
-
 const Welcome = () => {
+    const {isLoading, error} = useSelector((state) => state.signInUser);
+    const {registrationIsLoading, registrationError} = useSelector((state) => state.createUser);
     const count = useSelector((state) => state.todos.count);
     const decode = useToken();
     let nickname;
@@ -13,12 +14,18 @@ const Welcome = () => {
     } else {
         nickname = "Anonymous"
     }
-    return (
-        <WelcomeMain>
-            <h1>어서오세요, {nickname}님</h1>
-            <span>할 일이 {count}개 남았어요</span>
-        </WelcomeMain>
-    );
+    if (isLoading) {
+        return <div>Loading...</div>;
+    } else if (error) {
+        return <div>{error}{registrationError}</div>;
+    } else {
+        return (
+            <WelcomeMain>
+                <h1>어서오세요, {nickname}님</h1>
+                <span>할 일이 {count}개 남았어요</span>
+            </WelcomeMain>
+        );
+    }
 };
 
 const WelcomeMain = styled.div`
