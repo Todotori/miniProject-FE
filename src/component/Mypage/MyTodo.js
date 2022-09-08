@@ -27,6 +27,9 @@ const MyTodo = ({ todo }) => {
     dispatch(__deleteTodo(todo.id));
   };
 
+  const tagName = toString(todo.tag)
+  console.log('🚀 ~ MyTodo ~ tagName', tagName)
+
   const decode = useToken();
   const nickname = decode(sessionStorage.getItem('access_token')).sub;
   const splitTag = todo.tag.split(',');
