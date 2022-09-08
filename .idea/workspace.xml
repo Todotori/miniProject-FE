@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 프로토콜 문제 해결.">
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] Console.log 삭제.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/createUserSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/modules/signInUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/signInUserSlice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/todos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/todos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/userInfoSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/userInfoSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,14 +78,7 @@
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
       <workItem from="1662453013763" duration="34010000" />
-      <workItem from="1662629132032" duration="2727000" />
-    </task>
-    <task id="LOCAL-00010" summary="[Add] 중복 확인 기능 추가.">
-      <created>1662340052952</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1662340052952</updated>
+      <workItem from="1662629132032" duration="3673000" />
     </task>
     <task id="LOCAL-00011" summary="[Fix] Fix Minor issues.">
       <created>1662340323187</created>
@@ -423,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662629159223</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="[Fix] Console.log 삭제.">
+      <created>1662634103075</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1662634103075</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +459,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Fix] Typo: Authorization -&gt; authorization." />
     <MESSAGE value="[Fix] useToken.js에서 토큰이 없을 때 에러가 나는 문제 해결." />
     <MESSAGE value="[Update] 이메일, 닉네임 중복 확인 로직 구현 완료." />
     <MESSAGE value="[Fix] API 경로 설정." />
@@ -484,6 +483,7 @@
     <MESSAGE value="[Fix] Refactor." />
     <MESSAGE value="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?" />
     <MESSAGE value="[Fix] 프로토콜 문제 해결." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fix] 프로토콜 문제 해결." />
+    <MESSAGE value="[Fix] Console.log 삭제." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] Console.log 삭제." />
   </component>
 </project>
