@@ -11,7 +11,7 @@ export const checkUsernameThunk = createAsyncThunk(
   "users/checkUsername",
   async (username, thunk) => {
     try {
-      const {data} = await api.post("/api/nickcheck", {nickname: username});
+      const {data} = await api.post("/nickcheck", {nickname: username});
       return thunk.fulfillWithValue(data);
     } catch (error) {
       return thunk.rejectWithValue(error);
