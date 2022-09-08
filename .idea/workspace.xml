@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] Refactor.">
+    <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home/Welcome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Welcome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +74,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="30467000" />
-    </task>
-    <task id="LOCAL-00006" summary="[Add] Login.jsx">
-      <created>1662327849403</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1662327849403</updated>
+      <workItem from="1662453013763" duration="31159000" />
     </task>
     <task id="LOCAL-00007" summary="[Add] Modal 기능 추가.">
       <created>1662333093617</created>
@@ -418,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662605505312</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
+      <created>1662611795421</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1662611795421</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,7 +455,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[Fix] Register.jsx에도 토큰 받아오게 수정." />
     <MESSAGE value="[Add] useToken.js" />
     <MESSAGE value="[Fix] Typo: Authorization -&gt; authorization." />
     <MESSAGE value="[Fix] useToken.js에서 토큰이 없을 때 에러가 나는 문제 해결." />
@@ -479,6 +479,7 @@
     <MESSAGE value="[Temp] 임시 수정." />
     <MESSAGE value="[Delete] 콘솔로그 삭제." />
     <MESSAGE value="[Fix] Refactor." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fix] Refactor." />
+    <MESSAGE value="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?" />
   </component>
 </project>
