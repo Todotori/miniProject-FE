@@ -16,7 +16,7 @@ const Welcome = () => {
     if (isLoading) {
         return <div>Loading...</div>;
     } else if (error) {
-        return <div>Error!!</div>;
+        return <div>{error}</div>;
     } else {
         return (
             <WelcomeMain>
