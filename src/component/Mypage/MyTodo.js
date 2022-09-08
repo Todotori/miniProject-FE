@@ -9,8 +9,10 @@ import {useDispatch} from "react-redux";
 import {__updateIsDone, __deleteTodo} from "../../redux/modules/todos";
 import useToken from "../../hooks/useToken";
 import EditModal from "./EditModal";
+import {useNavigate} from "react-router-dom";
 
 const MyTodo = ({todo}) => {
+  const navigator = useNavigate();
   const [isMine, setIsMine] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const modalIsOpen = () => {
@@ -26,8 +28,15 @@ const MyTodo = ({todo}) => {
   };
 
   const decode = useToken();
-  const nickname = decode(sessionStorage.getItem("access_token")).sub;
-  const splitTag = todo.tag.split(",");
+  let nickname;
+  let splitTag;
+  if (!sessionStorage.getItem("access_token")) {
+    nickname = "Anonymous";
+    navigator("/login");
+  } else {
+    nickname = decode(sessionStorage.getItem("access_token")).sub;
+    splitTag = todo.tag.split(",");
+  }
 
   React.useEffect(() => {
     setIsMine(nickname === todo.member.nickname);
@@ -125,6 +134,7 @@ const TodoEditBox = styled.div`
   right: 60px;
   color: red;
   z-index: 100;
+
   & > svg {
     background-size: auto;
     color: blue;

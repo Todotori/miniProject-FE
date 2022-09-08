@@ -16,6 +16,7 @@ import {createUserThunk} from "../../redux/modules/createUserSlice";
 import {checkEmailThunk} from "../../redux/modules/checkEmailSlice";
 import {checkUsernameThunk} from "../../redux/modules/checkUsernameSlice";
 import usePasswordValidator from "../../hooks/usePasswordValidator";
+import useUsernameValidator from "../../hooks/useUsernameValidator";
 
 const Register = () => {
   const navigator = useNavigate();
@@ -23,6 +24,7 @@ const Register = () => {
   const [email, setEmail, resetEmail] = useInput();
   const emailValidator = useEmailValidator();
   const passwordValidator = usePasswordValidator();
+  const usernameValidator = useUsernameValidator();
   const [password, setPassword, resetPassword] = useInput();
   const [
     passwordConfirmation,
@@ -41,12 +43,14 @@ const Register = () => {
       setModal("비밀번호를 입력해주세요.");
     } else if (!passwordValidator(password)) {
       setModal(
-        "비밀번호는 적어도 한 자리의 영문자와 숫자를 포함한 5 ~ 15자리의 문자열이어야 합니다."
+        "비밀번호는 적어도 한 자리의 영문자와 숫자를 포함한 5 ~ 15 자리의 문자열이어야 합니다."
       );
     } else if (password !== passwordConfirmation) {
       setModal("비밀번호가 일치하지 않습니다.");
     } else if (username.length === 0) {
       setModal("이름을 입력해주세요.");
+    } else if (!usernameValidator(username)) {
+      setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
     } else {
       const checkEmailResponse = await dispatch(checkEmailThunk(email));
       const checkUsernameResponse = await dispatch(
@@ -80,9 +84,11 @@ const Register = () => {
             case "TOKEN_NOT_SENT":
               setModal("서버 측으로부터 토큰을 발급받지 못하였습니다.");
               break;
+            case "INVALID_USERNAME":
+              setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
+              break;
             default:
-              const {password: passwordErrorMessage} = errorCode.response.data;
-              setModal(passwordErrorMessage);
+              setModal("알 수 없는 오류가 발생하였습니다.");
               break;
           }
         } else {
@@ -118,7 +124,9 @@ const Register = () => {
   };
   const checkUsernameHandler = async () => {
     if (username.length === 0) {
-      setModal("이름을 입력해주세요.");
+      setModal("닉네임을 입력해주세요.");
+    } else if (!usernameValidator(username)) {
+      setModal("닉네임은 5 ~ 10 자리의 문자열이어야 합니다.");
     } else {
       const {payload} = await dispatch(checkUsernameThunk(username));
       if (!payload) {
