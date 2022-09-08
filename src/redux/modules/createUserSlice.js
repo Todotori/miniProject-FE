@@ -23,7 +23,6 @@ export const createUserThunk = createAsyncThunk("users/createUser", async (newUs
             return thunk.rejectWithValue(code);
         }
     } catch (error) {
-        console.dir(error);
         return thunk.rejectWithValue(error);
     }
 })
