@@ -36,6 +36,7 @@ const Login = () => {
       const signInResponse = await dispatch(signInUserThunk(user));
       if (signInResponse.error) {
         const errorCode = signInResponse.payload;
+        console.dir(errorCode);
         switch (errorCode) {
           case "MEMBER_NOT_FOUND":
             setModal("회원 정보가 존재하지 않습니다.");
@@ -45,6 +46,9 @@ const Login = () => {
             break;
           case "TOKEN_NOT_SENT":
             setModal("서버로부터 토큰을 전달받지 못하였습니다.");
+            break;
+          case "NOT_SAME_PASSWORD":
+            setModal("비밀번호가 틀립니다.");
             break;
           default:
             setModal("알 수 없는 오류가 발생하였습니다.");
