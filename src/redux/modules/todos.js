@@ -12,7 +12,7 @@ export const __getTodos = createAsyncThunk(
     "todos/getTodos",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.get("/todo/all");
+            const {data} = await api.get("http://3.34.90.63/api/todo/all");
             return thunkAPI.fulfillWithValue(data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -27,7 +27,7 @@ export const __getMyTodos = createAsyncThunk(
             let data;
             switch (payload) {
                 case "WHOLE":
-                    const WholeTodos = await api.get("/todo/");
+                    const WholeTodos = await api.get("http://3.34.90.63/api/todo/");
                     data = WholeTodos.data;
                     break;
                 case "TODO":
@@ -50,7 +50,7 @@ export const __getTodosCount = createAsyncThunk(
     "todos/getTodosCount",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.get("/todo/undone");
+            const {data} = await api.get("http://3.34.90.63/api/todo/undone");
             return thunkAPI.fulfillWithValue(data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -62,7 +62,7 @@ export const __addTodo = createAsyncThunk(
     "todos/addTodo",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.post("/todo", payload);
+            const {data} = await api.post("http://3.34.90.63/api/todo", payload);
             return thunkAPI.fulfillWithValue(data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -74,7 +74,7 @@ export const __editTodo = createAsyncThunk(
     "todos/editTodo",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.put("/todo", payload);
+            const {data} = await api.put("http://3.34.90.63/api/todo", payload);
             return thunkAPI.fulfillWithValue(data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -86,7 +86,7 @@ export const __deleteTodo = createAsyncThunk(
     "todos/deleteTodo",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.delete(`/todo/${payload}`);
+            const {data} = await api.delete(`http://3.34.90.63/api/todo/${payload}`);
             return thunkAPI.fulfillWithValue(data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -98,7 +98,7 @@ export const __updateIsDone = createAsyncThunk(
     "todos/updateIsDone",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.put(`/todo/${payload}/done`, {
+            const {data} = await api.put(`http://3.34.90.63/api/todo/${payload}/done`, {
                 id: payload,
                 done: true,
             });
