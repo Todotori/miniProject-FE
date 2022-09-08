@@ -1,3 +1,4 @@
+import { StarRateSharp } from '@mui/icons-material';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import api from '../../api';
 
@@ -64,7 +65,8 @@ export const __addTodo = createAsyncThunk('todos/addTodo', async (payload, thunk
 
 export const __editTodo = createAsyncThunk('todos/editTodo', async (payload, thunkAPI) => {
   try {
-    const { data } = await api.put('/todo', payload);
+    console.log(payload);
+    const { data } = await api.put(`todo/${payload.id}`, { title: payload.title, content: payload.content, tag: payload.tag });
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -119,7 +121,21 @@ export const todoSlice = createSlice({
     [__addTodo.rejected]: (state, action) => {
       return;
     },
-
+    [__editTodo.fulfilled]: (state, action) => {
+      console.log('>>', action.payload.data);
+      const newState = state.todos.map(todo => {
+        if (todo.id === action.payload.data.id) {
+          todo = {
+            ...todo,
+            titie: action.payload.data.title,
+            content: action.payload.data.content,
+            tag: action.payload.data.tag,
+          };
+        }
+      });
+      state.todos = newState;
+      return state;
+    },
     [__updateIsDone.fulfilled]: (state, action) => {
       state.todos.map(todo => {
         if (todo.id === action.payload.data.id) {

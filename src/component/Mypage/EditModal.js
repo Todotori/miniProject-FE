@@ -6,15 +6,15 @@ import { useDispatch } from 'react-redux';
 import CheckBoxCon from '../../pages/Home/CheckBoxCon';
 import { __editTodo } from '../../redux/modules/todos';
 
-function AddModal({ setIsOpen, title, content }) {
+function AddModal({ setIsOpen, title, content, id, tag }) {
   const dispatch = useDispatch();
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
-  const [onChangeTitle, titleReset] = useInput();
-  const [comment, onChangeComment, commentReset] = useInput();
+  const [editTitle, onChangeEditTitle, titleReset] = useInput();
+  const [editComment, onChangeEditComment, commentReset] = useInput();
   const [check, setCheck] = useState([]);
 
   // onCheck -> 배열을 JOIN으로 문자열로 바꾼다...
@@ -26,15 +26,11 @@ function AddModal({ setIsOpen, title, content }) {
     // setCheck( (props) => props.filter((el)=>selected !== el ))
   };
 
-  // console.log(check)
-  const tagSplit = check.join(',').split(',');
-
   const onSubmit = () => {
-    const arrayToString = check.join(',');
     titleReset();
     commentReset();
     closeModal();
-    dispatch(__editTodo({ title: title, content: comment, tag: arrayToString }));
+    dispatch(__editTodo({ id: id, title: editTitle, content: editComment, tag: check.join(',') }));
   };
 
   return (
@@ -45,8 +41,8 @@ function AddModal({ setIsOpen, title, content }) {
           <DotoriIconX src='https://user-images.githubusercontent.com/80745897/188114927-e91866c0-1c09-43b2-85c7-c5355d9990e6.png' onClick={closeModal} />
         </ModalHeader>
         <ModalInputs>
-          <ModalTitle onChange={onChangeTitle} placeholder={title}></ModalTitle>
-          <ModalText onChange={onChangeComment} placeholder={content}></ModalText>
+          <ModalTitle onChange={onChangeEditTitle} placeholder={title}></ModalTitle>
+          <ModalText onChange={onChangeEditComment} placeholder={content}></ModalText>
         </ModalInputs>
 
         {/* NOTE 투두 작성 시 태그 여러개 입력 안됨 (String 값으로 하나만 입력 가능함) - 추후 수정 */}
@@ -57,7 +53,7 @@ function AddModal({ setIsOpen, title, content }) {
           <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'자기개발'} />
           <CheckBoxCon onCheck={onCheck} onUnCheck={onUnCheck} tags={'기타'} />
         </CheckWrap>
-        <Button onClick={onSubmit}>추가하기</Button>
+        <Button onClick={onSubmit}>수정하기</Button>
       </ModalBox>
     </ModalBack>
   );
