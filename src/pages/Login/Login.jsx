@@ -36,7 +36,6 @@ const Login = () => {
       const signInResponse = await dispatch(signInUserThunk(user));
       if (signInResponse.error) {
         const errorCode = signInResponse.payload;
-        console.dir(errorCode);
         switch (errorCode) {
           case "MEMBER_NOT_FOUND":
             setModal("회원 정보가 존재하지 않습니다.");
