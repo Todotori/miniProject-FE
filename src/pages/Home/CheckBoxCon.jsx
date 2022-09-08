@@ -1,34 +1,28 @@
 import styled from 'styled-components';
 
-const CheckBoxCon = ({tags, onCheck, onUnCheck}) => {
-    // 체크햇을때 나가게
-    const onChecked = e => {
-        if (e.target.checked === true) {
-            onCheck(e.target.name);
-        } else {
-            onUnCheck(e.target.name);
-        }
-        // if (checked) {
-        //   setChecked([...checked, item]);
-        // } else if (!checked) {
-        //   setChecked(checked.filter(el => el !== item));
-        // }
-    };
+const CheckBoxCon = ({ tags, onCheck, onUnCheck }) => {
+  // 체크햇을때 나가게
+  const onChecked = e => {
+    if (e.target.checked === true) {
+      onCheck(e.target.name);
+    } else {
+      onUnCheck(e.target.name);
+    }
+    // if (checked) {
+    //   setChecked([...checked, item]);
+    // } else if (!checked) {
+    //   setChecked(checked.filter(el => el !== item));
+    // }
+  };
 
-    return (
-        <CheckBox>
-            <StyledLabel>
-                <StyledInput
-                    type='checkbox'
-                    name={tags}
-                    // value={item.data}
-                    onChange={onChecked}
-                    // checked={onChecked.includes(tags.data) ? true : false}
-                />
-                <StyledP>{tags}</StyledP>
-            </StyledLabel>
-        </CheckBox>
-    );
+  return (
+    <CheckBox>
+      <StyledLabel>
+        <StyledInput type='checkbox' name={tags} onChange={onChecked} checked />
+        <StyledP>{tags}</StyledP>
+      </StyledLabel>
+    </CheckBox>
+  );
 };
 
 const CheckBox = styled.div`

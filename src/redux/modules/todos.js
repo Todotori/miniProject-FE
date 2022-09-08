@@ -138,7 +138,7 @@ export const todoSlice = createSlice({
       return;
     },
     [__editTodo.fulfilled]: (state, action) => {
-      console.log('>>', action.payload.data);
+      console.log('🔑', action.payload.data);
       const newState = state.todos.map(todo => {
         if (todo.id === action.payload.data.id) {
           todo = {

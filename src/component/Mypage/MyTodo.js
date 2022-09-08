@@ -49,7 +49,7 @@ const MyTodo = ({ todo }) => {
           {/* NOTE 수정버튼 */}
           <TodoEditBox onClick={modalIsOpen}>
             <FiEdit3 fontSize='large' />
-            {isOpen && <EditModal setIsOpen={setIsOpen} title={todo.title} content={todo.content} />}
+            {isOpen && <EditModal setIsOpen={setIsOpen} title={todo.title} content={todo.content} tag={splitTag} />}
           </TodoEditBox>
 
           {/* NOTE 삭제버튼 */}

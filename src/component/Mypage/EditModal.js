@@ -5,8 +5,10 @@ import useInput from './../../hooks/useInput';
 import { useDispatch } from 'react-redux';
 import CheckBoxCon from '../../pages/Home/CheckBoxCon';
 import { __editTodo } from '../../redux/modules/todos';
+import { checkboxClasses } from '@mui/material';
 
-function AddModal({ setIsOpen, title, content, id, tag }) {
+function EditModal({ setIsOpen, title, content, id, tag }) {
+  console.log('🚀 ~ AddModal ~ tag', tag)
   const dispatch = useDispatch();
 
   const closeModal = () => {
@@ -23,7 +25,6 @@ function AddModal({ setIsOpen, title, content, id, tag }) {
   };
   const onUnCheck = selected => {
     setCheck(check.filter(el => el !== selected));
-    // setCheck( (props) => props.filter((el)=>selected !== el ))
   };
 
   const onSubmit = () => {
@@ -32,7 +33,8 @@ function AddModal({ setIsOpen, title, content, id, tag }) {
     closeModal();
     dispatch(__editTodo({ id: id, title: editTitle, content: editComment, tag: check.join(',') }));
   };
-
+  
+  
   return (
     <ModalBack onClick={closeModal}>
       <ModalBox variants={CreateAnimation} initial='start' animate='end' onClick={e => e.stopPropagation()}>
@@ -148,4 +150,4 @@ const CreateAnimation = {
   end: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
-export default AddModal;
+export default EditModal;
