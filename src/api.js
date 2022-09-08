@@ -6,11 +6,11 @@ let api;
 if (token) {
   const bearerToken = "Bearer " + token;
   api = axios.create({
-    baseURL: "http://3.34.90.63/api",
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {authorization: bearerToken},
   });
 } else {
-  api = axios.create({baseURL: "http://3.34.90.63/api"});
+  api = axios.create({baseURL: process.env.REACT_APP_API_URL});
 }
 
 export default api;
