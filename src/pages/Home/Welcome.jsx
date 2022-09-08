@@ -5,6 +5,7 @@ import useToken from "../../hooks/useToken";
 
 const Welcome = () => {
     const {isLoading, error} = useSelector((state) => state.signInUser);
+    const {registrationIsLoading, registrationError} = useSelector((state) => state.createUser);
     const count = useSelector((state) => state.todos.count);
     const decode = useToken();
     let nickname;
@@ -16,7 +17,7 @@ const Welcome = () => {
     if (isLoading) {
         return <div>Loading...</div>;
     } else if (error) {
-        return <div>{error}</div>;
+        return <div>{error}{registrationError}</div>;
     } else {
         return (
             <WelcomeMain>
