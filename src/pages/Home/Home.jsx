@@ -17,6 +17,7 @@ const Home = () => {
       navigator("/login");
     }
   }, [navigator]);
+
   return (
     <Layout>
       <Main>

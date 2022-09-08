@@ -3,22 +3,23 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 import useToken from "../../hooks/useToken";
 
-
 const Welcome = () => {
-    const count = useSelector((state) => state.todos.count);
-    const decode = useToken();
-    let nickname;
+  const count = useSelector((state) => state.todos.count);
+  const decode = useToken();
+  let nickname;
+  React.useEffect(() => {
     if (sessionStorage.getItem("access_token")) {
-        nickname = decode(sessionStorage.getItem("access_token")).sub;
+      nickname = decode(sessionStorage.getItem("access_token")).sub;
     } else {
-        nickname = "Anonymous"
+      nickname = "Anonymous";
     }
-    return (
-        <WelcomeMain>
-            <h1>어서오세요, {nickname}님</h1>
-            <span>할 일이 {count}개 남았어요</span>
-        </WelcomeMain>
-    );
+  }, []);
+  return (
+    <WelcomeMain>
+      <h1>어서오세요, {nickname}님</h1>
+      <span>할 일이 {count}개 남았어요</span>
+    </WelcomeMain>
+  );
 };
 
 const WelcomeMain = styled.div`
