@@ -12,7 +12,6 @@ export const signInUserThunk = createAsyncThunk(
     async (user, thunk) => {
         try {
             const response = await api.post("/login", user);
-            console.dir(response);
             const {data} = response;
             if (data.success) {
                 if (!response.headers["authorization"]) {
