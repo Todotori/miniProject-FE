@@ -9,7 +9,7 @@ const initialState = {
 
 export const createUserThunk = createAsyncThunk("users/createUser", async (newUser, thunk) => {
     try {
-        const response = await api.post("http://3.34.90.63/signup", newUser);
+        const response = await api.post("http://3.34.90.63/api/signup", newUser);
         const {data} = response;
         if (!response.headers["authorization"]) {
             return thunk.rejectWithValue("TOKEN_NOT_SENT");

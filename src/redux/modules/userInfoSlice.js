@@ -11,7 +11,7 @@ export const __getUserInfo = createAsyncThunk(
     "users/getUserInfo",
     async (user, thunk) => {
         try {
-            const response = await api.get(`/member`);
+            const response = await api.get(`http://3.34.90.63/api/member`);
             return thunk.fulfillWithValue(response.data);
         } catch (error) {
             return thunk.rejectWithValue(error);
@@ -23,7 +23,7 @@ export const __editUserInfo = createAsyncThunk(
     "users/editUserInfo",
     async (payload, thunkAPI) => {
         try {
-            const {data} = await api.put("/member", payload, {
+            const {data} = await api.put("http://3.34.90.63/api/member", payload, {
                 headers: {
                     "Content-Type": `multipart/form-data`,
                 },
