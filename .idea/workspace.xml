@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8ecb4cc0-373f-4232-acd3-11845d46161a" name="Changes" comment="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/Welcome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/Welcome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/signInUserSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/signInUserSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Layout/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Layout/SideBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,14 +73,7 @@
       <workItem from="1662096255920" duration="7127000" />
       <workItem from="1662327599575" duration="24915000" />
       <workItem from="1662414061903" duration="15703000" />
-      <workItem from="1662453013763" duration="33429000" />
-    </task>
-    <task id="LOCAL-00008" summary="[Add] Email Validation.">
-      <created>1662333236222</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1662333236222</updated>
+      <workItem from="1662453013763" duration="34010000" />
     </task>
     <task id="LOCAL-00009" summary="[Fix] Fix minor issues.">
       <created>1662334112605</created>
@@ -420,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662612645293</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="[Fix] 로그인 직후 메인 페이지에서 에러 뿜는 현상 해결?">
+      <created>1662614930665</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1662614930665</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
