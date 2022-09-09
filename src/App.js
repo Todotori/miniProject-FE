@@ -1,12 +1,12 @@
-import Router from "./Router";
-import {AnimatePresence} from "framer-motion";
+import Router from './Router';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
-    return (
-        <AnimatePresence>
-            <Router/>
-        </AnimatePresence>
-    );
+  return (
+    <AnimatePresence>
+      <Router />
+    </AnimatePresence>
+  );
 }
 
 export default App;
