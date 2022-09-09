@@ -46,6 +46,9 @@ const Login = () => {
                     case "TOKEN_NOT_SENT":
                         setModal("서버로부터 토큰을 전달받지 못하였습니다.");
                         break;
+                    case "NOT_SAME_PASSWORD":
+                        setModal("비밀번호가 틀립니다.");
+                        break;
                     default:
                         setModal("알 수 없는 오류가 발생하였습니다.");
                         break;

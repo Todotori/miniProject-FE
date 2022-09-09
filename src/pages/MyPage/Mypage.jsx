@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../component/Layout/Layout";
-import MyTodos from "../component/Mypage/MyTodos";
-import UserInfo from "../component/Mypage/UserInfo";
+import Layout from "../../component/Layout/Layout";
+import MyTodos from "../../component/Mypage/MyTodos";
+import UserInfo from "../../component/Mypage/UserInfo";
 import styled from "styled-components";
 
 export const Mypage = () => {
@@ -10,7 +10,7 @@ export const Mypage = () => {
       <WholeWrapper>
         <UserInfo />
         <PageWrapper>
-          <MyTodos mine={true} title={"My TODO List"} />
+          <MyTodos mine={true} title={"나의 투두리스트"} />
         </PageWrapper>
       </WholeWrapper>
     </Layout>
